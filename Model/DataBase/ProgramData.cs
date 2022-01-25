@@ -63,5 +63,58 @@ namespace Wreath.Model.DataBase
         public List<string[]> DisciplineProfessionalMasteringByTheme(uint themeId) => Converters.DisciplineProfessionalMasteringByTheme(themeId);
 
         public List<string[]> Levels => Converters.Levels;
+
+
+        public List<string[]> MConformity => Converters.MConformity;
+
+        public List<string[]> MSpecialities => Converters.MSpecialities;
+
+        public List<string[]> MSpecialityCodes => Converters.MSpecialityCodes;
+
+        public List<string[]> MGeneralCompetetions(uint specialityId) => Converters.MGeneralCompetetions(specialityId);
+
+        public List<string[]> MProfessionalCompetetions(uint specialityId) => Converters.MProfessionalCompetetions(specialityId);
+
+        public List<string[]> MDisciplines => Converters.MDisciplines;
+
+        public List<string[]> MDisciplineCodes => Converters.MDisciplineCodes;
+
+        public List<string[]> MTotalHours(uint disciplineId) => Converters.MTotalHours(disciplineId);
+
+        public List<string[]> MThemePlan(uint disciplineId) => Converters.MThemePlan(disciplineId);
+
+        public List<string[]> MThemes(uint topicId) => Converters.MThemes(topicId);
+
+        public List<string[]> MWorks(uint themeId) => Converters.MWorks(themeId);
+
+        public List<string[]> MWorkTypes => Converters.MWorkTypes;
+
+        public List<string[]> MTasks(ulong workId) => Converters.MTasks(workId);
+
+        public List<string[]> MMetaData(uint disciplineId) => Converters.MMetaData(disciplineId);
+
+        public List<string[]> MMetaTypes => Converters.MMetaTypes;
+
+        public List<string[]> MSources(uint disciplineId) => Converters.MSources(disciplineId);
+
+        public List<string[]> MSourceTypes => Converters.MSourceTypes;
+
+        public List<string[]> MDisciplineGeneralMastering(uint disciplineId) => Converters.MDisciplineGeneralMastering(disciplineId);
+
+        public List<string[]> MDisciplineProfessionalMastering(uint disciplineId) => Converters.MDisciplineProfessionalMastering(disciplineId);
+
+        public List<string[]> MThemeGeneralMastering(uint themeId) => Converters.MThemeGeneralMastering(themeId);
+
+        public List<string[]> MThemeProfessionalMastering(uint themeId) => Converters.MThemeProfessionalMastering(themeId);
+
+        public List<string[]> MConformityGeneralCompetetions(uint disciplineId) => Converters.MConformityGeneralCompetetions(disciplineId);
+
+        public List<string[]> MConformityProfessionalCompetetions(uint disciplineId) => Converters.MConformityProfessionalCompetetions(disciplineId);
+
+        public List<string[]> MDisciplineGeneralMasteringByTheme(uint themeId) => Converters.MDisciplineGeneralMasteringByTheme(themeId);
+
+        public List<string[]> MDisciplineProfessionalMasteringByTheme(uint themeId) => Converters.MDisciplineProfessionalMasteringByTheme(themeId);
+
+        public List<string[]> MLevels => Converters.MLevels;
     }
 }

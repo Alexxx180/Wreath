@@ -52,7 +52,7 @@ namespace Wreath.Controls.Tables {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/resources/styles/textboxes.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/resources/styles/textboxes.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Resources\Styles\TextBoxes.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

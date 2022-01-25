@@ -92,7 +92,7 @@ namespace Wreath.Controls.RecordForm {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/recordform/mainpart.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/recordform/mainpart.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\RecordForm\MainPart.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

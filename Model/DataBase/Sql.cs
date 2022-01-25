@@ -7,13 +7,13 @@ namespace Wreath.Model.DataBase
     /// <summary>
     /// Class containing necessary methods to work with database
     /// </summary>
-    public abstract class Sql : IDataViewer, IDataRedactor
+    public abstract class Sql : IDataViewer, IDataAdministrator
     {
         public static void ConnectionMessage(string loadProblem, string exception)
         {
             string noLoad = "Не удалось обработать: ";
             string message = "\nОшибка подключения. Вы не можете продолжать работу.\n";
-            string advice = "Свяжитесь с администратором насчет установления причины проблемы.\nПолное сообщение:\n";
+            string advice = "Проверьте конфигурации подключения и текущее состояние сервера.\nПолное сообщение:\n";
 
             string caption = "Ошибка";
             string fullMessage = noLoad + loadProblem + message + advice + exception;
@@ -96,6 +96,8 @@ namespace Wreath.Model.DataBase
         }
 
         // Data view methods
+
+        // Unmarked records
 
         public List<object[]> ConformityList()
         {
@@ -230,344 +232,597 @@ namespace Wreath.Model.DataBase
             return GetRecords("get_discipline_professional_by_theme_unmarked", "theme_id", value);
         }
 
+        // Marked records
+
+        public List<object[]> MConformityList()
+        {
+            return GetRecords("get_conformity_full_marked");
+        }
+
+        // Specialities
+        public List<object[]> MSpecialitiesList()
+        {
+            return GetRecords("get_specialities_marked");
+        }
+
+        public List<object[]> MSpecialityCodes()
+        {
+            return GetRecords("get_speciality_codes_marked");
+        }
+
+        public List<object[]> MGeneralCompetetions(uint value)
+        {
+            return GetRecords("get_speciality_general_marked", "speciality_id", value);
+        }
+
+        public List<object[]> MProfessionalCompetetions(uint value)
+        {
+            return GetRecords("get_speciality_professional_marked", "speciality_id", value);
+        }
+
+        // Disciplines
+        public List<object[]> MDisciplinesList()
+        {
+            return GetRecords("get_disciplines_marked");
+        }
+
+        public List<object[]> MDisciplineCodes()
+        {
+            return GetRecords("get_discipline_codes_marked");
+        }
+
+        public List<object[]> MTotalHours(uint value)
+        {
+            return GetRecords("get_discipline_total_hours_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MThemePlan(uint value)
+        {
+            return GetRecords("get_theme_plan_by_discipline_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MThemes(uint value)
+        {
+            return GetRecords("get_themes_by_section_marked", "section_id", value);
+        }
+
+        public List<object[]> MWorks(uint value)
+        {
+            return GetRecords("get_work_by_theme_marked", "theme_id", value);
+        }
+
+        public List<object[]> MWorkTypes()
+        {
+            return GetRecords("get_work_types_marked");
+        }
+
+        public List<object[]> MTasks(ulong value)
+        {
+            return GetRecords("get_task_by_work_marked", "work_id", value);
+        }
+
+        public List<object[]> MMetaData(uint value)
+        {
+            return GetRecords("get_discipline_meta_data_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MMetaTypes()
+        {
+            return GetRecords("get_meta_types_marked");
+        }
+
+        public List<object[]> MSources(uint value)
+        {
+            return GetRecords("get_discipline_sources_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MSourceTypes()
+        {
+            return GetRecords("get_source_types_marked");
+        }
+
+        public List<object[]> MDisciplineGeneralMastering(uint value)
+        {
+            return GetRecords("get_discipline_general_mastering_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MDisciplineProfessionalMastering(uint value)
+        {
+            return GetRecords("get_discipline_professional_mastering_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MThemeGeneralMastering(uint value)
+        {
+            return GetRecords("get_theme_general_mastering_selection_marked", "theme_id", value);
+        }
+
+        public List<object[]> MThemeProfessionalMastering(uint value)
+        {
+            return GetRecords("get_theme_professional_mastering_selection_marked", "theme_id", value);
+        }
+
+        public List<object[]> MLevels()
+        {
+            return GetRecords("get_all_levels_marked");
+        }
+
+
+        public List<object[]> MConformityGeneralCompetetions(uint value)
+        {
+            return GetRecords("get_conformity_general_competetions_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MConformityProfessionalCompetetions(uint value)
+        {
+            return GetRecords("get_conformity_professional_competetions_marked", "discipline_id", value);
+        }
+
+        public List<object[]> MDisciplineGeneralMasteringByTheme(uint value)
+        {
+            return GetRecords("get_discipline_general_by_theme_marked", "theme_id", value);
+        }
+
+        public List<object[]> MDisciplineProfessionalMasteringByTheme(uint value)
+        {
+            return GetRecords("get_discipline_professional_by_theme_marked", "theme_id", value);
+        }
+
         // Data editing methods
-        
-        public void AddConformity(Dictionary<string, object> parameters)
+
+        // Unmark elements
+
+        public void UnMarkConformity(ulong value)
         {
-            ExecuteProcedure("add_conformity", parameters);
+            ExecuteProcedure("unmark_conformity", "conformity_id", value);
         }
 
         // Specialities
-        public void AddSpeciality(Dictionary<string, object> parameters)
+        public void UnMarkSpeciality(ulong value)
         {
-            ExecuteProcedure("add_speciality", parameters);
+            ExecuteProcedure("unmark_speciality", "speciality_id", value);
         }
 
-        public void AddSpecialityCode(string value)
+        public void UnMarkSpecialityCode(ulong value)
         {
-            ExecuteProcedure("add_speciality_code", "speciality_code", value);
+            ExecuteProcedure("unmark_speciality_code", "code_id", value);
         }
 
-        public void AddGeneralCompetetion(Dictionary<string, object> parameters)
+        public void UnMarkGeneralCompetetion(ulong value)
         {
-            ExecuteProcedure("add_general_competetion", parameters);
+            ExecuteProcedure("unmark_general_competetion", "comp_id", value);
         }
 
-        public void AddProfessionalCompetetion(Dictionary<string, object> parameters)
+        public void UnMarkProfessionalCompetetion(ulong value)
         {
-            ExecuteProcedure("add_professional_competetion", parameters);
+            ExecuteProcedure("unmark_professional_competetion", "comp_id", value);
         }
 
         // Disciplines
-        public void AddDiscipline(Dictionary<string, object> parameters)
+        public void UnMarkDiscipline(ulong value)
         {
-            ExecuteProcedure("add_discipline", parameters);
+            ExecuteProcedure("unmark_discipline", "discipline_id", value);
         }
 
-        public void AddDisciplineCode(string value)
+        public void UnMarkDisciplineCode(ulong value)
         {
-            ExecuteProcedure("add_discipline_code", "discipline_code", value);
+            ExecuteProcedure("unmark_discipline_code", "code_id", value);
         }
 
-        public void AddTotalHour(Dictionary<string, object> parameters)
+        public void UnMarkTotalHour(ulong value)
         {
-            ExecuteProcedure("add_hour", parameters);
+            ExecuteProcedure("unmark_hour", "hour_id", value);
         }
 
-        public void AddTopic(Dictionary<string, object> parameters)
+        public void UnMarkTopic(ulong value)
         {
-            ExecuteProcedure("add_section", parameters);
+            ExecuteProcedure("unmark_section", "section_id", value);
         }
 
-        public void AddTheme(Dictionary<string, object> parameters)
+        public void UnMarkTheme(ulong value)
         {
-            ExecuteProcedure("add_theme", parameters);
+            ExecuteProcedure("unmark_theme", "theme_id", value);
         }
 
-        public void AddWork(Dictionary<string, object> parameters)
+        public void UnMarkWork(ulong value)
         {
-            ExecuteProcedure("add_work", parameters);
+            ExecuteProcedure("unmark_work", "work_id", value);
         }
 
-        public void AddWorkType(string value)
+        public void UnMarkWorkType(ulong value)
         {
-            ExecuteProcedure("add_work_type", "type_name", value);
+            ExecuteProcedure("unmark_work_type", "type_id", value);
         }
 
-        public void AddTask(Dictionary<string, object> parameters)
+        public void UnMarkTask(ulong value)
         {
-            ExecuteProcedure("add_task", parameters);
+            ExecuteProcedure("unmark_task", "task_id", value);
         }
 
-        public void AddMetaData(Dictionary<string, object> parameters)
+        public void UnMarkMetaData(ulong value)
         {
-            ExecuteProcedure("add_meta_data", parameters);
+            ExecuteProcedure("unmark_meta_data", "data_id", value);
         }
 
-        public void AddMetaType(string value)
+        public void UnMarkMetaType(ulong value)
         {
-            ExecuteProcedure("add_meta_type", "type_name", value);
+            ExecuteProcedure("unmark_meta_type", "type_id", value);
         }
 
-        public void AddSource(Dictionary<string, object> parameters)
+        public void UnMarkSource(ulong value)
         {
-            ExecuteProcedure("add_source", parameters);
+            ExecuteProcedure("unmark_source", "source_id", value);
         }
 
-        public void AddSourceType(string value)
+        public void UnMarkSourceType(ulong value)
         {
-            ExecuteProcedure("add_source_type", "type_name", value);
+            ExecuteProcedure("unmark_source_type", "type_id", value);
         }
 
-        public void AddGeneralMastering(Dictionary<string, object> parameters)
+        public void UnMarkGeneralMastering(ulong value)
         {
-            ExecuteProcedure("add_general_mastering", parameters);
+            ExecuteProcedure("unmark_general_mastering", "mastering_id", value);
         }
 
-        public void AddProfessionalMastering(Dictionary<string, object> parameters)
+        public void UnMarkProfessionalMastering(ulong value)
         {
-            ExecuteProcedure("add_professional_mastering", parameters);
+            ExecuteProcedure("unmark_professional_mastering", "mastering_id", value);
         }
 
-        public void AddGeneralSelection(Dictionary<string, object> parameters)
+        public void UnMarkGeneralSelection(ulong value)
         {
-            ExecuteProcedure("add_general_selection", parameters);
+            ExecuteProcedure("unmark_general_selection", "selection_id", value);
         }
 
-        public void AddProfessionalSelection(Dictionary<string, object> parameters)
+        public void UnMarkProfessionalSelection(ulong value)
         {
-            ExecuteProcedure("add_professional_selection", parameters);
+            ExecuteProcedure("unmark_professional_selection", "selection_id", value);
         }
 
-        public void AddLevel(Dictionary<string, object> parameters)
+        public void UnMarkLevel(ulong value)
         {
-            ExecuteProcedure("add_level", parameters);
+            ExecuteProcedure("unmark_level", "level_id", value);
         }
 
+        // Drop elements
 
-        public void SetConformity(Dictionary<string, object> parameters)
+        public void DropConformity(ulong value)
         {
-            ExecuteProcedure("set_conformity", parameters);
+            ExecuteProcedure("drop_conformity", "conformity_id", value);
         }
 
         // Specialities
-        public void SetSpeciality(Dictionary<string, object> parameters)
+        public void DropSpeciality(ulong value)
         {
-            ExecuteProcedure("set_speciality", parameters);
+            ExecuteProcedure("drop_speciality", "speciality_id", value);
         }
 
-        public void SetSpecialityCode(Dictionary<string, object> parameters)
+        public void DropSpecialityCode(ulong value)
         {
-            ExecuteProcedure("set_speciality_code", parameters);
+            ExecuteProcedure("drop_speciality_code", "code_id", value);
         }
 
-        public void SetGeneralCompetetion(Dictionary<string, object> parameters)
+        public void DropGeneralCompetetion(ulong value)
         {
-            ExecuteProcedure("set_general_competetion", parameters);
+            ExecuteProcedure("drop_general_competetion", "comp_id", value);
         }
 
-        public void SetProfessionalCompetetion(Dictionary<string, object> parameters)
+        public void DropProfessionalCompetetion(ulong value)
         {
-            ExecuteProcedure("set_professional_competetion", parameters);
+            ExecuteProcedure("drop_professional_competetion", "comp_id", value);
         }
 
         // Disciplines
-        public void SetDiscipline(Dictionary<string, object> parameters)
+        public void DropDiscipline(ulong value)
         {
-            ExecuteProcedure("set_discipline", parameters);
+            ExecuteProcedure("drop_discipline", "discipline_id", value);
         }
 
-        public void SetDisciplineCode(Dictionary<string, object> parameters)
+        public void DropDisciplineCode(ulong value)
         {
-            ExecuteProcedure("set_discipline_code", parameters);
+            ExecuteProcedure("drop_discipline_code", "code_id", value);
         }
 
-        public void SetTotalHour(Dictionary<string, object> parameters)
+        public void DropTotalHour(ulong value)
         {
-            ExecuteProcedure("set_hour", parameters);
+            ExecuteProcedure("drop_hour", "hour_id", value);
         }
 
-        public void SetTopic(Dictionary<string, object> parameters)
+        public void DropTopic(ulong value)
         {
-            ExecuteProcedure("set_section", parameters);
+            ExecuteProcedure("drop_section", "section_id", value);
         }
 
-        public void SetTheme(Dictionary<string, object> parameters)
+        public void DropTheme(ulong value)
         {
-            ExecuteProcedure("set_theme", parameters);
+            ExecuteProcedure("drop_theme", "theme_id", value);
         }
 
-        public void SetWork(Dictionary<string, object> parameters)
+        public void DropWork(ulong value)
         {
-            ExecuteProcedure("set_work", parameters);
+            ExecuteProcedure("drop_work", "work_id", value);
         }
 
-        public void SetWorkType(Dictionary<string, object> parameters)
+        public void DropWorkType(ulong value)
         {
-            ExecuteProcedure("set_work_type", parameters);
+            ExecuteProcedure("drop_work_type", "type_id", value);
         }
 
-        public void SetTask(Dictionary<string, object> parameters)
+        public void DropTask(ulong value)
         {
-            ExecuteProcedure("set_task", parameters);
+            ExecuteProcedure("drop_task", "task_id", value);
         }
 
-        public void SetMetaData(Dictionary<string, object> parameters)
+        public void DropMetaData(ulong value)
         {
-            ExecuteProcedure("set_meta_data", parameters);
+            ExecuteProcedure("drop_meta_data", "data_id", value);
         }
 
-        public void SetMetaType(Dictionary<string, object> parameters)
+        public void DropMetaType(ulong value)
         {
-            ExecuteProcedure("set_meta_type", parameters);
+            ExecuteProcedure("drop_meta_type", "type_id", value);
         }
 
-        public void SetSource(Dictionary<string, object> parameters)
+        public void DropSource(ulong value)
         {
-            ExecuteProcedure("set_source", parameters);
+            ExecuteProcedure("drop_source", "source_id", value);
         }
 
-        public void SetSourceType(Dictionary<string, object> parameters)
+        public void DropSourceType(ulong value)
         {
-            ExecuteProcedure("set_source_type", parameters);
+            ExecuteProcedure("drop_source_type", "type_id", value);
         }
 
-        public void SetGeneralMastering(Dictionary<string, object> parameters)
+        public void DropGeneralMastering(ulong value)
         {
-            ExecuteProcedure("set_general_mastering", parameters);
+            ExecuteProcedure("drop_general_mastering", "mastering_id", value);
         }
 
-        public void SetProfessionalMastering(Dictionary<string, object> parameters)
+        public void DropProfessionalMastering(ulong value)
         {
-            ExecuteProcedure("set_professional_mastering", parameters);
+            ExecuteProcedure("drop_professional_mastering", "mastering_id", value);
         }
 
-        public void SetGeneralSelection(Dictionary<string, object> parameters)
+        public void DropGeneralSelection(ulong value)
         {
-            ExecuteProcedure("set_general_selection", parameters);
+            ExecuteProcedure("drop_general_selection", "selection_id", value);
         }
 
-        public void SetProfessionalSelection(Dictionary<string, object> parameters)
+        public void DropProfessionalSelection(ulong value)
         {
-            ExecuteProcedure("set_professional_selection", parameters);
+            ExecuteProcedure("drop_professional_selection", "selection_id", value);
         }
 
-        public void SetLevel(Dictionary<string, object> parameters)
+        public void DropLevel(ulong value)
         {
-            ExecuteProcedure("set_level", parameters);
+            ExecuteProcedure("drop_level", "level_id", value);
         }
 
+        // Unmark all elements in table
 
-        public void MarkConformity(ulong value)
+        public void UnMarkAllConformity()
         {
-            ExecuteProcedure("mark_conformity", "conformity_id", value);
+            ExecuteProcedure("unmark_all_conformity");
         }
 
         // Specialities
-        public void MarkSpeciality(ulong value)
+        public void UnMarkAllSpecialities()
         {
-            ExecuteProcedure("mark_speciality", "speciality_id", value);
+            ExecuteProcedure("unmark_all_specialities");
         }
 
-        public void MarkSpecialityCode(ulong value)
+        public void UnMarkAllSpecialityCodes()
         {
-            ExecuteProcedure("mark_speciality_code", "code_id", value);
+            ExecuteProcedure("unmark_all_speciality_codes");
         }
 
-        public void MarkGeneralCompetetion(ulong value)
+        public void UnMarkAllGeneralCompetetions()
         {
-            ExecuteProcedure("mark_general_competetion", "comp_id", value);
+            ExecuteProcedure("unmark_all_general_competetions");
         }
 
-        public void MarkProfessionalCompetetion(ulong value)
+        public void UnMarkAllProfessionalCompetetions()
         {
-            ExecuteProcedure("mark_professional_competetion", "comp_id", value);
+            ExecuteProcedure("unmark_all_professional_competetions");
         }
 
         // Disciplines
-        public void MarkDiscipline(ulong value)
+        public void UnMarkAllDisciplines()
         {
-            ExecuteProcedure("mark_discipline", "discipline_id", value);
+            ExecuteProcedure("unmark_all_disciplines");
         }
 
-        public void MarkDisciplineCode(ulong value)
+        public void UnMarkAllDisciplineCodes()
         {
-            ExecuteProcedure("mark_discipline_code", "code_id", value);
+            ExecuteProcedure("unmark_all_discipline_codes");
         }
 
-        public void MarkTotalHour(ulong value)
+        public void UnMarkAllTotalHours()
         {
-            ExecuteProcedure("mark_hour", "hour_id", value);
+            ExecuteProcedure("unmark_all_hours");
         }
 
-        public void MarkTopic(ulong value)
+        public void UnMarkAllTopics()
         {
-            ExecuteProcedure("mark_section", "section_id", value);
+            ExecuteProcedure("unmark_all_sections");
         }
 
-        public void MarkTheme(ulong value)
+        public void UnMarkAllThemes()
         {
-            ExecuteProcedure("mark_theme", "theme_id", value);
+            ExecuteProcedure("unmark_all_themes");
         }
 
-        public void MarkWork(ulong value)
+        public void UnMarkAllWorks()
         {
-            ExecuteProcedure("mark_work", "work_id", value);
+            ExecuteProcedure("unmark_all_works");
         }
 
-        public void MarkWorkType(ulong value)
+        public void UnMarkAllWorkTypes()
         {
-            ExecuteProcedure("mark_work_type", "type_id", value);
+            ExecuteProcedure("unmark_all_work_types");
         }
 
-        public void MarkTask(ulong value)
+        public void UnMarkAllTasks()
         {
-            ExecuteProcedure("mark_task", "task_id", value);
+            ExecuteProcedure("unmark_all_tasks");
         }
 
-        public void MarkMetaData(ulong value)
+        public void UnMarkAllMetaData()
         {
-            ExecuteProcedure("mark_meta_data", "data_id", value);
+            ExecuteProcedure("unmark_all_meta_data");
         }
 
-        public void MarkMetaType(ulong value)
+        public void UnMarkAllMetaTypes()
         {
-            ExecuteProcedure("mark_meta_type", "type_id", value);
+            ExecuteProcedure("unmark_all_meta_types");
         }
 
-        public void MarkSource(ulong value)
+        public void UnMarkAllSources()
         {
-            ExecuteProcedure("mark_source", "source_id", value);
+            ExecuteProcedure("unmark_all_sources");
         }
 
-        public void MarkSourceType(ulong value)
+        public void UnMarkAllSourceTypes()
         {
-            ExecuteProcedure("mark_source_type", "type_id", value);
+            ExecuteProcedure("unmark_all_source_types");
         }
 
-        public void MarkGeneralMastering(ulong value)
+        public void UnMarkAllGeneralMastering()
         {
-            ExecuteProcedure("mark_general_mastering", "mastering_id", value);
+            ExecuteProcedure("unmark_all_general_mastering");
         }
 
-        public void MarkProfessionalMastering(ulong value)
+        public void UnMarkAllProfessionalMastering()
         {
-            ExecuteProcedure("mark_professional_mastering", "mastering_id", value);
+            ExecuteProcedure("unmark_all_professional_mastering");
         }
 
-        public void MarkGeneralSelection(ulong value)
+        public void UnMarkAllGeneralSelection()
         {
-            ExecuteProcedure("mark_general_selection", "selection_id", value);
+            ExecuteProcedure("unmark_all_general_selection");
         }
 
-        public void MarkProfessionalSelection(ulong value)
+        public void UnMarkAllProfessionalSelection()
         {
-            ExecuteProcedure("mark_professional_selection", "selection_id", value);
+            ExecuteProcedure("unmark_all_professional_selection");
         }
 
-        public void MarkLevel(ulong value)
+        public void UnMarkAllLevels()
         {
-            ExecuteProcedure("mark_level", "level_id", value);
+            ExecuteProcedure("unmark_all_level");
+        }
+
+        // Drop all marked elements in table
+
+        public void DropAllConformity()
+        {
+            ExecuteProcedure("drop_all_conformity");
+        }
+
+        // Specialities
+        public void DropAllSpecialities()
+        {
+            ExecuteProcedure("drop_all_specialities");
+        }
+
+        public void DropAllSpecialityCodes()
+        {
+            ExecuteProcedure("drop_all_speciality_codes");
+        }
+
+        public void DropAllGeneralCompetetions()
+        {
+            ExecuteProcedure("drop_all_general_competetions");
+        }
+
+        public void DropAllProfessionalCompetetions()
+        {
+            ExecuteProcedure("drop_all_professional_competetions");
+        }
+
+        // Disciplines
+        public void DropAllDisciplines()
+        {
+            ExecuteProcedure("drop_all_disciplines");
+        }
+
+        public void DropAllDisciplineCodes()
+        {
+            ExecuteProcedure("drop_all_discipline_codes");
+        }
+
+        public void DropAllTotalHours()
+        {
+            ExecuteProcedure("drop_all_hours");
+        }
+
+        public void DropAllTopics()
+        {
+            ExecuteProcedure("drop_all_sections");
+        }
+
+        public void DropAllThemes()
+        {
+            ExecuteProcedure("drop_all_themes");
+        }
+
+        public void DropAllWorks()
+        {
+            ExecuteProcedure("drop_all_works");
+        }
+
+        public void DropAllWorkTypes()
+        {
+            ExecuteProcedure("drop_all_work_types");
+        }
+
+        public void DropAllTasks()
+        {
+            ExecuteProcedure("drop_all_tasks");
+        }
+
+        public void DropAllMetaData()
+        {
+            ExecuteProcedure("drop_all_meta_data");
+        }
+
+        public void DropAllMetaTypes()
+        {
+            ExecuteProcedure("drop_all_meta_types");
+        }
+
+        public void DropAllSources()
+        {
+            ExecuteProcedure("drop_all_sources");
+        }
+
+        public void DropAllSourceTypes()
+        {
+            ExecuteProcedure("drop_all_source_types");
+        }
+
+        public void DropAllGeneralMastering()
+        {
+            ExecuteProcedure("drop_all_general_mastering");
+        }
+
+        public void DropAllProfessionalMastering()
+        {
+            ExecuteProcedure("drop_all_professional_mastering");
+        }
+
+        public void DropAllGeneralSelection()
+        {
+            ExecuteProcedure("drop_all_general_selection");
+        }
+
+        public void DropAllProfessionalSelection()
+        {
+            ExecuteProcedure("drop_all_professional_selection");
+        }
+
+        public void DropAllLevels()
+        {
+            ExecuteProcedure("drop_all_level");
         }
     }
 }

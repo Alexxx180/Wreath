@@ -6,8 +6,8 @@
     </Style>
 
     <Style x:Key="ViewImpact">
-        <Setter Property="Control.Background" Value="#FFC8BFD7"/>
-        <Setter Property="Control.Foreground" Value="#FFA35DA4"/>
+        <Setter Property="Control.Background" Value="#FF141414"/>
+        <Setter Property="Control.Foreground" Value="#FFEBEBEB"/>
         <Setter Property="Control.FontWeight" Value="Bold"/>
     </Style>
 
@@ -39,9 +39,9 @@
     </Style>
 
     <Style x:Key="CaptionImpact1">
-        <Setter Property="Control.Background" Value="#FFC8BFD7"/>
-        <Setter Property="Control.Foreground" Value="#FFA35DA4"/>
-        <Setter Property="Control.BorderBrush" Value="#FFA35DA4"/>
+        <Setter Property="Control.Background" Value="#FFEBEBEB"/>
+        <Setter Property="Control.Foreground" Value="#FF141414"/>
+        <Setter Property="Control.BorderBrush" Value="#FF7B7B7B"/>
         <Setter Property="Control.BorderThickness" Value="2"/>
         <Setter Property="Control.FontFamily" Value="Franklin Gothic Demi"/>
         <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
@@ -50,9 +50,9 @@
     </Style>
 
     <Style x:Key="CaptionImpact2">
-        <Setter Property="Control.Background" Value="#FFA35DA4"/>
-        <Setter Property="Control.Foreground" Value="#FFC8BFD7"/>
-        <Setter Property="Control.BorderBrush" Value="#FFA35DA4"/>
+        <Setter Property="Control.Background" Value="#FF141414"/>
+        <Setter Property="Control.Foreground" Value="#FFEBEBEB"/>
+        <Setter Property="Control.BorderBrush" Value="#FF7B7B7B"/>
         <Setter Property="Control.BorderThickness" Value="2"/>
         <Setter Property="Control.FontFamily" Value="Franklin Gothic Demi"/>
         <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
@@ -74,7 +74,7 @@
     <Style x:Key="SelectedRow">
         <Setter Property="Control.Background" Value="#FFAABB00"/>
         <Setter Property="Control.Foreground" Value="#FF000000"/>
-        <Setter Property="Control.BorderBrush" Value="#FFAABB00"/>
+        <Setter Property="Control.BorderBrush" Value="#FFFF6600"/>
         <Setter Property="Control.BorderThickness" Value="2"/>
         <Setter Property="Control.FontFamily" Value="Franklin Gothic Demi"/>
         <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
@@ -85,7 +85,7 @@
     <Style x:Key="MarkedRow">
         <Setter Property="Control.Background" Value="#FFFF6600"/>
         <Setter Property="Control.Foreground" Value="#FF000000"/>
-        <Setter Property="Control.BorderBrush" Value="#FFAABB00"/>
+        <Setter Property="Control.BorderBrush" Value="#FFFF6600"/>
         <Setter Property="Control.BorderThickness" Value="2"/>
         <Setter Property="Control.FontFamily" Value="Franklin Gothic Demi"/>
         <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>

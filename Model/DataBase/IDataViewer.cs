@@ -48,7 +48,6 @@ namespace Wreath.Model.DataBase
 
         public List<object[]> Levels();
 
-
         public List<object[]> ConformityGeneralCompetetions(uint value);
 
         public List<object[]> ConformityProfessionalCompetetions(uint value);
@@ -56,5 +55,58 @@ namespace Wreath.Model.DataBase
         public List<object[]> DisciplineGeneralMasteringByTheme(uint value);
 
         public List<object[]> DisciplineProfessionalMasteringByTheme(uint value);
+
+
+        public List<object[]> MConformityList();
+
+        public List<object[]> MSpecialitiesList();
+
+        public List<object[]> MSpecialityCodes();
+
+        public List<object[]> MGeneralCompetetions(uint value);
+
+        public List<object[]> MProfessionalCompetetions(uint value);
+
+        public List<object[]> MDisciplinesList();
+
+        public List<object[]> MDisciplineCodes();
+
+        public List<object[]> MTotalHours(uint value);
+
+        public List<object[]> MThemePlan(uint value);
+
+        public List<object[]> MThemes(uint value);
+
+        public List<object[]> MWorks(uint value);
+
+        public List<object[]> MWorkTypes();
+
+        public List<object[]> MTasks(ulong value);
+
+        public List<object[]> MMetaData(uint value);
+
+        public List<object[]> MMetaTypes();
+
+        public List<object[]> MSources(uint value);
+
+        public List<object[]> MSourceTypes();
+
+        public List<object[]> MDisciplineGeneralMastering(uint value);
+
+        public List<object[]> MDisciplineProfessionalMastering(uint value);
+
+        public List<object[]> MThemeGeneralMastering(uint value);
+
+        public List<object[]> MThemeProfessionalMastering(uint value);
+
+        public List<object[]> MLevels();
+
+        public List<object[]> MConformityGeneralCompetetions(uint value);
+
+        public List<object[]> MConformityProfessionalCompetetions(uint value);
+
+        public List<object[]> MDisciplineGeneralMasteringByTheme(uint value);
+
+        public List<object[]> MDisciplineProfessionalMasteringByTheme(uint value);
     }
 }

@@ -6,7 +6,7 @@
         xmlns:main="clr-namespace:Wreath.Controls.MainForm"
         mc:Ignorable="d"
         Title="Администрирование" Height="1080" Width="1920" WindowStartupLocation="Manual" WindowState="Maximized">
-    <Grid>
+    <Grid Style="{StaticResource ViewImpact}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.05*"/>
             <ColumnDefinition Width="0.9*"/>
