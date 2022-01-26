@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
     /// <summary>
     /// Levels table row component
     /// </summary>
-    public partial class LevelRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class LevelRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
             }
         }
 
-        private string _name = "";
+        private string _name;
         public string LevelName
         {
             get => _name;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
             }
         }
 
-        private string _description = "";
+        private string _description;
         public string Description
         {
             get => _description;
@@ -67,13 +67,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -101,10 +112,19 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            LevelName = "";
+            Description = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public LevelRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -116,8 +136,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -125,18 +145,13 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
         private void Select(object sender, RoutedEventArgs e)
         {
             Select();
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            e.Handled = true;
         }
 
         public void Index(int no)
@@ -150,24 +165,20 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Competet
             _tables = GetLayout(table);
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            _tables.Tools.EditRow.Level(Id, LevelName, Description);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Discipline(Id);
+            _tables.Tools.UnMarkRow.Level(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Level(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

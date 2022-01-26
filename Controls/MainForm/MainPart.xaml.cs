@@ -24,14 +24,14 @@ namespace Wreath.Controls.MainForm
             ViewModel.BackTransition();
         }
 
-        private void EditRows(object sender, RoutedEventArgs e)
+        private void UnMarkRows(object sender, RoutedEventArgs e)
         {
-            ViewModel.EditRows(ViewModel.TableView.Records);
+            ViewModel.UnMarkRows(ViewModel.TableView.Records);
         }
 
-        private void MarkRows(object sender, RoutedEventArgs e)
+        private void DropRows(object sender, RoutedEventArgs e)
         {
-            ViewModel.MarkRows(ViewModel.TableView.Records);
+            ViewModel.DropRows(ViewModel.TableView.Records);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

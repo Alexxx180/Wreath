@@ -17,6 +17,7 @@ namespace Wreath.ViewModel
             Transitions = new Stack();
             SelectedRowIndexes = new Dictionary<int, ulong>();
             TableView = new LayoutMaster(this);
+            FastActions = new Pair<FastAction, FastAction>();
         }
 
         private static readonly TransitionBase _defaultState = new TransitionBase(null, "Пополнений стека:", 0);
@@ -138,59 +139,51 @@ namespace Wreath.ViewModel
             OnPropertyChanged(nameof(BackOperations));
         }
 
-        internal void EditRows(StackPanel view)
+        private delegate void FastAction();
+        private readonly Pair<FastAction, FastAction> FastActions;
+
+        private void UnMarkAll()
+        {
+            FastActions.Name();
+        }
+
+        private void DropAll()
+        {
+            FastActions.Value();
+        }
+
+        private void ConfirmUnMarking(StackPanel view)
         {
             foreach (KeyValuePair<int, ulong> pair in SelectedRowIndexes)
             {
                 int index = pair.Key;
-                IRedactable row = view.Children[index] as IRedactable;
-                if (row != null && row.CanBeEdited)
-                    row.EditConfirm();
+                if (view.Children[index] is IMarkable row && row.IsMarked)
+                    row.UnMarkConfirm();
             }
             RefreshTransition();
         }
 
-        private void PrepareMarks(StackPanel view)
+        internal void UnMarkRows(StackPanel view)
         {
-            foreach (KeyValuePair<int, ulong> pair in SelectedRowIndexes)
-            {
-                int index = pair.Key;
-                IRedactable row = view.Children[index] as IRedactable;
-                if (row != null && row.CanBeEdited)
-                    row.MarkPrepare();
-            }
+            if (RowsAffectedDialog("снято пометок с"))
+                ConfirmUnMarking(view);
         }
 
-        private void ConfirmMarks(StackPanel view)
+        private void ConfirmDrop(StackPanel view)
         {
             foreach (KeyValuePair<int, ulong> pair in SelectedRowIndexes)
             {
                 int index = pair.Key;
-                IRedactable row = view.Children[index] as IRedactable;
-                if (row != null && row.CanBeEdited)
-                    row.MarkConfirm();
+                if (view.Children[index] is IMarkable row && row.IsMarked)
+                    row.DropConfirm();
             }
             RefreshTransition();
         }
 
-        private void DenyMarks(StackPanel view)
+        internal void DropRows(StackPanel view)
         {
-            foreach (KeyValuePair<int, ulong> pair in SelectedRowIndexes)
-            {
-                int index = pair.Key;
-                IRedactable row = view.Children[index] as IRedactable;
-                if (row != null && row.CanBeEdited)
-                    row.UnMark();
-            }
-        }
-
-        internal void MarkRows(StackPanel view)
-        {
-            PrepareMarks(view);
-            if (RowsAffectedDialog("помечено"))
-                ConfirmMarks(view);
-            else
-                DenyMarks(view);
+            if (RowsAffectedDialog("безвозвратно удалено"))
+                ConfirmDrop(view);
         }
 
         internal bool RowsAffectedDialog(string operation)

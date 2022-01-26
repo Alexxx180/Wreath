@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
     /// <summary>
     /// Metadata table row component
     /// </summary>
-    public partial class MetaDataRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class MetaDataRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             }
         }
 
-        private uint? _metaType = null;
+        private uint? _metaType;
         public uint? MetaType
         {
             get => _metaType;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             }
         }
 
-        private string _metaValue = "";
+        private string _metaValue;
         public string MetaValue
         {
             get => _metaValue;
@@ -67,16 +67,28 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
                 OnPropertyChanged();
             }
         }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private Style _selection;
         public Style Selection
@@ -101,10 +113,19 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            MetaType = null;
+            MetaValue = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public MetaDataRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -120,22 +141,10 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             _tables = GetLayout(table);
         }
 
-        public void SetCode(uint id)
-        {
-            MetaType = id;
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.MetaTypes,
-                "Типы метаданных:", "Метаданные", _tables.FillMetaTypes, SetCode);
-            e.Handled = true;
-        }
-
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -143,7 +152,7 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
@@ -157,26 +166,20 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (MetaType == null)
-                return;
-            _tables.Tools.EditRow.Discipline(Id, MetaType.Value, MetaValue);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Discipline(Id);
+            _tables.Tools.UnMarkRow.MetaData(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.MetaData(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

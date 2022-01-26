@@ -11,6 +11,9 @@
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
     <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
+        <Button.IsEnabled>
+            <Binding Path="IsMarked" />
+        </Button.IsEnabled>
         <Button.Style>
             <Binding Path="Selection" />
         </Button.Style>
@@ -25,14 +28,9 @@
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
-                <Button.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </Button.IsEnabled>
-                <Viewbox>
-                    <TextBlock Text="{Binding Path=WorkType}" />
-                </Viewbox>
-            </Button>
+            <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                <TextBlock Text="{Binding Path=WorkType}" />
+            </Viewbox>
 
             <Button Grid.Column="2" Style="{StaticResource ImpactButton2}" Click="GoToTasks">
                 <Viewbox>

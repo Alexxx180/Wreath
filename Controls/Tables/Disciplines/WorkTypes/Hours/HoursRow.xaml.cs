@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
     /// <summary>
     /// Hours table row component
     /// </summary>
-    public partial class HoursRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class HoursRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             }
         }
 
-        private uint? _hoursType = null;
+        private uint? _hoursType;
         public uint? HoursType
         {
             get => _hoursType;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             }
         }
 
-        private string _hoursCount = "";
+        private string _hoursCount;
         public string HoursCount
         {
             get => _hoursCount;
@@ -67,13 +67,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -103,10 +114,19 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            HoursType = null;
+            HoursCount = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public HoursRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -116,10 +136,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             HoursCount = row[2];
         }
 
+        public void Select()
+        {
+            IsSelected = !IsSelected;
+            if (IsSelected)
+            {
+                _tables.ViewModel.SelectRow(RowKey, Id);
+                Selection = _selected;
+            }
+            else
+            {
+                _tables.ViewModel.DeSelectRow(RowKey);
+                Selection = _marked;
+            }
+        }
+
         private void Select(object sender, RoutedEventArgs e)
         {
-            CanBeEdited = !CanBeEdited;
-            Selection = CanBeEdited ? _selected : _unselected;
+            Select();
         }
 
         private LayoutMaster _tables;
@@ -145,27 +179,20 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (HoursType == null)
-                return;
-            uint disciplineId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.TotalHour(Id, disciplineId, HoursType.Value, Hours);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.TotalHour(Id);
+            _tables.Tools.UnMarkRow.TotalHour(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.TotalHour(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

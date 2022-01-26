@@ -11,6 +11,9 @@
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
     <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
+        <Button.IsEnabled>
+            <Binding Path="IsMarked" />
+        </Button.IsEnabled>
         <Button.Style>
             <Binding Path="Selection" />
         </Button.Style>
@@ -25,29 +28,13 @@
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <TextBox Grid.Column="1" Style="{StaticResource NameBox50}">
-                <TextBox.Text>
-                    <Binding Path="LevelName" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
+            <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                <TextBlock Text="{Binding Path=LevelName}" />
+            </Viewbox>
 
-            <TextBox Grid.Column="2" Style="{StaticResource NameBox500}">
-                <TextBox.Text>
-                    <Binding Path="Description" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
+            <Viewbox IsHitTestVisible="False" Grid.Column="2">
+                <TextBlock Text="{Binding Path=Description}" />
+            </Viewbox>
         </Grid>
     </Button>
 </UserControl>

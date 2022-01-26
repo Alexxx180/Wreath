@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes
     /// <summary>
     /// Speciality codes table row component
     /// </summary>
-    public partial class SpecialityCodeRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class SpecialityCodeRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes
             }
         }
 
-        private string _specialityCode = "";
+        private string _specialityCode;
         public string SpecialityCode
         {
             get => _specialityCode;
@@ -56,13 +56,24 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -90,10 +101,18 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            SpecialityCode = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public SpecialityCodeRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -104,8 +123,8 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -133,24 +152,20 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            _tables.Tools.EditRow.SpecialityCode(Id, SpecialityCode);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.SpecialityCode(Id);
+            _tables.Tools.UnMarkRow.SpecialityCode(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.SpecialityCode(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

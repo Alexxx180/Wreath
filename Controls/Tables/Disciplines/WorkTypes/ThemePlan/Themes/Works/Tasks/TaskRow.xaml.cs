@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
     /// <summary>
     /// Tasks table row component
     /// </summary>
-    public partial class TaskRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class TaskRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
             }
         }
 
-        private string _taskName = "";
+        private string _taskName;
         public string TaskName
         {
             get => _taskName;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
             }
         }
 
-        private string _hoursCount = "0";
+        private string _hoursCount;
         public string TaskHours
         {
             get => _hoursCount;
@@ -69,13 +69,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
 
         public ushort HoursCount => ToUInt16(TaskHours);
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -103,10 +114,19 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            TaskName = "";
+            TaskHours = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public TaskRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -118,8 +138,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -127,18 +147,13 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
         private void Select(object sender, RoutedEventArgs e)
         {
             Select();
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            e.Handled = true;
         }
 
         public void Index(int no)
@@ -152,25 +167,20 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
             _tables = GetLayout(table);
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            ulong workId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.Task(Id, workId, TaskName, HoursCount);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Task(Id);
+            _tables.Tools.UnMarkRow.Task(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Task(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

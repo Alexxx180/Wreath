@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
     /// <summary>
     /// Themes table row component
     /// </summary>
-    public partial class ThemeRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class ThemeRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
             }
         }
 
-        private ushort? _themeLevel = null;
+        private ushort? _themeLevel;
         public ushort? ThemeLevel
         {
             get => _themeLevel;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
             }
         }
 
-        private string _themeNo = "1";
+        private string _themeNo;
         public string ThemeNo
         {
             get => _themeNo;
@@ -68,7 +68,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
         }
 
 
-        private string _themeName = "";
+        private string _themeName;
         public string ThemeName
         {
             get => _themeName;
@@ -79,7 +79,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
             }
         }
 
-        private string _hoursCount = "0";
+        private string _hoursCount;
         public string ThemeHours
         {
             get => _hoursCount;
@@ -93,13 +93,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
         public ushort ThemeNumber => ToUInt16(ThemeNo);
         public ushort HoursCount => ToUInt16(ThemeHours);
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -127,10 +138,21 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            ThemeNo = "";
+            ThemeName = "";
+            ThemeHours = "";
+            ThemeLevel = null;
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public ThemeRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -144,8 +166,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -153,7 +175,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
@@ -171,18 +193,6 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
         public void SetTools(StackPanel table)
         {
             _tables = GetLayout(table);
-        }
-
-        public void SetCode(uint id)
-        {
-            ThemeLevel = ToUInt16(id);
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.Levels,
-                "Уровни компетенций:", "Тема", _tables.FillCompetetionLevels, SetCode);
-            e.Handled = true;
         }
 
         private void CheckSelection(ComboBox selector)
@@ -210,28 +220,20 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes
             e.Handled = true;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (ThemeLevel == null)
-                return;
-            uint topicId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.Theme(Id, topicId, ThemeLevel.Value,
-                ThemeNumber, ThemeName, HoursCount);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Theme(Id);
+            _tables.Tools.UnMarkRow.Theme(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Theme(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

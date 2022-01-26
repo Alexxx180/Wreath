@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes
     /// <summary>
     /// Meta types table row component
     /// </summary>
-    public partial class MetaTypeRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class MetaTypeRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -56,13 +56,24 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -90,10 +101,18 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            MetaType = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public MetaTypeRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -104,8 +123,8 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -133,24 +152,20 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            _tables.Tools.EditRow.MetaType(Id, MetaType);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.MetaType(Id);
+            _tables.Tools.UnMarkRow.MetaType(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.MetaType(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

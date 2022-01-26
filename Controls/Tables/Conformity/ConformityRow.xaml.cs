@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Conformity
     /// <summary>
     /// Conformity table row component
     /// </summary>
-    public partial class ConformityRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class ConformityRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Conformity
             }
         }
 
-        private uint? _discipline = null;
+        private uint? _discipline;
         public uint? Discipline
         {
             get => _discipline;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Conformity
             }
         }
 
-        private uint? _speciality = null;
+        private uint? _speciality;
         public uint? Speciality
         {
             get => _speciality;
@@ -67,13 +67,24 @@ namespace Wreath.Controls.Tables.Conformity
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -97,14 +108,23 @@ namespace Wreath.Controls.Tables.Conformity
         {
             _unselected = TryFindResource("Impact1") as Style;
             _selected = TryFindResource("Impact2") as Style;
-            _marked = TryFindResource("Impact3") as Style;
+            _marked = TryFindResource("Impact2") as Style;
             Selection = _unselected;
+        }
+
+        private void SetDefaults()
+        {
+            Speciality = null;
+            Discipline = null;
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
         }
 
         public ConformityRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -116,8 +136,8 @@ namespace Wreath.Controls.Tables.Conformity
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -140,55 +160,25 @@ namespace Wreath.Controls.Tables.Conformity
             _tables = GetLayout(table);
         }
 
-        private void SetDisciplineId(uint id)
-        {
-            Discipline = id;
-        }
-
-        private void SetSpecialityId(uint id)
-        {
-            Speciality = id;
-        }
-
-        private void SelectDiscipline(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.Disciplines,
-                "Дисциплины:", "Соответствие", _tables.FillDisciplines, SetDisciplineId);
-            e.Handled = true;
-        }
-
-        private void SelectSpeciality(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.Specialities,
-                "Специальности:", "Соответствие", _tables.FillSpecialities, SetSpecialityId);
-            e.Handled = true;
-        }
-
         public void Index(int no)
         {
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (Discipline == null || Speciality == null)
-                return;
-            _tables.Tools.EditRow.Conformity(Id, Discipline.Value, Speciality.Value);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Conformity(Id);
+            _tables.Tools.UnMarkRow.Conformity(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Conformity(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

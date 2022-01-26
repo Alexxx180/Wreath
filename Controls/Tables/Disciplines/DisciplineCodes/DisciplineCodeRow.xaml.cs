@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes
     /// <summary>
     /// Discipline code row component
     /// </summary>
-    public partial class DisciplineCodeRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class DisciplineCodeRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes
             }
         }
 
-        private string _disciplineCode = "";
+        private string _disciplineCode;
         public string DisciplineCode
         {
             get => _disciplineCode;
@@ -56,13 +56,24 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -90,10 +101,18 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            DisciplineCode = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public DisciplineCodeRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -104,8 +123,8 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsMarked = !IsMarked;
+            if (IsMarked)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -133,24 +152,20 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            _tables.Tools.EditRow.DisciplineCode(Id, DisciplineCode);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.DisciplineCode(Id);
+            _tables.Tools.UnMarkRow.DisciplineCode(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.DisciplineCode(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

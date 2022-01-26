@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
-             d:DesignHeight="100" d:DesignWidth="800">
+             d:DesignHeight="35" d:DesignWidth="800">
     <UserControl.Resources>
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="100" HorizontalContentAlignment="Stretch" Click="Select">
+    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
+        <Button.IsEnabled>
+            <Binding Path="IsMarked" />
+        </Button.IsEnabled>
         <Button.Style>
             <Binding Path="Selection" />
         </Button.Style>
@@ -25,89 +28,33 @@
                 <ColumnDefinition Width="0.15*" />
             </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False" Height="35">
+            <Viewbox IsHitTestVisible="False">
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <TextBox Grid.Column="1" Style="{StaticResource HoursBox}" Height="35" MaxHeight="35">
-                <TextBox.Text>
-                    <Binding Path="ProfessionalNo1" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    20
-                </TextBox.FontSize>
-            </TextBox>
-            <TextBox Grid.Column="2" Style="{StaticResource HoursBox}" Height="35" MaxHeight="35">
-                <TextBox.Text>
-                    <Binding Path="ProfessionalNo2" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    20
-                </TextBox.FontSize>
-            </TextBox>
+            <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                <TextBlock Text="{Binding Path=ProfessionalNo1}" />
+            </Viewbox>
 
-            <TextBox Grid.Column="3" Style="{StaticResource NameBox250}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="ProfessionalName" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
-            <TextBox Grid.Column="4" Style="{StaticResource NameBox1000}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="Experience" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
-            <TextBox Grid.Column="5" Style="{StaticResource NameBox1000}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="Skills" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
-            <TextBox Grid.Column="6" Style="{StaticResource NameBox1000}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="Knowledge" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
+            <Viewbox IsHitTestVisible="False" Grid.Column="2">
+                <TextBlock Text="{Binding Path=ProfessionalNo2}" />
+            </Viewbox>
+
+            <Viewbox IsHitTestVisible="False" Grid.Column="3">
+                <TextBlock Text="{Binding Path=ProfessionalName}" />
+            </Viewbox>
+
+            <Viewbox IsHitTestVisible="False" Grid.Column="4">
+                <TextBlock Text="{Binding Path=Experience}" />
+            </Viewbox>
+
+            <Viewbox IsHitTestVisible="False" Grid.Column="5">
+                <TextBlock Text="{Binding Path=Skills}" />
+            </Viewbox>
+
+            <Viewbox IsHitTestVisible="False" Grid.Column="6">
+                <TextBlock Text="{Binding Path=Knowledge}" />
+            </Viewbox>
         </Grid>
     </Button>
 </UserControl>

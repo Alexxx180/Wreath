@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Specialities
     /// <summary>
     /// Specialities table row component
     /// </summary>
-    public partial class SpecialityRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class SpecialityRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Specialities
             }
         }
 
-        private uint? _code = null;
+        private uint? _code;
         public uint? Code
         {
             get => _code;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Specialities
             }
         }
 
-        private string _name = "";
+        private string _name;
         public string SpecialityName
         {
             get => _name;
@@ -67,13 +67,24 @@ namespace Wreath.Controls.Tables.Specialities
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -101,10 +112,19 @@ namespace Wreath.Controls.Tables.Specialities
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            Code = null;
+            SpecialityName = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public SpecialityRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -116,8 +136,8 @@ namespace Wreath.Controls.Tables.Specialities
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -132,18 +152,6 @@ namespace Wreath.Controls.Tables.Specialities
         private void Select(object sender, RoutedEventArgs e)
         {
             Select();
-        }
-
-        public void SetCode(uint id)
-        {
-            Code = id;
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.SpecialityCodes, "Коды специальностей:",
-                "Специальность", _tables.FillSpecialityCodes, SetCode);
-            e.Handled = true;
         }
 
         public void Index(int no)
@@ -172,26 +180,20 @@ namespace Wreath.Controls.Tables.Specialities
             }
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (Code == null)
-                return;
-            _tables.Tools.EditRow.Speciality(Id, Code.Value, SpecialityName);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Speciality(Id);
+            _tables.Tools.UnMarkRow.Speciality(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Speciality(Id);
         }
 
         private void SecondaryTables_Select(object sender, SelectionChangedEventArgs e)

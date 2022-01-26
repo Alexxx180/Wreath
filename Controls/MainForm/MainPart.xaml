@@ -108,7 +108,7 @@
                 </Viewbox>
             </StackPanel>
 
-            <Button Grid.Column="2" Style="{StaticResource InvisibleButton}" Click="EditRows">
+            <Button Grid.Column="2" Style="{StaticResource InvisibleButton}" Click="UnMarkRows">
                 <Button.IsEnabled>
                     <Binding Path="CanBeAffected" />
                 </Button.IsEnabled>
@@ -117,7 +117,7 @@
                 </Viewbox>
             </Button>
 
-            <Button Grid.Column="4" Style="{StaticResource InvisibleButton}" Click="MarkRows">
+            <Button Grid.Column="4" Style="{StaticResource InvisibleButton}" Click="DropRows">
                 <Button.IsEnabled>
                     <Binding Path="CanBeAffected" />
                 </Button.IsEnabled>

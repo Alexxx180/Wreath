@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="800">
+             d:DesignHeight="35" d:DesignWidth="800">
     <UserControl.Resources>
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="100" HorizontalContentAlignment="Stretch" Click="Select">
+    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
+        <Button.IsEnabled>
+            <Binding Path="IsMarked" />
+        </Button.IsEnabled>
         <Button.Style>
             <Binding Path="Selection" />
         </Button.Style>
@@ -23,64 +26,25 @@
                 <ColumnDefinition Width="0.225*" />
             </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False" Height="35">
+            <Viewbox IsHitTestVisible="False">
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <TextBox Grid.Column="1" Height="35" MaxHeight="35" Style="{StaticResource HoursBox}">
-                <TextBox.Text>
-                    <Binding Path="GeneralNo" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    20
-                </TextBox.FontSize>
-            </TextBox>
+            <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                <TextBlock Text="{Binding Path=GeneralNo}" />
+            </Viewbox>
 
-            <TextBox Grid.Column="2" Style="{StaticResource NameBox250}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="GeneralName" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    18
-                </TextBox.FontSize>
-            </TextBox>
-            <TextBox Grid.Column="3" Style="{StaticResource NameBox1000}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="Skills" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    18
-                </TextBox.FontSize>
-            </TextBox>
-            <TextBox Grid.Column="4" Style="{StaticResource NameBox1000}" TextWrapping="Wrap" Height="90" MaxHeight="90">
-                <TextBox.VerticalScrollBarVisibility>
-                    Auto
-                </TextBox.VerticalScrollBarVisibility>
-                <TextBox.Text>
-                    <Binding Path="Knowledge" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    18
-                </TextBox.FontSize>
-            </TextBox>
+            <Viewbox IsHitTestVisible="False" Grid.Column="2">
+                <TextBlock Text="{Binding Path=GeneralName}" />
+            </Viewbox>
+
+            <Viewbox IsHitTestVisible="False" Grid.Column="3">
+                <TextBlock Text="{Binding Path=Skills}" />
+            </Viewbox>
+
+            <Viewbox IsHitTestVisible="False" Grid.Column="4">
+                <TextBlock Text="{Binding Path=Knowledge}" />
+            </Viewbox>
         </Grid>
     </Button>
 </UserControl>

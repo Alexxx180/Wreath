@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -11,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
     /// <summary>
     /// Professional mastering table row component
     /// </summary>
-    public partial class DisciplineProfessionalMasteringRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class DisciplineProfessionalMasteringRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -46,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
             }
         }
 
-        private uint? _code = null;
+        private uint? _code;
         public uint? Code
         {
             get => _code;
@@ -57,13 +56,24 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -91,10 +101,18 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            Code = null;
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public DisciplineProfessionalMasteringRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -105,8 +123,8 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsMarked = !IsMarked;
+            if (IsMarked)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -129,48 +147,25 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
             _tables = GetLayout(table);
         }
 
-        public void SetCode(uint id)
-        {
-            Code = id;
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            uint disciplineId = _tables.ViewModel.CurrentState.Id;
-            List<string[]> rows = _tables.Data.ConformityProfessionalCompetetions(disciplineId);
-            if (rows.Count > 0)
-                SelectionFields(disciplineId, rows, "Профессиональные компетенции:",
-                    "Освоение профессиональной компетенции",
-                    _tables.FillProfessionalFromMastering, SetCode);
-            e.Handled = true;
-        }
-
         public void Index(int no)
         {
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (Code == null)
-                return;
-            uint disciplineId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.ProfessionalMastering(Id, disciplineId, Code.Value);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.ProfessionalMastering(Id);
+            _tables.Tools.UnMarkRow.ProfessionalMastering(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.ProfessionalMastering(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

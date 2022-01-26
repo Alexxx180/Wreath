@@ -10,70 +10,66 @@
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
-        <Button.Style>
-            <Binding Path="Selection" />
-        </Button.Style>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.55*" />
-                <ColumnDefinition Width="0.15*" />
-            </Grid.ColumnDefinitions>
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*" />
+            <ColumnDefinition Width="0.15*" />
+        </Grid.ColumnDefinitions>
+        
+        <Button HorizontalContentAlignment="Stretch" Click="Select">
+            <Button.IsEnabled>
+                <Binding Path="IsMarked" />
+            </Button.IsEnabled>
+            <Button.Style>
+                <Binding Path="Selection" />
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.7*" />
+                </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False">
-                <TextBlock Text="{Binding Path=No}" />
-            </Viewbox>
-            
-            <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
-                <Button.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </Button.IsEnabled>
-                <Viewbox>
+                <Viewbox IsHitTestVisible="False">
+                    <TextBlock Text="{Binding Path=No}" />
+                </Viewbox>
+
+                <Viewbox IsHitTestVisible="False" Grid.Column="1">
                     <TextBlock Text="{Binding Path=Code}" />
                 </Viewbox>
-            </Button>
 
-            <TextBox Grid.Column="2" Style="{StaticResource NameBox250}">
-                <TextBox.Text>
-                    <Binding Path="DisciplineName" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
-                </TextBox.Text>
-                <TextBox.IsEnabled>
-                    <Binding Path="CanBeEdited" />
-                </TextBox.IsEnabled>
-                <TextBox.FontSize>
-                    16.5
-                </TextBox.FontSize>
-            </TextBox>
+                <Viewbox IsHitTestVisible="False" Grid.Column="2">
+                    <TextBlock Text="{Binding Path=DisciplineName}" />
+                </Viewbox>
+            </Grid>
+        </Button>
 
-            <ComboBox Grid.Column="3" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" SelectionChanged="SecondaryTables_Select">
-                <ComboBox.ItemContainerStyle>
-                    <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ItemsBox}"/>
-                </ComboBox.ItemContainerStyle>
-                <ComboBox.FontSize>
-                    16.5
-                </ComboBox.FontSize>
+        <ComboBox Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" SelectionChanged="SecondaryTables_Select">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ItemsBox}"/>
+            </ComboBox.ItemContainerStyle>
+            <ComboBox.FontSize>
+                16.5
+            </ComboBox.FontSize>
 
-                <ComboBoxItem>
-                    Тематический план
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Общие компетенции
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Профессиональные компетенции
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Источники
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Метаданные
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Часы
-                </ComboBoxItem>
-            </ComboBox>
-        </Grid>
-    </Button>
+            <ComboBoxItem>
+                Тематический план
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Общие компетенции
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Профессиональные компетенции
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Источники
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Метаданные
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Часы
+            </ComboBoxItem>
+        </ComboBox>
+    </Grid>
 </UserControl>

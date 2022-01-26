@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
     /// <summary>
     /// Works table row component
     /// </summary>
-    public partial class WorkRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class WorkRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
             }
         }
 
-        private uint? _type = null;
+        private uint? _type;
         public uint? WorkType
         {
             get => _type;
@@ -56,13 +56,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -90,10 +101,18 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            WorkType = null;
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public WorkRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -104,8 +123,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -113,7 +132,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
@@ -133,45 +152,26 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
             _tables = GetLayout(table);
         }
 
-        public void SetCode(uint id)
-        {
-            WorkType = id;
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.WorkTypes,
-                "Типы работ:", "Работа", _tables.FillWorkTypes, SetCode);
-            e.Handled = true;
-        }
-
         private void GoToTasks(object sender, RoutedEventArgs e)
         {
             _tables.FillTasks(Id);
             e.Handled = true;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (WorkType == null)
-                return;
-            uint themeId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.Work(Id, themeId, WorkType.Value);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Work(Id);
+            _tables.Tools.UnMarkRow.Work(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Work(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

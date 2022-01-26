@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
     /// <summary>
     /// Work types table row component
     /// </summary>
-    public partial class WorkTypesRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class WorkTypesRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
             }
         }
 
-        private string _workType = "";
+        private string _workType;
         public string WorkType
         {
             get => _workType;
@@ -56,13 +56,24 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -90,10 +101,18 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            WorkType = null;
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public WorkTypesRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -104,8 +123,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -113,7 +132,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
@@ -133,24 +152,20 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
             _tables = GetLayout(table);
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            _tables.Tools.EditRow.WorkType(Id, WorkType);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.WorkType(Id);
+            _tables.Tools.UnMarkRow.WorkType(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.WorkType(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
     /// <summary>
     /// Sources table row component
     /// </summary>
-    public partial class SourceRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class SourceRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             }
         }
 
-        private uint? _sourceType = null;
+        private uint? _sourceType;
         public uint? SourceType
         {
             get => _sourceType;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             }
         }
 
-        private string _source = "";
+        private string _source;
         public string Source
         {
             get => _source;
@@ -67,13 +67,24 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -101,10 +112,19 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            SourceType = null;
+            Source = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public SourceRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -116,8 +136,8 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -125,7 +145,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 
@@ -157,27 +177,20 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             No = no;
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            if (SourceType == null)
-                return;
-            uint disciplineId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.Source(Id, disciplineId, SourceType.Value, Source);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.Source(Id);
+            _tables.Tools.UnMarkRow.Source(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.Source(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

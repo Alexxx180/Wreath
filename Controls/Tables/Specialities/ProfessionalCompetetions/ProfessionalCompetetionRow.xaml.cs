@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
     /// <summary>
     /// Professional competetions table row component
     /// </summary>
-    public partial class ProfessionalCompetetionRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class ProfessionalCompetetionRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private string _professionalNo1 = "1";
+        private string _professionalNo1;
         public string ProfessionalNo1
         {
             get => _professionalNo1;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private string _professionalNo2 = "1";
+        private string _professionalNo2;
         public string ProfessionalNo2
         {
             get => _professionalNo2;
@@ -67,7 +67,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private string _name = "";
+        private string _name;
         public string ProfessionalName
         {
             get => _name;
@@ -78,7 +78,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private string _experience = "";
+        private string _experience;
         public string Experience
         {
             get => _experience;
@@ -89,7 +89,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private string _skills = "";
+        private string _skills;
         public string Skills
         {
             get => _skills;
@@ -100,7 +100,7 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private string _knowledge = "";
+        private string _knowledge;
         public string Knowledge
         {
             get => _knowledge;
@@ -111,13 +111,24 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -148,10 +159,23 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            IsMarked = false;
+            IsSelected = false;
+            ProfessionalNo1 = "";
+            ProfessionalNo2 = "";
+            ProfessionalName = "";
+            Knowledge = "";
+            Skills = "";
+            Experience = "";
+            SetStyles();
+        }
+
         public ProfessionalCompetetionRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -167,8 +191,8 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -196,27 +220,20 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
             _tables = GetLayout(table);
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            uint specialityId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.ProfessionalCompetetion(Id, specialityId,
-                CompetetionNo1, CompetetionNo2, ProfessionalName,
-                Knowledge, Skills, Experience);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.ProfessionalCompetetion(Id);
+            _tables.Tools.UnMarkRow.ProfessionalCompetetion(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.ProfessionalCompetetion(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

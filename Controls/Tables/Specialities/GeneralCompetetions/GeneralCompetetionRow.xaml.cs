@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
     /// <summary>
     /// General competetons table row component
     /// </summary>
-    public partial class GeneralCompetetionRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class GeneralCompetetionRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             }
         }
 
-        private string _generalNo = "1";
+        private string _generalNo;
         public string GeneralNo
         {
             get => _generalNo;
@@ -56,7 +56,7 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             }
         }
 
-        private string _name = "";
+        private string _name;
         public string GeneralName
         {
             get => _name;
@@ -67,7 +67,7 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             }
         }
 
-        private string _skills = "";
+        private string _skills;
         public string Skills
         {
             get => _skills;
@@ -78,7 +78,7 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             }
         }
 
-        private string _knowledge = "";
+        private string _knowledge;
         public string Knowledge
         {
             get => _knowledge;
@@ -89,13 +89,24 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -125,10 +136,21 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            GeneralNo = "";
+            GeneralName = "";
+            Knowledge = "";
+            Skills = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public GeneralCompetetionRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -142,8 +164,8 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -171,26 +193,20 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
             _tables = GetLayout(table);
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            uint specialityId = _tables.ViewModel.CurrentState.Id;
-            _tables.Tools.EditRow.GeneralCompetetion(Id, specialityId,
-                CompetetionNo, GeneralName, Knowledge, Skills);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.GeneralCompetetion(Id);
+            _tables.Tools.UnMarkRow.GeneralCompetetion(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.GeneralCompetetion(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

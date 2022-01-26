@@ -10,7 +10,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes
     /// <summary>
     /// Source types table row component
     /// </summary>
-    public partial class SourceTypeRow : UserControl, INotifyPropertyChanged, IRedactable
+    public partial class SourceTypeRow : UserControl, INotifyPropertyChanged, IMarkable
     {
         private int _no = 1;
         public int No
@@ -45,7 +45,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes
             }
         }
 
-        private string _sourceType = "";
+        private string _sourceType;
         public string SourceType
         {
             get => _sourceType;
@@ -56,13 +56,24 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes
             }
         }
 
-        private bool _canBeEdited = false;
-        public bool CanBeEdited
+        private bool _isMarked;
+        public bool IsMarked
         {
-            get => _canBeEdited;
+            get => _isMarked;
             set
             {
-                _canBeEdited = value;
+                _isMarked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -90,10 +101,18 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes
             Selection = _unselected;
         }
 
+        private void SetDefaults()
+        {
+            SourceType = "";
+            IsMarked = false;
+            IsSelected = false;
+            SetStyles();
+        }
+
         public SourceTypeRow()
         {
             InitializeComponent();
-            SetStyles();
+            SetDefaults();
         }
 
         public void SetElement(string[] row)
@@ -104,8 +123,8 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes
 
         public void Select()
         {
-            CanBeEdited = !CanBeEdited;
-            if (CanBeEdited)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;
@@ -133,24 +152,20 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes
             _tables = GetLayout(table);
         }
 
-        public void EditConfirm()
+        public void Mark()
         {
-            _tables.Tools.EditRow.SourceType(Id, SourceType);
-        }
-
-        public void MarkPrepare()
-        {
+            IsMarked = true;
             Selection = _marked;
         }
 
-        public void MarkConfirm()
+        public void UnMarkConfirm()
         {
-            _tables.Tools.MarkRow.SourceType(Id);
+            _tables.Tools.UnMarkRow.SourceType(Id);
         }
 
-        public void UnMark()
+        public void DropConfirm()
         {
-            Selection = _selected;
+            _tables.Tools.DropRow.SourceType(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

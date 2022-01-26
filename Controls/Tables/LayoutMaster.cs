@@ -84,22 +84,18 @@ namespace Wreath.Controls.Tables
 
         public int Count => Records.Children.Count;
 
-        public void AddElements<T>(List<string[]> records, IAutoIndexing rowAdditor)
+        public void AddElements<T>(List<string[]> records)
         {
             Records.Children.Clear();
-            ushort i = 0;
-            for (; i < records.Count; i++)
+            for (ushort i = 0; i < records.Count; i++)
                 AddElement<T>(records[i]).Index(i + 1);
-            rowAdditor.Index(i + 1);
-            rowAdditor.RowKey = Records.Children.Add(rowAdditor as UserControl);
-            rowAdditor.SetTools(Records);
             OnPropertyChanged(nameof(Records));
             OnPropertyChanged(nameof(Count));
         }
 
-        public IRedactable AddElement<T>(string[] record)
+        public IMarkable AddElement<T>(string[] record)
         {
-            IRedactable row = Activator.CreateInstance(typeof(T)) as IRedactable;
+            IMarkable row = Activator.CreateInstance(typeof(T)) as IMarkable;
             row.SetElement(record);
             row.RowKey = Records.Children.Add(row as UserControl);
             row.SetTools(Records);
@@ -114,40 +110,39 @@ namespace Wreath.Controls.Tables
 
         private string Before(string name) => "Ранее смотрели: " + name;
 
-        private void FillTables<T>(UserControl header,
-            List<string[]> rows, IAutoIndexing additor)
+        private void FillTables<T>(UserControl header, List<string[]> rows)
         {
             ResetHeaders(header);
-            AddElements<T>(rows, additor);
+            AddElements<T>(rows);
         }
 
         private void FillSecondaryTables<T>(uint id, string name,
             TransitionBase.Transition transition, UserControl header,
-            List<string[]> rows, IAutoIndexing additor)
+            List<string[]> rows)
         {
             ViewModel.AddTransition(transition, name, id);
-            FillTables<T>(header, rows, additor);
+            FillTables<T>(header, rows);
         }
 
         private void FillPrimaryTables<T>(uint id, string name,
             TransitionBase.Transition transition, UserControl header,
-            List<string[]> rows, IAutoIndexing additor)
+            List<string[]> rows)
         {
             ViewModel.CleanBuffer();
-            FillSecondaryTables<T>(id, name, transition, header, rows, additor);
+            FillSecondaryTables<T>(id, name, transition, header, rows);
         }
 
         public void FillConformity(uint id = 0)
         {
-            FillPrimaryTables<ConformityRow>(id, Before("Соответствие - ID"), FillConformity,
-                new ConformityColumns(), Data.Conformity, new ConformityRowAdditor());
+            FillPrimaryTables<ConformityRow>(id, Before("Соответствие - ID"),
+                FillConformity, new ConformityColumns(), Data.Conformity);
         }
 
 
         public void FillSpecialities(uint id = 0)
         {
-            FillPrimaryTables<SpecialityRow>(id, Before("Специальность - ID"), FillSpecialities,
-                new SpecialityColumns(), Data.Specialities, new SpecialityRowAdditor());
+            FillPrimaryTables<SpecialityRow>(id, Before("Специальность - ID"),
+                FillSpecialities, new SpecialityColumns(), Data.Specialities);
         }
 
 
@@ -155,8 +150,7 @@ namespace Wreath.Controls.Tables
             string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<GeneralCompetetionRow>(id, name,
-                transition, new GeneralCompetetionColumns(),
-                records, new GeneralCompetetionRowAdditor());
+                transition, new GeneralCompetetionColumns(), records);
         }
 
         public void FillGeneralCompetetions(uint id)
@@ -176,8 +170,7 @@ namespace Wreath.Controls.Tables
             string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<ProfessionalCompetetionRow>(id, name,
-                transition, new ProfessionalCompetetionColumns(),
-                records, new ProfessionalCompetetionRowAdditor());
+                transition, new ProfessionalCompetetionColumns(), records);
         }
 
         public void FillProfessionalCompetetions(uint id)
@@ -195,8 +188,8 @@ namespace Wreath.Controls.Tables
 
         public void FillDisciplines(uint id = 0)
         {
-            FillPrimaryTables<DisciplineRow>(id, Before("Дисциплина - ID"), FillDisciplines,
-                new DisciplineColumns(), Data.Disciplines, new DisciplineRowAdditor());
+            FillPrimaryTables<DisciplineRow>(id, Before("Дисциплина - ID"),
+                FillDisciplines, new DisciplineColumns(), Data.Disciplines);
         }
 
 
@@ -204,8 +197,7 @@ namespace Wreath.Controls.Tables
             string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineGeneralMasteringRow>(id, name,
-                transition, new DisciplineGeneralMasteringColumns(),
-                records, new DisciplineGeneralMasteringRowAdditor());
+                transition, new DisciplineGeneralMasteringColumns(), records);
         }
 
         public void FillDisciplineGeneralCompetetions(uint id)
@@ -225,8 +217,7 @@ namespace Wreath.Controls.Tables
             string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineProfessionalMasteringRow>(id, name,
-                transition, new DisciplineProfessionalMasteringColumns(),
-                records, new DisciplineProfessionalMasteringRowAdditor());
+                transition, new DisciplineProfessionalMasteringColumns(), records);
         }
 
         public void FillDisciplineProfessionalCompetetions(uint id)
@@ -244,58 +235,58 @@ namespace Wreath.Controls.Tables
 
         public void FillSources(uint id)
         {
-            FillSecondaryTables<SourceRow>(id, "Дисциплина - ID", FillSources,
-                new SourceColumns(), Data.Sources(id), new SourceRowAdditor());
+            FillSecondaryTables<SourceRow>(id, "Дисциплина - ID",
+                FillSources, new SourceColumns(), Data.Sources(id));
         }
 
         public void FillMetaData(uint id)
         {
-            FillSecondaryTables<MetaDataRow>(id, "Дисциплина - ID", FillMetaData,
-                new MetaDataColumns(), Data.MetaData(id), new MetaDataRowAdditor());
+            FillSecondaryTables<MetaDataRow>(id, "Дисциплина - ID",
+                FillMetaData, new MetaDataColumns(), Data.MetaData(id));
         }
 
         public void FillHours(uint id)
         {
-            FillSecondaryTables<HoursRow>(id, "Дисциплина - ID", FillHours,
-                new HoursColumns(), Data.TotalHours(id), new HoursRowAdditor());
+            FillSecondaryTables<HoursRow>(id, "Дисциплина - ID",
+                FillHours, new HoursColumns(), Data.TotalHours(id));
         }
 
         public void FillTopics(uint id)
         {
-            FillSecondaryTables<TopicRow>(id, "Дисциплина - ID", FillTopics,
-                new TopicColumns(), Data.ThemePlan(id), new TopicRowAdditor());
+            FillSecondaryTables<TopicRow>(id, "Дисциплина - ID",
+                FillTopics, new TopicColumns(), Data.ThemePlan(id));
         }
 
         public void FillThemes(uint id)
         {
-            FillSecondaryTables<ThemeRow>(id, "Раздел - ID", FillThemes,
-                new ThemeColumns(), Data.Themes(id), new ThemeRowAdditor());
+            FillSecondaryTables<ThemeRow>(id, "Раздел - ID",
+                FillThemes, new ThemeColumns(), Data.Themes(id));
         }
 
         public void FillThemeGeneralCompetetions(uint id)
         {
             FillSecondaryTables<ThemeGeneralMasteringRow>(id, "Тема - ID",
                 FillThemeGeneralCompetetions, new ThemeGeneralMasteringColumns(),
-                Data.ThemeGeneralMastering(id), new ThemeGeneralMasteringRowAdditor());
+                Data.ThemeGeneralMastering(id));
         }
 
         public void FillThemeProfessionalCompetetions(uint id)
         {
             FillSecondaryTables<ThemeProfessionalMasteringRow>(id, "Тема - ID",
                 FillThemeProfessionalCompetetions, new ThemeProfessionalMasteringColumns(),
-                Data.ThemeProfessionalMastering(id), new ThemeProfessionalMasteringRowAdditor());
+                Data.ThemeProfessionalMastering(id));
         }
 
         public void FillWorks(uint id)
         {
-            FillSecondaryTables<WorkRow>(id, "Тема - ID", FillWorks,
-                new WorkColumns(), Data.Works(id), new WorkRowAdditor());
+            FillSecondaryTables<WorkRow>(id, "Тема - ID",
+                FillWorks, new WorkColumns(), Data.Works(id));
         }
 
         public void FillTasks(uint id)
         {
-            FillSecondaryTables<TaskRow>(id, "Работа - ID", FillTasks,
-                new TaskColumns(), Data.Tasks(id), new TaskRowAdditor());
+            FillSecondaryTables<TaskRow>(id, "Работа - ID",
+                FillTasks, new TaskColumns(), Data.Tasks(id));
         }
 
 
@@ -303,40 +294,38 @@ namespace Wreath.Controls.Tables
         {
             ViewModel.AddTransition(FillSpecialities, Before("Специальность - ID"), id);
             FillSecondaryTables<SpecialityCodeRow>(id, Before("Специальность - ID"),
-                FillSpecialityCodes, new SpecialityCodeColumns(), Data.SpecialityCodes,
-                new SpecialityCodeRowAdditor());
+                FillSpecialityCodes, new SpecialityCodeColumns(), Data.SpecialityCodes);
         }
 
         public void FillDisciplineCodes(uint id)
         {
             ViewModel.AddTransition(FillDisciplines, "Ранее смотрели: Дисциплина - ID", id);
             FillSecondaryTables<DisciplineCodeRow>(id, Before("Дисциплина - ID"),
-                FillDisciplineCodes, new DisciplineCodeColumns(), Data.DisciplineCodes,
-                new DisciplineCodeRowAdditor());
+                FillDisciplineCodes, new DisciplineCodeColumns(), Data.DisciplineCodes);
         }
 
         public void FillWorkTypes(uint id)
         {
-            FillSecondaryTables<WorkTypesRow>(id, Before("Работа | Час - ID"), FillWorkTypes,
-                new WorkTypesColumns(), Data.WorkTypes, new WorkTypesRowAdditor());
+            FillSecondaryTables<WorkTypesRow>(id, Before("Работа | Час - ID"),
+                FillWorkTypes, new WorkTypesColumns(), Data.WorkTypes);
         }
 
         public void FillMetaTypes(uint id)
         {
-            FillSecondaryTables<MetaTypeRow>(id, Before("Метаданные - ID"), FillMetaTypes,
-                new MetaTypeColumns(), Data.MetaTypes, new MetaTypeRowAdditor());
+            FillSecondaryTables<MetaTypeRow>(id, Before("Метаданные - ID"),
+                FillMetaTypes, new MetaTypeColumns(), Data.MetaTypes);
         }
 
         public void FillSourceTypes(uint id)
         {
-            FillSecondaryTables<SourceTypeRow>(id, Before("Источник - ID"), FillSourceTypes,
-                new SourceTypeColumns(), Data.SourceTypes, new SourceTypeRowAdditor());
+            FillSecondaryTables<SourceTypeRow>(id, Before("Источник - ID"),
+                FillSourceTypes, new SourceTypeColumns(), Data.SourceTypes);
         }
 
         public void FillCompetetionLevels(uint id)
         {
-            FillSecondaryTables<LevelRow>(id, Before("Тема - ID"), FillCompetetionLevels,
-                new LevelColumns(), Data.Levels, new LevelRowAdditor());
+            FillSecondaryTables<LevelRow>(id, Before("Тема - ID"),
+                FillCompetetionLevels, new LevelColumns(), Data.Levels);
         }
 
         private readonly Sql _connector;
