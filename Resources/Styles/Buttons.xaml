@@ -2,9 +2,9 @@
     <Style x:Key="ImpactButton" TargetType="Button" BasedOn="{StaticResource CaptionImpact1}" />
     <Style x:Key="ImpactButton2" TargetType="Button" BasedOn="{StaticResource CaptionImpact2}" />
 
-    <Style x:Key="ImpactButton3" TargetType="Button" BasedOn="{StaticResource IdleRow}" />
-    <Style x:Key="ImpactButton4" TargetType="Button" BasedOn="{StaticResource SelectedRow}" />
-    <Style x:Key="ImpactButton5" TargetType="Button" BasedOn="{StaticResource MarkedRow}" />
+    <Style x:Key="UnSelected" TargetType="Button" BasedOn="{StaticResource IdleRow}" />
+    <Style x:Key="Selected" TargetType="Button" BasedOn="{StaticResource SelectedRow}" />
+    <Style x:Key="Marked" TargetType="Button" BasedOn="{StaticResource MarkedRow}" />
 
     <Style x:Key="InvisibleButton" TargetType="Button" BasedOn="{StaticResource InvisibleBox}" /> 
 </ResourceDictionary>

@@ -132,7 +132,7 @@ namespace Wreath.Controls.Tables.Disciplines.GeneralMastering
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 

@@ -106,9 +106,9 @@ namespace Wreath.Controls.Tables.Disciplines
 
         private void SetStyles()
         {
-            _unselected = TryFindResource("Impact1") as Style;
-            _selected = TryFindResource("Impact2") as Style;
-            _marked = TryFindResource("Impact2") as Style;
+            _unselected = TryFindResource("UnSelected") as Style;
+            _selected = TryFindResource("Selected") as Style;
+            _marked = TryFindResource("Marked") as Style;
             Selection = _unselected;
         }
 
@@ -151,7 +151,7 @@ namespace Wreath.Controls.Tables.Disciplines
             else
             {
                 _tables.ViewModel.DeSelectRow(RowKey);
-                Selection = _unselected;
+                Selection = _marked;
             }
         }
 

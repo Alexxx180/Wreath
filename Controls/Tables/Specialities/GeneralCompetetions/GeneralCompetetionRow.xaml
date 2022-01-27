@@ -6,10 +6,6 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              mc:Ignorable="d" 
              d:DesignHeight="35" d:DesignWidth="800">
-    <UserControl.Resources>
-        <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
-        <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
-    </UserControl.Resources>
     <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
         <Button.IsEnabled>
             <Binding Path="IsMarked" />
