@@ -10,47 +10,51 @@
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
-        <Button.IsEnabled>
-            <Binding Path="IsMarked" />
-        </Button.IsEnabled>
-        <Button.Style>
-            <Binding Path="Selection" />
-        </Button.Style>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.4*" />
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.15*" />
-            </Grid.ColumnDefinitions>
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*" />
+            <ColumnDefinition Width="0.15*" />
+        </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False">
-                <TextBlock Text="{Binding Path=No}" />
-            </Viewbox>
+        <Button HorizontalContentAlignment="Stretch" Click="Select">
+            <Button.IsEnabled>
+                <Binding Path="IsMarked" />
+            </Button.IsEnabled>
+            <Button.Style>
+                <Binding Path="Selection" />
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1875*" />
+                    <ColumnDefinition Width="0.1875*" />
+                    <ColumnDefinition Width="0.4375*" />
+                    <ColumnDefinition Width="0.1875*" />
+                </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=TopicNo}" />
-            </Viewbox>
-
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=TopicName}" />
-            </Viewbox>
-
-            <Viewbox IsHitTestVisible="False" Grid.Column="3">
-                <TextBlock Text="{Binding Path=TopicHours}" />
-            </Viewbox>
-
-            <Viewbox IsHitTestVisible="False" Grid.Column="4">
-                <TextBlock Text="{Binding Path=TopicHours}" />
-            </Viewbox>
-
-            <Button Grid.Column="4" Style="{StaticResource ImpactButton2}" Click="GoToThemes">
-                <Viewbox>
-                    <TextBlock Text="Темы" />
+                <Viewbox IsHitTestVisible="False">
+                    <TextBlock Text="{Binding Path=No}" />
                 </Viewbox>
-            </Button>
-        </Grid>
-    </Button>
+
+                <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=TopicNo}" />
+                </Viewbox>
+
+                <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="TopicName" />
+                    </TextBlock.Text>
+                </TextBlock>
+
+                <Viewbox IsHitTestVisible="False" Grid.Column="3">
+                    <TextBlock Text="{Binding Path=TopicHours}" />
+                </Viewbox>
+            </Grid>
+        </Button>
+
+        <Button Grid.Column="1" Style="{StaticResource ImpactButton2}" Click="GoToThemes">
+            <Viewbox>
+                <TextBlock Text="Темы" />
+            </Viewbox>
+        </Button>
+    </Grid>
 </UserControl>

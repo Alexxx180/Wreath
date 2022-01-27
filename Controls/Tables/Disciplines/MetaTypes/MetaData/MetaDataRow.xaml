@@ -32,9 +32,11 @@
                 <TextBlock Text="{Binding Path=MetaType}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=MetaValue}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="MetaValue" />
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
     </Button>
 </UserControl>

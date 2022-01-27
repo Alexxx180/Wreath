@@ -10,33 +10,39 @@
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
-        <Button.IsEnabled>
-            <Binding Path="IsMarked" />
-        </Button.IsEnabled>
-        <Button.Style>
-            <Binding Path="Selection" />
-        </Button.Style>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*" />
+            <ColumnDefinition Width="0.15*" />
+        </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False">
-                <TextBlock Text="{Binding Path=No}" />
-            </Viewbox>
+        <Button HorizontalContentAlignment="Stretch" Click="Select">
+            <Button.IsEnabled>
+                <Binding Path="IsMarked" />
+            </Button.IsEnabled>
+            <Button.Style>
+                <Binding Path="Selection" />
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=WorkType}" />
-            </Viewbox>
-
-            <Button Grid.Column="2" Style="{StaticResource ImpactButton2}" Click="GoToTasks">
-                <Viewbox>
-                    <TextBlock Text="Задачи" />
+                <Viewbox IsHitTestVisible="False">
+                    <TextBlock Text="{Binding Path=No}" />
                 </Viewbox>
-            </Button>
-        </Grid>
-    </Button>
+
+                <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=WorkType}" />
+                </Viewbox>
+            </Grid>
+        </Button>
+        
+        <Button Grid.Column="1" Style="{StaticResource ImpactButton2}" Click="GoToTasks">
+            <Viewbox>
+                <TextBlock Text="Задачи" />
+            </Viewbox>
+        </Button>
+    </Grid>
 </UserControl>

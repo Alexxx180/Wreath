@@ -1,7 +1,6 @@
 ﻿<Application x:Class="Wreath.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Wreath"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +8,7 @@
                 <ResourceDictionary Source="Resources/Styles/Total.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources/Styles/Buttons.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources/Styles/TextBoxes.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Resources/Styles/TextBlocks.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources/Styles/ComboBoxes.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

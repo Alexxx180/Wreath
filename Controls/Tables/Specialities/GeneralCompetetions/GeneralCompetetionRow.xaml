@@ -34,17 +34,23 @@
                 <TextBlock Text="{Binding Path=GeneralNo}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=GeneralName}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="GeneralName" />
+                </TextBlock.Text>
+            </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="3">
-                <TextBlock Text="{Binding Path=Skills}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="3" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Skills" />
+                </TextBlock.Text>
+            </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="4">
-                <TextBlock Text="{Binding Path=Knowledge}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="4" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Knowledge" />
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
     </Button>
 </UserControl>

@@ -29,9 +29,11 @@
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=TaskName}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="1" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="TaskName" />
+                </TextBlock.Text>
+            </TextBlock>
 
             <Viewbox IsHitTestVisible="False" Grid.Column="2">
                 <TextBlock Text="{Binding Path=TaskHours}" />

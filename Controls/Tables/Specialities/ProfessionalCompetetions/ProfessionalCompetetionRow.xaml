@@ -40,21 +40,29 @@
                 <TextBlock Text="{Binding Path=ProfessionalNo2}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="3">
-                <TextBlock Text="{Binding Path=ProfessionalName}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="3" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="ProfessionalName" />
+                </TextBlock.Text>
+            </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="4">
-                <TextBlock Text="{Binding Path=Experience}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="4" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Experience" />
+                </TextBlock.Text>
+            </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="5">
-                <TextBlock Text="{Binding Path=Skills}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="5" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Skills" />
+                </TextBlock.Text>
+            </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="6">
-                <TextBlock Text="{Binding Path=Knowledge}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="6" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Knowledge" />
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
     </Button>
 </UserControl>

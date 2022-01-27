@@ -28,13 +28,17 @@
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=LevelName}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="1" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="LevelName" />
+                </TextBlock.Text>
+            </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=Description}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Description" />
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
     </Button>
 </UserControl>

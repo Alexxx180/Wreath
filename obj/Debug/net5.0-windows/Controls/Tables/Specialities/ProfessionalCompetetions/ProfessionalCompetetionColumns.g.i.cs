@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/specialities/professionalcompetetions/professio" +
-                    "nalcompetetioncolumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/specialities/professionalcompetetions/" +
+                    "professionalcompetetioncolumns.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Specialities\ProfessionalCompetetions\ProfessionalCompetetionColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -32,9 +32,11 @@
                 <TextBlock Text="{Binding Path=SourceType}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=Source}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="Source" />
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
     </Button>
 </UserControl>

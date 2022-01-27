@@ -27,9 +27,11 @@
                 <TextBlock Text="{Binding Path=No}" />
             </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=WorkType}" />
-            </Viewbox>
+            <TextBlock IsHitTestVisible="False" Grid.Column="1" Style="{StaticResource TextClipper}">
+                <TextBlock.Text>
+                    <Binding Path="WorkType" />
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
     </Button>
 </UserControl>

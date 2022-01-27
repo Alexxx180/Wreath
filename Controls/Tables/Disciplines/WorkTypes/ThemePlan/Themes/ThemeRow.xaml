@@ -10,61 +10,66 @@
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
-        <Button.IsEnabled>
-            <Binding Path="IsMarked" />
-        </Button.IsEnabled>
-        <Button.Style>
-            <Binding Path="Selection" />
-        </Button.Style>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.125*" />
-                <ColumnDefinition Width="0.125*" />
-                <ColumnDefinition Width="0.35*" />
-                <ColumnDefinition Width="0.125*" />
-                <ColumnDefinition Width="0.125*" />
-                <ColumnDefinition Width="0.15*" />
-            </Grid.ColumnDefinitions>
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*" />
+            <ColumnDefinition Width="0.15*" />
+        </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False">
-                <TextBlock Text="{Binding Path=No}" />
-            </Viewbox>
+        <Button HorizontalContentAlignment="Stretch" Click="Select">
+            <Button.IsEnabled>
+                <Binding Path="IsMarked" />
+            </Button.IsEnabled>
+            <Button.Style>
+                <Binding Path="Selection" />
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.155*" />
+                    <ColumnDefinition Width="0.155*" />
+                    <ColumnDefinition Width="0.38*" />
+                    <ColumnDefinition Width="0.155*" />
+                    <ColumnDefinition Width="0.155*" />
+                </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=ThemeNo}" />
-            </Viewbox>
+                <Viewbox IsHitTestVisible="False">
+                    <TextBlock Text="{Binding Path=No}" />
+                </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=ThemeName}" />
-            </Viewbox>
+                <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ThemeNo}" />
+                </Viewbox>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="3">
-                <TextBlock Text="{Binding Path=ThemeHours}" />
-            </Viewbox>
+                <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="ThemeName" />
+                    </TextBlock.Text>
+                </TextBlock>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="4">
-                <TextBlock Text="{Binding Path=ThemeLevel}" />
-            </Viewbox>
+                <Viewbox IsHitTestVisible="False" Grid.Column="3">
+                    <TextBlock Text="{Binding Path=ThemeHours}" />
+                </Viewbox>
 
-            <ComboBox Grid.Column="5" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" SelectionChanged="SecondaryTables_Select">
-                <ComboBox.ItemContainerStyle>
-                    <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ItemsBox}"/>
-                </ComboBox.ItemContainerStyle>
-                <ComboBox.FontSize>
-                    16.5
-                </ComboBox.FontSize>
+                <Viewbox IsHitTestVisible="False" Grid.Column="4">
+                    <TextBlock Text="{Binding Path=ThemeLevel}" />
+                </Viewbox>
+            </Grid>
+        </Button>
 
-                <ComboBoxItem>
-                    Работы
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Общие компетенции
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Профессиональные компетенции
-                </ComboBoxItem>
-            </ComboBox>
-        </Grid>
-    </Button>
+        <ComboBox Grid.Column="5" Grid.Row="1" Style="{StaticResource ComboBoxStyleFixed}" SelectionChanged="SecondaryTables_Select">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ItemsBox}"/>
+            </ComboBox.ItemContainerStyle>
+
+            <ComboBoxItem>
+                Работы
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Общие компетенции
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Профессиональные компетенции
+            </ComboBoxItem>
+        </ComboBox>
+    </Grid>
 </UserControl>

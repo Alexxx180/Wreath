@@ -10,52 +10,52 @@
         <Style x:Key="Impact1" BasedOn="{StaticResource ImpactButton3}" TargetType="Button" />
         <Style x:Key="Impact2" BasedOn="{StaticResource ImpactButton4}" TargetType="Button" />
     </UserControl.Resources>
-    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
-        <Button.IsEnabled>
-            <Binding Path="IsMarked" />
-        </Button.IsEnabled>
-        <Button.Style>
-            <Binding Path="Selection" />
-        </Button.Style>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*" />
-                <ColumnDefinition Width="0.2*" />
-                <ColumnDefinition Width="0.45*" />
-                <ColumnDefinition Width="0.15*" />
-            </Grid.ColumnDefinitions>
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*" />
+            <ColumnDefinition Width="0.15*" />
+        </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False">
-                <TextBlock Text="{Binding Path=No}" />
-            </Viewbox>
-            <Viewbox Grid.Column="1">
-                <TextBlock  Text="{Binding Path=Code}" />
-            </Viewbox>
+        <Button HorizontalContentAlignment="Stretch" Click="Select">
+            <Button.IsEnabled>
+                <Binding Path="IsMarked" />
+            </Button.IsEnabled>
+            <Button.Style>
+                <Binding Path="Selection" />
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.175*" />
+                    <ColumnDefinition Width="0.175*" />
+                    <ColumnDefinition Width="0.65*" />
+                </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="2">
-                <TextBlock.Text>
-                    <Binding Path="SpecialityName" />
-                </TextBlock.Text>
-                <TextBlock.FontSize>
-                    16.5
-                </TextBlock.FontSize>
-            </TextBlock>
+                <Viewbox IsHitTestVisible="False">
+                    <TextBlock Text="{Binding Path=No}" />
+                </Viewbox>
+                <Viewbox Grid.Column="1">
+                    <TextBlock Text="{Binding Path=Code}" />
+                </Viewbox>
 
-            <ComboBox Grid.Column="3" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" SelectionChanged="SecondaryTables_Select">
-                <ComboBox.ItemContainerStyle>
-                    <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ItemsBox}"/>
-                </ComboBox.ItemContainerStyle>
-                <ComboBox.FontSize>
-                    16.5
-                </ComboBox.FontSize>
+                <TextBlock IsHitTestVisible="False" Grid.Column="2" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="SpecialityName" />
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </Button>
 
-                <ComboBoxItem>
-                    Общие компетенции
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Профессиональные компетенции
-                </ComboBoxItem>
-            </ComboBox>
-        </Grid>
-    </Button>
+        <ComboBox Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxStyleFixed}" SelectionChanged="SecondaryTables_Select">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem" BasedOn="{StaticResource ItemsBox}"/>
+            </ComboBox.ItemContainerStyle>
+
+            <ComboBoxItem>
+                Общие компетенции
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Профессиональные компетенции
+            </ComboBoxItem>
+        </ComboBox>
+    </Grid>
 </UserControl>

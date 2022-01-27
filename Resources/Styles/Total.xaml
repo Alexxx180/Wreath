@@ -98,4 +98,8 @@
         <Setter Property="Control.Margin" Value="0"/>
     </Style>
 
+    <Style x:Key="ContentClipper">
+        <Setter Property="Control.ClipToBounds" Value="True"/>
+        <Setter Property="Control.FontSize" Value="25"/>
+    </Style>
 </ResourceDictionary>

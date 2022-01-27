@@ -132,3 +132,4 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.pdb
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.genruntimeconfig.cache
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.csproj.AssemblyReference.cache
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Resources\Styles\TextBlocks.baml
