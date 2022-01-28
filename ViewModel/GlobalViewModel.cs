@@ -104,8 +104,6 @@ namespace Wreath.ViewModel
 
         public void RefreshTransition()
         {
-            if (IsTopTransition)
-                return;
             TransitionBase transition = PopTransition();
             transition.MakeTransition();
             NullifySelection();
@@ -139,15 +137,15 @@ namespace Wreath.ViewModel
             OnPropertyChanged(nameof(BackOperations));
         }
 
-        private delegate void FastAction();
-        private readonly Pair<FastAction, FastAction> FastActions;
+        public delegate void FastAction();
+        public Pair<FastAction, FastAction> FastActions { get; }
 
-        private void UnMarkAll()
+        public void UnMarkAll()
         {
             FastActions.Name();
         }
 
-        private void DropAll()
+        public void DropAll()
         {
             FastActions.Value();
         }

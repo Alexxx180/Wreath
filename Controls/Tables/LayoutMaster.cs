@@ -131,49 +131,61 @@ namespace Wreath.Controls.Tables
         private string Before(string name) => "Ранее смотрели: " + name;
 
         private void FillTables<T>(UserControl header,
-            List<string[]> rows, List<string[]> markedRows)
+            List<string[]> rows, List<string[]> markedRows,
+            GlobalViewModel.FastAction unMarkAll,
+            GlobalViewModel.FastAction deleteAll)
         {
             ResetHeaders(header);
             Records.Children.Clear();
             ushort no = Convert.ToUInt16(AddElements<T>(rows) + 1);
             AddMarkedElements<T>(no, markedRows);
+            ViewModel.FastActions.Name = unMarkAll;
+            ViewModel.FastActions.Value = deleteAll;
         }
 
         private void FillSecondaryTables<T>(uint id, string name,
             TransitionBase.Transition transition, UserControl header,
-            List<string[]> rows, List<string[]> markedRows)
+            List<string[]> rows, List<string[]> markedRows,
+            GlobalViewModel.FastAction unMarkAll,
+            GlobalViewModel.FastAction deleteAll)
         {
             ViewModel.AddTransition(transition, name, id);
-            FillTables<T>(header, rows, markedRows);
+            FillTables<T>(header, rows, markedRows, unMarkAll, deleteAll);
         }
 
         private void FillPrimaryTables<T>(uint id, string name,
             TransitionBase.Transition transition, UserControl header,
-            List<string[]> rows, List<string[]> markedRows)
+            List<string[]> rows, List<string[]> markedRows,
+            GlobalViewModel.FastAction unMarkAll,
+            GlobalViewModel.FastAction deleteAll)
         {
             ViewModel.CleanBuffer();
-            FillSecondaryTables<T>(id, name, transition, header, rows, markedRows);
+            FillSecondaryTables<T>(id, name, transition, header,
+                rows, markedRows, unMarkAll, deleteAll);
         }
 
         public void FillConformity(uint id = 0)
         {
-            FillPrimaryTables<ConformityRow>(id, Before("Соответствие - ID"),
-                FillConformity, new ConformityColumns(), Data.Conformity, Data.MConformity);
+            FillPrimaryTables<ConformityRow>(id, Before("Соответствие - ID"), FillConformity,
+                new ConformityColumns(), Data.Conformity, Data.MConformity,
+                Tools.UnMarkRow.AllConformity, Tools.DropRow.AllConformity);
         }
 
 
         public void FillSpecialities(uint id = 0)
         {
-            FillPrimaryTables<SpecialityRow>(id, Before("Специальность - ID"),
-                FillSpecialities, new SpecialityColumns(this), Data.Specialities, Data.MSpecialities);
+            FillPrimaryTables<SpecialityRow>(id, Before("Специальность - ID"), FillSpecialities,
+                new SpecialityColumns(this), Data.Specialities, Data.MSpecialities,
+                Tools.UnMarkRow.AllSpeciality, Tools.DropRow.AllSpeciality);
         }
 
 
         public void FillGeneral(List<string[]> records, List<string[]> markedRecords,
             uint id, string name, TransitionBase.Transition transition)
         {
-            FillSecondaryTables<GeneralCompetetionRow>(id, name, transition,
-                new GeneralCompetetionColumns(), records, markedRecords);
+            FillSecondaryTables<GeneralCompetetionRow>(id,
+                name, transition, new GeneralCompetetionColumns(), records, markedRecords,
+                Tools.UnMarkRow.AllGeneralCompetetion, Tools.DropRow.AllGeneralCompetetion);
         }
 
         public void FillGeneralCompetetions(uint id)
@@ -193,8 +205,9 @@ namespace Wreath.Controls.Tables
         public void FillProfessional(List<string[]> records, List<string[]> markedRecords,
             uint id, string name, TransitionBase.Transition transition)
         {
-            FillSecondaryTables<ProfessionalCompetetionRow>(id, name,
-                transition, new ProfessionalCompetetionColumns(), records, markedRecords);
+            FillSecondaryTables<ProfessionalCompetetionRow>
+                (id, name, transition, new ProfessionalCompetetionColumns(), records, markedRecords,
+                Tools.UnMarkRow.AllProfessionalCompetetion, Tools.DropRow.AllProfessionalCompetetion);
         }
 
         public void FillProfessionalCompetetions(uint id)
@@ -215,7 +228,8 @@ namespace Wreath.Controls.Tables
         public void FillDisciplines(uint id = 0)
         {
             FillPrimaryTables<DisciplineRow>(id, Before("Дисциплина - ID"), FillDisciplines,
-                new DisciplineColumns(this), Data.Disciplines, Data.MDisciplines);
+                new DisciplineColumns(this), Data.Disciplines, Data.MDisciplines,
+                Tools.UnMarkRow.AllDiscipline, Tools.DropRow.AllDiscipline);
         }
 
 
@@ -223,7 +237,8 @@ namespace Wreath.Controls.Tables
             uint id, string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineGeneralMasteringRow>(id, name, transition,
-                new DisciplineGeneralMasteringColumns(this), records, markedRecords);
+                new DisciplineGeneralMasteringColumns(this), records, markedRecords,
+                Tools.UnMarkRow.AllGeneralMastering, Tools.DropRow.AllGeneralMastering);
         }
 
         public void FillDisciplineGeneralCompetetions(uint id)
@@ -244,8 +259,9 @@ namespace Wreath.Controls.Tables
         public void FillDisciplineProfessional(List<string[]> records, List<string[]> markedRecords,
             uint id, string name, TransitionBase.Transition transition)
         {
-            FillSecondaryTables<DisciplineProfessionalMasteringRow>(id, name,
-                transition, new DisciplineProfessionalMasteringColumns(this), records, markedRecords);
+            FillSecondaryTables<DisciplineProfessionalMasteringRow>(id, name, transition,
+                new DisciplineProfessionalMasteringColumns(this), records, markedRecords,
+                Tools.UnMarkRow.AllProfessionalMastering, Tools.DropRow.AllProfessionalMastering);
         }
 
         public void FillDisciplineProfessionalCompetetions(uint id)
@@ -266,57 +282,66 @@ namespace Wreath.Controls.Tables
         public void FillSources(uint id)
         {
             FillSecondaryTables<SourceRow>(id, "Дисциплина - ID", FillSources,
-                new SourceColumns(this), Data.Sources(id), Data.MSources(id));
+                new SourceColumns(this), Data.Sources(id), Data.MSources(id),
+                Tools.UnMarkRow.AllSource, Tools.DropRow.AllSource);
         }
 
         public void FillMetaData(uint id)
         {
             FillSecondaryTables<MetaDataRow>(id, "Дисциплина - ID", FillMetaData,
-                new MetaDataColumns(this), Data.MetaData(id), Data.MMetaData(id));
+                new MetaDataColumns(this), Data.MetaData(id), Data.MMetaData(id),
+                Tools.UnMarkRow.AllMetaData, Tools.DropRow.AllMetaData);
         }
 
         public void FillHours(uint id)
         {
             FillSecondaryTables<HoursRow>(id, "Дисциплина - ID", FillHours,
-                new HoursColumns(this), Data.TotalHours(id), Data.MTotalHours(id));
+                new HoursColumns(this), Data.TotalHours(id), Data.MTotalHours(id),
+                Tools.UnMarkRow.AllTotalHour, Tools.DropRow.AllTotalHour);
         }
 
         public void FillTopics(uint id)
         {
             FillSecondaryTables<TopicRow>(id, "Дисциплина - ID", FillTopics,
-                new TopicColumns(), Data.ThemePlan(id), Data.MThemePlan(id));
+                new TopicColumns(), Data.ThemePlan(id), Data.MThemePlan(id),
+                Tools.UnMarkRow.AllTopic, Tools.DropRow.AllTopic);
         }
 
         public void FillThemes(uint id)
         {
             FillSecondaryTables<ThemeRow>(id, "Раздел - ID", FillThemes,
-                new ThemeColumns(this), Data.Themes(id), Data.MThemes(id));
+                new ThemeColumns(this), Data.Themes(id), Data.MThemes(id),
+                Tools.UnMarkRow.AllTheme, Tools.DropRow.AllTheme);
         }
 
         public void FillThemeGeneralCompetetions(uint id)
         {
             FillSecondaryTables<ThemeGeneralMasteringRow>(id, "Тема - ID",
                 FillThemeGeneralCompetetions, new ThemeGeneralMasteringColumns(this),
-                Data.ThemeGeneralMastering(id), Data.MThemeGeneralMastering(id));
+                Data.ThemeGeneralMastering(id), Data.MThemeGeneralMastering(id),
+                Tools.UnMarkRow.AllGeneralSelection, Tools.DropRow.AllGeneralSelection);
         }
 
         public void FillThemeProfessionalCompetetions(uint id)
         {
             FillSecondaryTables<ThemeProfessionalMasteringRow>(id, "Тема - ID",
                 FillThemeProfessionalCompetetions, new ThemeProfessionalMasteringColumns(this),
-                Data.ThemeProfessionalMastering(id), Data.MThemeProfessionalMastering(id));
+                Data.ThemeProfessionalMastering(id), Data.MThemeProfessionalMastering(id),
+                Tools.UnMarkRow.AllProfessionalSelection, Tools.DropRow.AllProfessionalSelection);
         }
 
         public void FillWorks(uint id)
         {
             FillSecondaryTables<WorkRow>(id, "Тема - ID", FillWorks,
-                new WorkColumns(this), Data.Works(id), Data.MWorks(id));
+                new WorkColumns(this), Data.Works(id), Data.MWorks(id),
+                Tools.UnMarkRow.AllWork, Tools.DropRow.AllWork);
         }
 
         public void FillTasks(uint id)
         {
             FillSecondaryTables<TaskRow>(id, "Работа - ID", FillTasks,
-                new TaskColumns(), Data.Tasks(id), Data.MTasks(id));
+                new TaskColumns(), Data.Tasks(id), Data.MTasks(id),
+                Tools.UnMarkRow.AllTask, Tools.DropRow.AllTask);
         }
 
 
@@ -324,38 +349,44 @@ namespace Wreath.Controls.Tables
         {
             ViewModel.AddTransition(FillSpecialities, Before("Специальность - ID"), id);
             FillSecondaryTables<SpecialityCodeRow>(id, Before("Специальность - ID"), FillSpecialityCodes,
-                new SpecialityCodeColumns(), Data.SpecialityCodes, Data.MSpecialityCodes);
+                new SpecialityCodeColumns(), Data.SpecialityCodes, Data.MSpecialityCodes,
+                Tools.UnMarkRow.AllSpecialityCode, Tools.DropRow.AllSpecialityCode);
         }
 
         public void FillDisciplineCodes(uint id)
         {
             ViewModel.AddTransition(FillDisciplines, "Ранее смотрели: Дисциплина - ID", id);
-            FillSecondaryTables<DisciplineCodeRow>(id, Before("Дисциплина - ID"),
-                FillDisciplineCodes, new DisciplineCodeColumns(), Data.DisciplineCodes, Data.MDisciplineCodes);
+            FillSecondaryTables<DisciplineCodeRow>(id, Before("Дисциплина - ID"), FillDisciplineCodes,
+                new DisciplineCodeColumns(), Data.DisciplineCodes, Data.MDisciplineCodes,
+                Tools.UnMarkRow.AllDisciplineCode, Tools.DropRow.AllDisciplineCode);
         }
 
         public void FillWorkTypes(uint id)
         {
             FillSecondaryTables<WorkTypesRow>(id, Before("Работа | Час - ID"),
-                FillWorkTypes, new WorkTypesColumns(), Data.WorkTypes, Data.MWorkTypes);
+                FillWorkTypes, new WorkTypesColumns(), Data.WorkTypes, Data.MWorkTypes,
+                Tools.UnMarkRow.AllWorkType, Tools.DropRow.AllWorkType);
         }
 
         public void FillMetaTypes(uint id)
         {
             FillSecondaryTables<MetaTypeRow>(id, Before("Метаданные - ID"),
-                FillMetaTypes, new MetaTypeColumns(), Data.MetaTypes, Data.MMetaTypes);
+                FillMetaTypes, new MetaTypeColumns(), Data.MetaTypes, Data.MMetaTypes,
+                Tools.UnMarkRow.AllMetaType, Tools.DropRow.AllMetaType);
         }
 
         public void FillSourceTypes(uint id)
         {
-            FillSecondaryTables<SourceTypeRow>(id, Before("Источник - ID"),
-                FillSourceTypes, new SourceTypeColumns(), Data.SourceTypes, Data.MSourceTypes);
+            FillSecondaryTables<SourceTypeRow>(id, Before("Источник - ID"), FillSourceTypes,
+                new SourceTypeColumns(), Data.SourceTypes, Data.MSourceTypes,
+                Tools.UnMarkRow.AllSourceType, Tools.DropRow.AllSourceType);
         }
 
         public void FillCompetetionLevels(uint id)
         {
-            FillSecondaryTables<LevelRow>(id, Before("Тема - ID"),
-                FillCompetetionLevels, new LevelColumns(), Data.Levels, Data.MLevels);
+            FillSecondaryTables<LevelRow>(id, Before("Тема - ID"), FillCompetetionLevels,
+                new LevelColumns(), Data.Levels, Data.MLevels,
+                Tools.UnMarkRow.AllLevel, Tools.DropRow.AllLevel);
         }
 
         private readonly Sql _connector;

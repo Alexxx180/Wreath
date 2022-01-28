@@ -142,8 +142,8 @@ namespace Wreath.Controls.Tables.Disciplines
 
         public void Select()
         {
-            IsMarked = !IsMarked;
-            if (IsMarked)
+            IsSelected = !IsSelected;
+            if (IsSelected)
             {
                 _tables.ViewModel.SelectRow(RowKey, Id);
                 Selection = _selected;

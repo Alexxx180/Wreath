@@ -105,13 +105,7 @@
                 </Viewbox>
             </StackPanel>
 
-            <Button Grid.Column="2" Style="{StaticResource InvisibleButton}">
-                <Viewbox>
-                    <TextBlock Text="" />
-                </Viewbox>
-            </Button>
-            
-            <Button Grid.Column="4" Style="{StaticResource InvisibleButton}">
+            <Button x:Name="UnmarkAll" Grid.Column="4" Click="UnMarkAllRows" Style="{StaticResource InvisibleButton}">
                 <Button.ToolTip>
                     <TextBlock Text="Снять пометки со всех помеченных записей" />
                 </Button.ToolTip>
@@ -123,7 +117,7 @@
                 </Viewbox>
             </Button>
 
-            <Button Grid.Column="6" Style="{StaticResource InvisibleButton}">
+            <Button x:Name="DropAll" Grid.Column="6" Click="DropAllRows" Style="{StaticResource InvisibleButton}">
                 <Button.ToolTip>
                     <TextBlock Text="Удалить все помеченные записи" />
                 </Button.ToolTip>
@@ -135,7 +129,8 @@
                 </Viewbox>
             </Button>
 
-            <Button Grid.Column="4" Grid.ColumnSpan="3" Style="{StaticResource InvisibleButton}">
+            <Button x:Name="FastAction" Grid.Column="4" Grid.ColumnSpan="3"
+                    Click="FastActions" Style="{StaticResource InvisibleButton}">
                 <Button.ToolTip>
                     <TextBlock Text="Быстрые действия" />
                 </Button.ToolTip>

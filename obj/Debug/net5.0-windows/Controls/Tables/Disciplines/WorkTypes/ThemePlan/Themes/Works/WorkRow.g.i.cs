@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/worktypes/themeplan/themes/works/wo" +
-                    "rkrow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/worktypes/themeplan/themes" +
+                    "/works/workrow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\..\..\Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\Works\WorkRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

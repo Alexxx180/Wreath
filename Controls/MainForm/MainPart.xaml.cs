@@ -34,6 +34,34 @@ namespace Wreath.Controls.MainForm
             ViewModel.DropRows(ViewModel.TableView.Records);
         }
 
+        // Danger zone
+
+        private void OpenDangerZone(in bool closed)
+        {
+            FastAction.SetActive(closed);
+            bool operations = !closed;
+            DropAll.SetActive(operations);
+            UnmarkAll.SetActive(operations);
+        }
+
+        private void FastActions(object sender, RoutedEventArgs e)
+        {
+            OpenDangerZone(false);
+            ViewModel.UnMarkRows(ViewModel.TableView.Records);
+        }
+
+        private void UnMarkAllRows(object sender, RoutedEventArgs e)
+        {
+            ViewModel.UnMarkAll();
+            OpenDangerZone(true);
+        }
+
+        private void DropAllRows(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DropAll();
+            OpenDangerZone(true);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
