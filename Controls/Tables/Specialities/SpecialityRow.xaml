@@ -21,9 +21,9 @@
             </Button.Style>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.175*" />
-                    <ColumnDefinition Width="0.175*" />
-                    <ColumnDefinition Width="0.65*" />
+                    <ColumnDefinition Width="0.235*" />
+                    <ColumnDefinition Width="0.235*" />
+                    <ColumnDefinition Width="0.53*" />
                 </Grid.ColumnDefinitions>
 
                 <Viewbox IsHitTestVisible="False">

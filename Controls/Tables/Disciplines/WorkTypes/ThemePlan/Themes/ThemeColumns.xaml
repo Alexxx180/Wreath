@@ -29,9 +29,11 @@
         <Viewbox Grid.Column="3">
             <TextBlock Text="Часы" />
         </Viewbox>
-        <Viewbox Grid.Column="4">
-            <TextBlock Text="УК" />
-        </Viewbox>
+        <Button Grid.Column="4" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+            <Viewbox>
+                <TextBlock Text="УК" />
+            </Viewbox>
+        </Button>
         <Viewbox Grid.Column="5">
             <TextBlock Text="Далее" />
         </Viewbox>

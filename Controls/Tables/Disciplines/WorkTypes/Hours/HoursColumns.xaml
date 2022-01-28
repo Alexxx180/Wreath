@@ -15,9 +15,11 @@
         <Viewbox>
             <TextBlock Text="№" />
         </Viewbox>
-        <Viewbox Grid.Column="1">
-            <TextBlock Text="Тип работы" />
-        </Viewbox>
+        <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+            <Viewbox>
+                <TextBlock Text="Тип работы" />
+            </Viewbox>
+        </Button>
         <Viewbox Grid.Column="2">
             <TextBlock Text="Количество" />
         </Viewbox>

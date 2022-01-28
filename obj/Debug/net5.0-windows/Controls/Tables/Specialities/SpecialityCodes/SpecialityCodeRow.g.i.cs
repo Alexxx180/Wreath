@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Specialities.SpecialityCodes {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/specialities/specialitycodes/specialitycoderow." +
-                    "xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/specialities/specialitycodes/specialit" +
+                    "ycoderow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Specialities\SpecialityCodes\SpecialityCodeRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

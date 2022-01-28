@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:Wreath.ViewModel"
-             xmlns:converters="clr-namespace:Wreath.Controls.Binds.Converters"
              mc:Ignorable="d" x:Name="MainRedactor"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -35,15 +34,14 @@
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.025*"/>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="0.45*"/>
-                    <ColumnDefinition Width="0.025*"/>
+                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition Width="0.275*"/>
                 </Grid.ColumnDefinitions>
 
                 <Viewbox Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="2">
                     <TextBlock Text="{Binding Path=CurrentState.Name, Mode=OneWay, TargetNullValue='Пополнений стека:'}" />
                 </Viewbox>
-                <Viewbox Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,17,0" Grid.RowSpan="2">
+                <Viewbox Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,17,0" Grid.RowSpan="2">
                     <TextBlock Text="{Binding Path=CurrentState.Id, Mode=OneWay, TargetNullValue='0'}" />
                 </Viewbox>
             </Grid>
@@ -79,7 +77,13 @@
         <Grid Grid.Row="2" Style="{StaticResource CaptionImpact1}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.14*"/>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="0.02*"/>
                 <ColumnDefinition Width="0.04*"/>
                 <ColumnDefinition Width="0.02*"/>
                 <ColumnDefinition Width="0.04*"/>
@@ -95,20 +99,55 @@
                             <Binding ElementName="TableViewControl" Path="DataContext"/>
                         </TextBlock.DataContext>
                         <TextBlock.Text>
-                            <Binding>
-                                <Binding.Path>
-                                    Count
-                                </Binding.Path>
-                                <Binding.Converter>
-                                    <converters:RowCountConverter/>
-                                </Binding.Converter>
-                            </Binding>
+                            <Binding Path="Count" />
                         </TextBlock.Text>
                     </TextBlock>
                 </Viewbox>
             </StackPanel>
 
-            <Button Grid.Column="2" Style="{StaticResource InvisibleButton}" Click="UnMarkRows">
+            <Button Grid.Column="2" Style="{StaticResource InvisibleButton}">
+                <Viewbox>
+                    <TextBlock Text="" />
+                </Viewbox>
+            </Button>
+            
+            <Button Grid.Column="4" Style="{StaticResource InvisibleButton}">
+                <Button.ToolTip>
+                    <TextBlock Text="Снять пометки со всех помеченных записей" />
+                </Button.ToolTip>
+                <Button.Visibility>
+                    Hidden
+                </Button.Visibility>
+                <Viewbox>
+                    <TextBlock Text="+=" />
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Column="6" Style="{StaticResource InvisibleButton}">
+                <Button.ToolTip>
+                    <TextBlock Text="Удалить все помеченные записи" />
+                </Button.ToolTip>
+                <Button.Visibility>
+                    Hidden
+                </Button.Visibility>
+                <Viewbox>
+                    <TextBlock Text="X=" />
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Column="4" Grid.ColumnSpan="3" Style="{StaticResource InvisibleButton}">
+                <Button.ToolTip>
+                    <TextBlock Text="Быстрые действия" />
+                </Button.ToolTip>
+                <Viewbox>
+                    <TextBlock Text="!" />
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Column="8" Style="{StaticResource InvisibleButton}" Click="UnMarkRows">
+                <Button.ToolTip>
+                    <TextBlock Text="Снять пометки с выбранных записей" />
+                </Button.ToolTip>
                 <Button.IsEnabled>
                     <Binding Path="CanBeAffected" />
                 </Button.IsEnabled>
@@ -117,7 +156,10 @@
                 </Viewbox>
             </Button>
 
-            <Button Grid.Column="4" Style="{StaticResource InvisibleButton}" Click="DropRows">
+            <Button Grid.Column="10" Style="{StaticResource InvisibleButton}" Click="DropRows">
+                <Button.ToolTip>
+                    <TextBlock Text="Удалить выбранные записи" />
+                </Button.ToolTip>
                 <Button.IsEnabled>
                     <Binding Path="CanBeAffected" />
                 </Button.IsEnabled>

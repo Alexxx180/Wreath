@@ -48,7 +48,6 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Resources\Styles\TextBoxes.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Resources\Styles\Total.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\MainPart.g.cs
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\ProsperityHeader.g.cs
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\RecordForm\MainPart.g.cs
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Tables\Conformity\ConformityColumns.g.cs
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Tables\Conformity\ConformityRow.g.cs
@@ -118,7 +117,6 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\ZstdNet.dll
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\App.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\MainPart.baml
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\ProsperityHeader.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\MainWindow.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\RecordSelection.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.g.resources
@@ -133,3 +131,5 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.genruntimeconfig.cache
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.csproj.AssemblyReference.cache
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Resources\Styles\TextBlocks.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\WreathHeader.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\WreathHeader.baml

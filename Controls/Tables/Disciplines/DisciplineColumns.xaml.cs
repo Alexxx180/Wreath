@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Wreath.Controls.Tables.Disciplines
 {
@@ -10,6 +11,17 @@ namespace Wreath.Controls.Tables.Disciplines
         public DisciplineColumns()
         {
             InitializeComponent();
+        }
+
+        private LayoutMaster _tables;
+        public DisciplineColumns(LayoutMaster view) : this()
+        {
+            _tables = view;
+        }
+
+        private void SelectCode(object sender, RoutedEventArgs e)
+        {
+            _tables.FillDisciplineCodes(0);
         }
     }
 }

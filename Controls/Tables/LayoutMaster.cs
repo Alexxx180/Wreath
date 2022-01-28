@@ -165,7 +165,7 @@ namespace Wreath.Controls.Tables
         public void FillSpecialities(uint id = 0)
         {
             FillPrimaryTables<SpecialityRow>(id, Before("Специальность - ID"),
-                FillSpecialities, new SpecialityColumns(), Data.Specialities, Data.MSpecialities);
+                FillSpecialities, new SpecialityColumns(this), Data.Specialities, Data.MSpecialities);
         }
 
 
@@ -215,7 +215,7 @@ namespace Wreath.Controls.Tables
         public void FillDisciplines(uint id = 0)
         {
             FillPrimaryTables<DisciplineRow>(id, Before("Дисциплина - ID"), FillDisciplines,
-                new DisciplineColumns(), Data.Disciplines, Data.MDisciplines);
+                new DisciplineColumns(this), Data.Disciplines, Data.MDisciplines);
         }
 
 
@@ -223,7 +223,7 @@ namespace Wreath.Controls.Tables
             uint id, string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineGeneralMasteringRow>(id, name, transition,
-                new DisciplineGeneralMasteringColumns(), records, markedRecords);
+                new DisciplineGeneralMasteringColumns(this), records, markedRecords);
         }
 
         public void FillDisciplineGeneralCompetetions(uint id)
@@ -245,7 +245,7 @@ namespace Wreath.Controls.Tables
             uint id, string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineProfessionalMasteringRow>(id, name,
-                transition, new DisciplineProfessionalMasteringColumns(), records, markedRecords);
+                transition, new DisciplineProfessionalMasteringColumns(this), records, markedRecords);
         }
 
         public void FillDisciplineProfessionalCompetetions(uint id)
@@ -266,19 +266,19 @@ namespace Wreath.Controls.Tables
         public void FillSources(uint id)
         {
             FillSecondaryTables<SourceRow>(id, "Дисциплина - ID", FillSources,
-                new SourceColumns(), Data.Sources(id), Data.MSources(id));
+                new SourceColumns(this), Data.Sources(id), Data.MSources(id));
         }
 
         public void FillMetaData(uint id)
         {
             FillSecondaryTables<MetaDataRow>(id, "Дисциплина - ID", FillMetaData,
-                new MetaDataColumns(), Data.MetaData(id), Data.MMetaData(id));
+                new MetaDataColumns(this), Data.MetaData(id), Data.MMetaData(id));
         }
 
         public void FillHours(uint id)
         {
             FillSecondaryTables<HoursRow>(id, "Дисциплина - ID", FillHours,
-                new HoursColumns(), Data.TotalHours(id), Data.MTotalHours(id));
+                new HoursColumns(this), Data.TotalHours(id), Data.MTotalHours(id));
         }
 
         public void FillTopics(uint id)
@@ -290,27 +290,27 @@ namespace Wreath.Controls.Tables
         public void FillThemes(uint id)
         {
             FillSecondaryTables<ThemeRow>(id, "Раздел - ID", FillThemes,
-                new ThemeColumns(), Data.Themes(id), Data.MThemes(id));
+                new ThemeColumns(this), Data.Themes(id), Data.MThemes(id));
         }
 
         public void FillThemeGeneralCompetetions(uint id)
         {
             FillSecondaryTables<ThemeGeneralMasteringRow>(id, "Тема - ID",
-                FillThemeGeneralCompetetions, new ThemeGeneralMasteringColumns(),
+                FillThemeGeneralCompetetions, new ThemeGeneralMasteringColumns(this),
                 Data.ThemeGeneralMastering(id), Data.MThemeGeneralMastering(id));
         }
 
         public void FillThemeProfessionalCompetetions(uint id)
         {
             FillSecondaryTables<ThemeProfessionalMasteringRow>(id, "Тема - ID",
-                FillThemeProfessionalCompetetions, new ThemeProfessionalMasteringColumns(),
+                FillThemeProfessionalCompetetions, new ThemeProfessionalMasteringColumns(this),
                 Data.ThemeProfessionalMastering(id), Data.MThemeProfessionalMastering(id));
         }
 
         public void FillWorks(uint id)
         {
             FillSecondaryTables<WorkRow>(id, "Тема - ID", FillWorks,
-                new WorkColumns(), Data.Works(id), Data.MWorks(id));
+                new WorkColumns(this), Data.Works(id), Data.MWorks(id));
         }
 
         public void FillTasks(uint id)

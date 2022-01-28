@@ -20,7 +20,7 @@
             <RowDefinition Height="0.05*"/>
         </Grid.RowDefinitions>
 
-        <main:ProsperityHeader x:Name="Header" Grid.ColumnSpan="3" />
+        <main:WreathHeader x:Name="Header" Grid.ColumnSpan="3" />
         <main:MainPart x:Name="RowView" Grid.Row="2" Grid.Column="1" />
     </Grid>
 </Window>

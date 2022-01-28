@@ -5,9 +5,9 @@ using Wreath.Controls.Tables;
 namespace Wreath.Controls.MainForm
 {
     /// <summary>
-    /// Part responsible for primary tables selection
+    /// Part responsible for functionality switching
     /// </summary>
-    public partial class ProsperityHeader : UserControl
+    public partial class WreathHeader : UserControl
     {
         internal LayoutMaster Tables { get; set; }
         private LayoutMaster GetTablePart()
@@ -30,7 +30,7 @@ namespace Wreath.Controls.MainForm
             Tables = GetTablePart();
         }
 
-        public ProsperityHeader()
+        public WreathHeader()
         {
             InitializeComponent();
         }
