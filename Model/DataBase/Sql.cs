@@ -715,114 +715,114 @@ namespace Wreath.Model.DataBase
 
         public void DropAllConformity()
         {
-            ExecuteProcedure("drop_all_conformity");
+            ExecuteProcedure("drop_all_marked_conformity");
         }
 
         // Specialities
         public void DropAllSpecialities()
         {
-            ExecuteProcedure("drop_all_specialities");
+            ExecuteProcedure("drop_all_marked_specialities");
         }
 
         public void DropAllSpecialityCodes()
         {
-            ExecuteProcedure("drop_all_speciality_codes");
+            ExecuteProcedure("drop_all_marked_speciality_codes");
         }
 
         public void DropAllGeneralCompetetions()
         {
-            ExecuteProcedure("drop_all_general_competetions");
+            ExecuteProcedure("drop_all_marked_general_competetions");
         }
 
         public void DropAllProfessionalCompetetions()
         {
-            ExecuteProcedure("drop_all_professional_competetions");
+            ExecuteProcedure("drop_all_marked_professional_competetions");
         }
 
         // Disciplines
         public void DropAllDisciplines()
         {
-            ExecuteProcedure("drop_all_disciplines");
+            ExecuteProcedure("drop_all_marked_disciplines");
         }
 
         public void DropAllDisciplineCodes()
         {
-            ExecuteProcedure("drop_all_discipline_codes");
+            ExecuteProcedure("drop_all_marked_discipline_codes");
         }
 
         public void DropAllTotalHours()
         {
-            ExecuteProcedure("drop_all_hours");
+            ExecuteProcedure("drop_all_marked_hours");
         }
 
         public void DropAllTopics()
         {
-            ExecuteProcedure("drop_all_sections");
+            ExecuteProcedure("drop_all_marked_sections");
         }
 
         public void DropAllThemes()
         {
-            ExecuteProcedure("drop_all_themes");
+            ExecuteProcedure("drop_all_marked_themes");
         }
 
         public void DropAllWorks()
         {
-            ExecuteProcedure("drop_all_works");
+            ExecuteProcedure("drop_all_marked_works");
         }
 
         public void DropAllWorkTypes()
         {
-            ExecuteProcedure("drop_all_work_types");
+            ExecuteProcedure("drop_all_marked_work_types");
         }
 
         public void DropAllTasks()
         {
-            ExecuteProcedure("drop_all_tasks");
+            ExecuteProcedure("drop_all_marked_tasks");
         }
 
         public void DropAllMetaData()
         {
-            ExecuteProcedure("drop_all_meta_data");
+            ExecuteProcedure("drop_all_marked_meta_data");
         }
 
         public void DropAllMetaTypes()
         {
-            ExecuteProcedure("drop_all_meta_types");
+            ExecuteProcedure("drop_all_marked_meta_types");
         }
 
         public void DropAllSources()
         {
-            ExecuteProcedure("drop_all_sources");
+            ExecuteProcedure("drop_all_marked_sources");
         }
 
         public void DropAllSourceTypes()
         {
-            ExecuteProcedure("drop_all_source_types");
+            ExecuteProcedure("drop_all_marked_source_types");
         }
 
         public void DropAllGeneralMastering()
         {
-            ExecuteProcedure("drop_all_general_mastering");
+            ExecuteProcedure("drop_all_marked_general_mastering");
         }
 
         public void DropAllProfessionalMastering()
         {
-            ExecuteProcedure("drop_all_professional_mastering");
+            ExecuteProcedure("drop_all_marked_professional_mastering");
         }
 
         public void DropAllGeneralSelection()
         {
-            ExecuteProcedure("drop_all_general_selection");
+            ExecuteProcedure("drop_all_marked_general_selection");
         }
 
         public void DropAllProfessionalSelection()
         {
-            ExecuteProcedure("drop_all_professional_selection");
+            ExecuteProcedure("drop_all_marked_professional_selection");
         }
 
         public void DropAllLevels()
         {
-            ExecuteProcedure("drop_all_level");
+            ExecuteProcedure("drop_all_marked_level");
         }
     }
 }

@@ -47,7 +47,6 @@ namespace Wreath.Controls.MainForm
         private void FastActions(object sender, RoutedEventArgs e)
         {
             OpenDangerZone(false);
-            ViewModel.UnMarkRows(ViewModel.TableView.Records);
         }
 
         private void UnMarkAllRows(object sender, RoutedEventArgs e)

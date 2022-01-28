@@ -142,12 +142,18 @@ namespace Wreath.ViewModel
 
         public void UnMarkAll()
         {
+            if (!AllRowsDialog("Со всех записей будут сняты пометки."))
+                return;
             FastActions.Name();
+            RefreshTransition();
         }
 
         public void DropAll()
         {
+            if (!AllRowsDialog("Все записи будут полностью удалены."))
+                return;
             FastActions.Value();
+            RefreshTransition();
         }
 
         private void ConfirmUnMarking(StackPanel view)
@@ -184,10 +190,16 @@ namespace Wreath.ViewModel
                 ConfirmDrop(view);
         }
 
-        internal bool RowsAffectedDialog(string operation)
+        internal bool RowsAffectedDialog(string operation) => OptionsDialog("Подтверждение операции",
+                $"Будет {operation} записей: {SelectedRows}", "Продолжить");
+
+        internal bool AllRowsDialog(string operation) => OptionsDialog("Необратимая операция",
+                operation, "Вы уверены");
+
+        internal bool OptionsDialog(string operationName, string description, string confirm)
         {
-            string message = $"Будет {operation} записей: {SelectedRows}\nПродолжить?";
-            MessageBoxResult result = MessageBox.Show(message, "Подтверждение операции",
+            string message = $"{description}\n{confirm}?";
+            MessageBoxResult result = MessageBox.Show(message, operationName,
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
             return result == MessageBoxResult.Yes;
         }

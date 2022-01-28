@@ -61,7 +61,7 @@ namespace Wreath.Controls.MainForm {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/mainform/wreathheader.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/mainform/wreathheader.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\MainForm\WreathHeader.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
