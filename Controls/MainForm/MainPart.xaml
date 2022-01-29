@@ -76,9 +76,8 @@
 
         <Grid Grid.Row="2" Style="{StaticResource CaptionImpact1}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.1*"/>
-                <ColumnDefinition Width="0.14*"/>
+                <ColumnDefinition Width="0.32*"/>
+                <ColumnDefinition Width="0.32*"/>
                 <ColumnDefinition Width="0.02*"/>
                 <ColumnDefinition Width="0.05*"/>
                 <ColumnDefinition Width="0.02*"/>
@@ -89,11 +88,11 @@
                 <ColumnDefinition Width="0.04*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal">
-                <Viewbox>
+            <DockPanel>
+                <Viewbox DockPanel.Dock="Left">
                     <TextBlock Text=" Записи: " Style="{StaticResource Impact}" Padding="2" />
                 </Viewbox>
-                <Viewbox>
+                <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                     <TextBlock x:Name="CountRecords" Padding="2" Style="{StaticResource Impact}" >
                         <TextBlock.DataContext>
                             <Binding ElementName="TableViewControl" Path="DataContext"/>
@@ -103,9 +102,25 @@
                         </TextBlock.Text>
                     </TextBlock>
                 </Viewbox>
-            </StackPanel>
+            </DockPanel>
 
-            <Button x:Name="UnmarkAll" Grid.Column="4" Click="UnMarkAllRows" Style="{StaticResource InvisibleButton}">
+            <DockPanel Grid.Column="1">
+                <Viewbox DockPanel.Dock="Left">
+                    <TextBlock Text="Выделено: " Style="{StaticResource Impact}" Padding="2" />
+                </Viewbox>
+                <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                    <TextBlock Padding="2" Style="{StaticResource Impact}" >
+                        <TextBlock.DataContext>
+                            <Binding ElementName="MainRedactor" Path="DataContext"/>
+                        </TextBlock.DataContext>
+                        <TextBlock.Text>
+                            <Binding Path="SelectedRows" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Viewbox>
+            </DockPanel>
+
+            <Button x:Name="UnmarkAll" Grid.Column="3" Click="UnMarkAllRows" Style="{StaticResource InvisibleButton}">
                 <Button.ToolTip>
                     <TextBlock Text="Снять пометки со всех помеченных записей" />
                 </Button.ToolTip>
@@ -117,7 +132,7 @@
                 </Viewbox>
             </Button>
 
-            <Button x:Name="DropAll" Grid.Column="6" Click="DropAllRows" Style="{StaticResource InvisibleButton}">
+            <Button x:Name="DropAll" Grid.Column="5" Click="DropAllRows" Style="{StaticResource InvisibleButton}">
                 <Button.ToolTip>
                     <TextBlock Text="Удалить все помеченные записи" />
                 </Button.ToolTip>
@@ -129,7 +144,7 @@
                 </Viewbox>
             </Button>
 
-            <Button x:Name="FastAction" Grid.Column="4" Grid.ColumnSpan="3"
+            <Button x:Name="FastAction" Grid.Column="3" Grid.ColumnSpan="3"
                     Click="FastActions" Style="{StaticResource InvisibleButton}">
                 <Button.ToolTip>
                     <TextBlock Text="Быстрые действия" />
@@ -139,7 +154,7 @@
                 </Viewbox>
             </Button>
 
-            <Button Grid.Column="8" Style="{StaticResource InvisibleButton}" Click="UnMarkRows">
+            <Button Grid.Column="7" Style="{StaticResource InvisibleButton}" Click="UnMarkRows">
                 <Button.ToolTip>
                     <TextBlock Text="Снять пометки с выбранных записей" />
                 </Button.ToolTip>
@@ -151,7 +166,7 @@
                 </Viewbox>
             </Button>
 
-            <Button Grid.Column="10" Style="{StaticResource InvisibleButton}" Click="DropRows">
+            <Button Grid.Column="9" Style="{StaticResource InvisibleButton}" Click="DropRows">
                 <Button.ToolTip>
                     <TextBlock Text="Удалить выбранные записи" />
                 </Button.ToolTip>

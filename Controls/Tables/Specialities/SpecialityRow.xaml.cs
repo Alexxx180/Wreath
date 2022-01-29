@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -201,6 +202,14 @@ namespace Wreath.Controls.Tables.Specialities
             ComboBox selector = sender as ComboBox;
             CheckSelection(selector);
             e.Handled = true;
+        }
+
+        private void FastSelect(object sender, MouseEventArgs e)
+        {
+            if (!IsMarked)
+                return;
+            if (Keyboard.IsKeyDown(Key.LeftShift))
+                Select();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

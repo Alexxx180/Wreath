@@ -142,7 +142,7 @@ namespace Wreath.ViewModel
 
         public void UnMarkAll()
         {
-            if (!AllRowsDialog("Со всех записей будут сняты пометки."))
+            if (!AllRowsDialog("Со всех записей данного\nуровня будут сняты пометки."))
                 return;
             FastActions.Name();
             RefreshTransition();
@@ -150,7 +150,7 @@ namespace Wreath.ViewModel
 
         public void DropAll()
         {
-            if (!AllRowsDialog("Все записи будут полностью удалены."))
+            if (!AllRowsDialog("Все помеченные записи данного\nуровня будут полностью удалены."))
                 return;
             FastActions.Value();
             RefreshTransition();

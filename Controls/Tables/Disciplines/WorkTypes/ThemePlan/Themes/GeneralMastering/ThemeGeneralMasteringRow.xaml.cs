@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -161,6 +162,14 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.GeneralM
         public void UnMarkConfirm()
         {
             _tables.Tools.UnMarkRow.GeneralSelection(Id);
+        }
+
+        private void FastSelect(object sender, MouseEventArgs e)
+        {
+            if (!IsMarked)
+                return;
+            if (Keyboard.IsKeyDown(Key.LeftShift))
+                Select();
         }
 
         public void DropConfirm()

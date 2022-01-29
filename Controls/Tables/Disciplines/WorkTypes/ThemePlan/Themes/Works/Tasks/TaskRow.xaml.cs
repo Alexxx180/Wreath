@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using static System.Convert;
 using static Wreath.Controls.Tables.EditHelper;
+using System.Windows.Input;
 
 namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Tasks
 {
@@ -182,6 +183,15 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
         {
             _tables.Tools.DropRow.Task(Id);
         }
+
+        private void FastSelect(object sender, MouseEventArgs e)
+        {
+            if (!IsMarked)
+                return;
+            if (Keyboard.IsKeyDown(Key.LeftShift))
+                Select();
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

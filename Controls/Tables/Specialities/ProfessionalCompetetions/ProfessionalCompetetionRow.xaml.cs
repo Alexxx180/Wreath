@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -234,6 +235,14 @@ namespace Wreath.Controls.Tables.Specialities.ProfessionalCompetetions
         public void DropConfirm()
         {
             _tables.Tools.DropRow.ProfessionalCompetetion(Id);
+        }
+
+        private void FastSelect(object sender, MouseEventArgs e)
+        {
+            if (!IsMarked)
+                return;
+            if (Keyboard.IsKeyDown(Key.LeftShift))
+                Select();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
