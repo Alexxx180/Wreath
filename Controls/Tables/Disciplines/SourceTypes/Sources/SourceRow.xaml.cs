@@ -161,18 +161,6 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
             _tables = GetLayout(table);
         }
 
-        public void SetCode(uint id)
-        {
-            SourceType = id;
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.SourceTypes, "Типы источников:",
-                "Источник", _tables.FillSourceTypes, SetCode);
-            e.Handled = true;
-        }
-
         public void Index(int no)
         {
             No = no;

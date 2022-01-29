@@ -212,6 +212,17 @@ namespace Wreath.Controls.Tables.Specialities
                 Select();
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewFields(new Model.Pair<string, string>
+                ("Название", SpecialityName));
+        }
+
+        private void AnalyzeRow(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

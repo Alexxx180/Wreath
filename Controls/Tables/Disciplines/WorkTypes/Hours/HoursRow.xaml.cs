@@ -163,18 +163,6 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours
             _tables = GetLayout(table);
         }
 
-        public void SetCode(uint id)
-        {
-            HoursType = id;
-        }
-
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            SelectionFields(Id, _tables.Data.WorkTypes, "Типы работ:",
-                "Общие часы", _tables.FillWorkTypes, SetCode);
-            e.Handled = true;
-        }
-
         public void Index(int no)
         {
             No = no;

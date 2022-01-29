@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using static System.Convert;
-using static Wreath.Model.TransitionBase;
+using Wreath.Model;
 
 namespace Wreath.Controls.Tables
 {
@@ -20,36 +19,10 @@ namespace Wreath.Controls.Tables
             return tableView.Tag as LayoutMaster;
         }
 
-        public static void SelectionFields(
-            uint mainId, List<string[]> records,
-            string selectionName, string mainName,
-            Transition transition, Transition codeSelect)
+        public static void ViewFields(params Pair<string, string>[] row)
         {
-            RecordSelection dialog = FewFieldsDialog(records, selectionName, mainName);
-            SelectFromFewFields(mainId, dialog, transition, codeSelect);
-        }
-
-        public static RecordSelection FewFieldsDialog(List<string[]> records,
-            string selectionTableName, string mainTableName)
-        {
-            return new RecordSelection(records, selectionTableName, mainTableName);
-        }
-
-        public static void SelectFromFewFields(
-            uint mainId, RecordSelection selection,
-            Transition transition, Transition codeSelect)
-        {
-            if (selection.ShowDialog().Value)
-            {
-                if (selection.EditsNeeded)
-                {
-                    transition(mainId);
-                }
-                else
-                {
-                    codeSelect(selection.Id);
-                }
-            }
+            RecordFields fields = new RecordFields(row);
+            fields.Show();
         }
 
         private static string GetProposedText(TextBox textBox, string newText)
