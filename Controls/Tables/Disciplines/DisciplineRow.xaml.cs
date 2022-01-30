@@ -232,7 +232,7 @@ namespace Wreath.Controls.Tables.Disciplines
 
         private void AnalyzeRow(object sender, RoutedEventArgs e)
         {
-
+            _tables.AnalyzeDiscipline(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

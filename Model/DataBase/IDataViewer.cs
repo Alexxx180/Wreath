@@ -108,5 +108,14 @@ namespace Wreath.Model.DataBase
         public List<object[]> MDisciplineGeneralMasteringByTheme(uint value);
 
         public List<object[]> MDisciplineProfessionalMasteringByTheme(uint value);
+
+
+        public List<object> SpecialityMarkedRowsAnalyze(uint value);
+
+        public List<object> DisciplineMarkedRowsAnalyze(uint value);
+
+        public List<object> TopicMarkedRowsAnalyze(uint value);
+
+        public List<object> ThemeMarkedRowsAnalyze(uint value);
     }
 }

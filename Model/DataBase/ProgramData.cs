@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static Wreath.Model.DataBase.Converters;
 
 namespace Wreath.Model.DataBase
 {
@@ -9,112 +10,125 @@ namespace Wreath.Model.DataBase
     {
         public ProgramData(Sql connector)
         {
-            Converters.Connect(connector);
+            _dataBase = connector;
         }
 
-        public List<string[]> Conformity => Converters.Conformity;
+        public List<string[]> Conformity => ConvertAll(_dataBase.ConformityList(), ElementsToString);
 
-        public List<string[]> Specialities => Converters.Specialities;
+        public List<string[]> Specialities => ConvertAll(_dataBase.SpecialitiesList(), ElementsToString);
 
-        public List<string[]> SpecialityCodes => Converters.SpecialityCodes;
+        public List<string[]> SpecialityCodes => ConvertAll(_dataBase.SpecialityCodes(), ElementsToString);
 
-        public List<string[]> GeneralCompetetions(uint specialityId) => Converters.GeneralCompetetions(specialityId);
+        public List<string[]> GeneralCompetetions(uint specialityId) => ConvertAll(_dataBase.GeneralCompetetions(specialityId), ElementsToString);
 
-        public List<string[]> ProfessionalCompetetions(uint specialityId) => Converters.ProfessionalCompetetions(specialityId);
+        public List<string[]> ProfessionalCompetetions(uint specialityId) => ConvertAll(_dataBase.ProfessionalCompetetions(specialityId), ElementsToString);
 
-        public List<string[]> Disciplines => Converters.Disciplines;
+        public List<string[]> Disciplines => ConvertAll(_dataBase.DisciplinesList(), ElementsToString);
 
-        public List<string[]> DisciplineCodes => Converters.DisciplineCodes;
+        public List<string[]> DisciplineCodes => ConvertAll(_dataBase.DisciplineCodes(), ElementsToString);
 
-        public List<string[]> TotalHours(uint disciplineId) => Converters.TotalHours(disciplineId);
+        public List<string[]> TotalHours(uint disciplineId) => ConvertAll(_dataBase.TotalHours(disciplineId), ElementsToString);
 
-        public List<string[]> ThemePlan(uint disciplineId) => Converters.ThemePlan(disciplineId);
+        public List<string[]> ThemePlan(uint disciplineId) => ConvertAll(_dataBase.ThemePlan(disciplineId), ElementsToString);
 
-        public List<string[]> Themes(uint topicId) => Converters.Themes(topicId);
+        public List<string[]> Themes(uint topicId) => ConvertAll(_dataBase.Themes(topicId), ElementsToString);
 
-        public List<string[]> Works(uint themeId) => Converters.Works(themeId);
+        public List<string[]> Works(uint themeId) => ConvertAll(_dataBase.Works(themeId), ElementsToString);
 
-        public List<string[]> WorkTypes => Converters.WorkTypes;
+        public List<string[]> WorkTypes => ConvertAll(_dataBase.WorkTypes(), ElementsToString);
 
-        public List<string[]> Tasks(ulong workId) => Converters.Tasks(workId);
+        public List<string[]> Tasks(ulong workId) => ConvertAll(_dataBase.Tasks(workId), ElementsToString);
 
-        public List<string[]> MetaData(uint disciplineId) => Converters.MetaData(disciplineId);
+        public List<string[]> MetaData(uint disciplineId) => ConvertAll(_dataBase.MetaData(disciplineId), ElementsToString);
 
-        public List<string[]> MetaTypes => Converters.MetaTypes;
+        public List<string[]> MetaTypes => ConvertAll(_dataBase.MetaTypes(), ElementsToString);
 
-        public List<string[]> Sources(uint disciplineId) => Converters.Sources(disciplineId);
+        public List<string[]> Sources(uint disciplineId) => ConvertAll(_dataBase.Sources(disciplineId), ElementsToString);
 
-        public List<string[]> SourceTypes => Converters.SourceTypes;
+        public List<string[]> SourceTypes => ConvertAll(_dataBase.SourceTypes(), ElementsToString);
 
-        public List<string[]> DisciplineGeneralMastering(uint disciplineId) => Converters.DisciplineGeneralMastering(disciplineId);
+        public List<string[]> DisciplineGeneralMastering(uint disciplineId) => ConvertAll(_dataBase.DisciplineGeneralMastering(disciplineId), ElementsToString);
 
-        public List<string[]> DisciplineProfessionalMastering(uint disciplineId) => Converters.DisciplineProfessionalMastering(disciplineId);
+        public List<string[]> DisciplineProfessionalMastering(uint disciplineId) => ConvertAll(_dataBase.DisciplineProfessionalMastering(disciplineId), ElementsToString);
 
-        public List<string[]> ThemeGeneralMastering(uint themeId) => Converters.ThemeGeneralMastering(themeId);
+        public List<string[]> ThemeGeneralMastering(uint themeId) => ConvertAll(_dataBase.ThemeGeneralMastering(themeId), ElementsToString);
 
-        public List<string[]> ThemeProfessionalMastering(uint themeId) => Converters.ThemeProfessionalMastering(themeId);
+        public List<string[]> ThemeProfessionalMastering(uint themeId) => ConvertAll(_dataBase.ThemeProfessionalMastering(themeId), ElementsToString);
 
-        public List<string[]> ConformityGeneralCompetetions(uint disciplineId) => Converters.ConformityGeneralCompetetions(disciplineId);
+        public List<string[]> Levels => ConvertAll(_dataBase.Levels(), ElementsToString);
 
-        public List<string[]> ConformityProfessionalCompetetions(uint disciplineId) => Converters.ConformityProfessionalCompetetions(disciplineId);
+        public List<string[]> ConformityGeneralCompetetions(uint disciplineId) => ConvertAll(_dataBase.ConformityGeneralCompetetions(disciplineId), ElementsToString);
 
-        public List<string[]> DisciplineGeneralMasteringByTheme(uint themeId) => Converters.DisciplineGeneralMasteringByTheme(themeId);
+        public List<string[]> ConformityProfessionalCompetetions(uint disciplineId) => ConvertAll(_dataBase.ConformityProfessionalCompetetions(disciplineId), ElementsToString);
 
-        public List<string[]> DisciplineProfessionalMasteringByTheme(uint themeId) => Converters.DisciplineProfessionalMasteringByTheme(themeId);
+        public List<string[]> DisciplineGeneralMasteringByTheme(uint themeId) => ConvertAll(_dataBase.DisciplineGeneralMasteringByTheme(themeId), ElementsToString);
 
-        public List<string[]> Levels => Converters.Levels;
+        public List<string[]> DisciplineProfessionalMasteringByTheme(uint themeId) => ConvertAll(_dataBase.DisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
 
 
-        public List<string[]> MConformity => Converters.MConformity;
+        public List<string[]> MConformity => ConvertAll(_dataBase.MConformityList(), ElementsToString);
 
-        public List<string[]> MSpecialities => Converters.MSpecialities;
+        public List<string[]> MSpecialities => ConvertAll(_dataBase.MSpecialitiesList(), ElementsToString);
 
-        public List<string[]> MSpecialityCodes => Converters.MSpecialityCodes;
+        public List<string[]> MSpecialityCodes => ConvertAll(_dataBase.MSpecialityCodes(), ElementsToString);
 
-        public List<string[]> MGeneralCompetetions(uint specialityId) => Converters.MGeneralCompetetions(specialityId);
+        public List<string[]> MGeneralCompetetions(uint specialityId) => ConvertAll(_dataBase.MGeneralCompetetions(specialityId), ElementsToString);
 
-        public List<string[]> MProfessionalCompetetions(uint specialityId) => Converters.MProfessionalCompetetions(specialityId);
+        public List<string[]> MProfessionalCompetetions(uint specialityId) => ConvertAll(_dataBase.MProfessionalCompetetions(specialityId), ElementsToString);
 
-        public List<string[]> MDisciplines => Converters.MDisciplines;
+        public List<string[]> MDisciplines => ConvertAll(_dataBase.MDisciplinesList(), ElementsToString);
 
-        public List<string[]> MDisciplineCodes => Converters.MDisciplineCodes;
+        public List<string[]> MDisciplineCodes => ConvertAll(_dataBase.MDisciplineCodes(), ElementsToString);
 
-        public List<string[]> MTotalHours(uint disciplineId) => Converters.MTotalHours(disciplineId);
+        public List<string[]> MTotalHours(uint disciplineId) => ConvertAll(_dataBase.MTotalHours(disciplineId), ElementsToString);
 
-        public List<string[]> MThemePlan(uint disciplineId) => Converters.MThemePlan(disciplineId);
+        public List<string[]> MThemePlan(uint disciplineId) => ConvertAll(_dataBase.MThemePlan(disciplineId), ElementsToString);
 
-        public List<string[]> MThemes(uint topicId) => Converters.MThemes(topicId);
+        public List<string[]> MThemes(uint topicId) => ConvertAll(_dataBase.MThemes(topicId), ElementsToString);
 
-        public List<string[]> MWorks(uint themeId) => Converters.MWorks(themeId);
+        public List<string[]> MWorks(uint themeId) => ConvertAll(_dataBase.MWorks(themeId), ElementsToString);
 
-        public List<string[]> MWorkTypes => Converters.MWorkTypes;
+        public List<string[]> MWorkTypes => ConvertAll(_dataBase.MWorkTypes(), ElementsToString);
 
-        public List<string[]> MTasks(ulong workId) => Converters.MTasks(workId);
+        public List<string[]> MTasks(ulong workId) => ConvertAll(_dataBase.MTasks(workId), ElementsToString);
 
-        public List<string[]> MMetaData(uint disciplineId) => Converters.MMetaData(disciplineId);
+        public List<string[]> MMetaData(uint disciplineId) => ConvertAll(_dataBase.MMetaData(disciplineId), ElementsToString);
 
-        public List<string[]> MMetaTypes => Converters.MMetaTypes;
+        public List<string[]> MMetaTypes => ConvertAll(_dataBase.MMetaTypes(), ElementsToString);
 
-        public List<string[]> MSources(uint disciplineId) => Converters.MSources(disciplineId);
+        public List<string[]> MSources(uint disciplineId) => ConvertAll(_dataBase.MSources(disciplineId), ElementsToString);
 
-        public List<string[]> MSourceTypes => Converters.MSourceTypes;
+        public List<string[]> MSourceTypes => ConvertAll(_dataBase.MSourceTypes(), ElementsToString);
 
-        public List<string[]> MDisciplineGeneralMastering(uint disciplineId) => Converters.MDisciplineGeneralMastering(disciplineId);
+        public List<string[]> MDisciplineGeneralMastering(uint disciplineId) => ConvertAll(_dataBase.MDisciplineGeneralMastering(disciplineId), ElementsToString);
 
-        public List<string[]> MDisciplineProfessionalMastering(uint disciplineId) => Converters.MDisciplineProfessionalMastering(disciplineId);
+        public List<string[]> MDisciplineProfessionalMastering(uint disciplineId) => ConvertAll(_dataBase.MDisciplineProfessionalMastering(disciplineId), ElementsToString);
 
-        public List<string[]> MThemeGeneralMastering(uint themeId) => Converters.MThemeGeneralMastering(themeId);
+        public List<string[]> MThemeGeneralMastering(uint themeId) => ConvertAll(_dataBase.MThemeGeneralMastering(themeId), ElementsToString);
 
-        public List<string[]> MThemeProfessionalMastering(uint themeId) => Converters.MThemeProfessionalMastering(themeId);
+        public List<string[]> MThemeProfessionalMastering(uint themeId) => ConvertAll(_dataBase.MThemeProfessionalMastering(themeId), ElementsToString);
 
-        public List<string[]> MConformityGeneralCompetetions(uint disciplineId) => Converters.MConformityGeneralCompetetions(disciplineId);
+        public List<string[]> MLevels => ConvertAll(_dataBase.MLevels(), ElementsToString);
 
-        public List<string[]> MConformityProfessionalCompetetions(uint disciplineId) => Converters.MConformityProfessionalCompetetions(disciplineId);
+        public List<string[]> MConformityGeneralCompetetions(uint disciplineId) => ConvertAll(_dataBase.MConformityGeneralCompetetions(disciplineId), ElementsToString);
 
-        public List<string[]> MDisciplineGeneralMasteringByTheme(uint themeId) => Converters.MDisciplineGeneralMasteringByTheme(themeId);
+        public List<string[]> MConformityProfessionalCompetetions(uint disciplineId) => ConvertAll(_dataBase.MConformityProfessionalCompetetions(disciplineId), ElementsToString);
 
-        public List<string[]> MDisciplineProfessionalMasteringByTheme(uint themeId) => Converters.MDisciplineProfessionalMasteringByTheme(themeId);
+        public List<string[]> MDisciplineGeneralMasteringByTheme(uint themeId) => ConvertAll(_dataBase.MDisciplineGeneralMasteringByTheme(themeId), ElementsToString);
 
-        public List<string[]> MLevels => Converters.MLevels;
+        public List<string[]> MDisciplineProfessionalMasteringByTheme(uint themeId) => ConvertAll(_dataBase.MDisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
+
+
+        public List<string> SpecialityMarkedRowsAnalyze(uint disciplineId) => ConvertAll(_dataBase.SpecialityMarkedRowsAnalyze(disciplineId), ElementToString);
+
+        public List<string> DisciplineMarkedRowsAnalyze(uint disciplineId) => ConvertAll(_dataBase.DisciplineMarkedRowsAnalyze(disciplineId), ElementToString);
+
+        public List<string> TopicMarkedRowsAnalyze(uint themeId) => ConvertAll(_dataBase.TopicMarkedRowsAnalyze(themeId), ElementToString);
+
+        public List<string> ThemeMarkedRowsAnalyze(uint themeId) => ConvertAll(_dataBase.ThemeMarkedRowsAnalyze(themeId), ElementToString);
+
+        // Overall tables: 22
+
+        private readonly IDataViewer _dataBase;
     }
 }

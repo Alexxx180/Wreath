@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/specialities/generalcompetetions/generalcompete" +
-                    "tionrow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/specialities/generalcompetetions/gener" +
+                    "alcompetetionrow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Specialities\GeneralCompetetions\GeneralCompetetionRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

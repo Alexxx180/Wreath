@@ -7,11 +7,17 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AnalyzerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\FieldsForm\TextSection.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AnalyzerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\FieldsForm\TextSection.xaml">
       <SubType>Designer</SubType>
     </Page>

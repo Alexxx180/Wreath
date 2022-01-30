@@ -77,6 +77,16 @@ namespace Wreath.Model.DataBase
             return records;
         }
 
+        public List<object> GetRecords(string name,
+            string paramName, object value, in int column)
+        {
+            Procedure(name);
+            PassParameter(paramName, value);
+            List<object> records = ReadData(column);
+            ClearParameters();
+            return records;
+        }
+
         public List<object[]> GetRecords(string name, string paramName, object value)
         {
             Procedure(name);
@@ -365,6 +375,28 @@ namespace Wreath.Model.DataBase
         public List<object[]> MDisciplineProfessionalMasteringByTheme(uint value)
         {
             return GetRecords("get_discipline_professional_by_theme_marked", "theme_id", value);
+        }
+
+        // Data analyze methods - analyzer feature
+
+        public List<object> SpecialityMarkedRowsAnalyze(uint value)
+        {
+            return GetRecords("analyze_speciality", "speciality_id", value, 0);
+        }
+
+        public List<object> DisciplineMarkedRowsAnalyze(uint value)
+        {
+            return GetRecords("analyze_discipline", "discipline_id", value, 0);
+        }
+
+        public List<object> TopicMarkedRowsAnalyze(uint value)
+        {
+            return GetRecords("analyze_topic", "topic_id", value, 0);
+        }
+
+        public List<object> ThemeMarkedRowsAnalyze(uint value)
+        {
+            return GetRecords("analyze_theme", "theme_id", value, 0);
         }
 
         // Data editing methods

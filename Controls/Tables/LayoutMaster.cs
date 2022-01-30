@@ -389,6 +389,27 @@ namespace Wreath.Controls.Tables
                 Tools.UnMarkRow.AllLevel, Tools.DropRow.AllLevel);
         }
 
+        public void AnalyzeDiscipline(uint id)
+        {
+            List<string> rowCounts = Data.DisciplineMarkedRowsAnalyze(id);
+            AnalyzerWindow analyzer = new AnalyzerWindow();
+            analyzer.AddParent("Дисциплина, ID: " + id);
+            analyzer.AddElements(
+                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[0], new List<int> { }),
+                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[1], new List<int> { }),
+                new Pair<string, List<int>>("Источники: " + rowCounts[2], new List<int> { }),
+                new Pair<string, List<int>>("Метаданные: " + rowCounts[3], new List<int> { }),
+                new Pair<string, List<int>>("Общие часы: " + rowCounts[4], new List<int> { }),
+                new Pair<string, List<int>>("Разделы: " + rowCounts[5], new List<int> { }),
+                new Pair<string, List<int>>("Темы: " + rowCounts[6], new List<int> { }),
+                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[7], new List<int> { 5 }),
+                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[8], new List<int> { 5 }),
+                new Pair<string, List<int>>("Работы: " + rowCounts[9], new List<int> { 5 }),
+                new Pair<string, List<int>>("Задачи: " + rowCounts[10], new List<int> { 5, 2 })
+                );
+            analyzer.Show();
+        }
+
         private readonly Sql _connector;
         public RedactorTools Tools { get; }
         public ProgramData Data { get; }

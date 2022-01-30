@@ -135,3 +135,5 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\FieldsForm\TextSection.g.cs
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\RecordFields.g.cs
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\RecordFields.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\AnalyzerWindow.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\AnalyzerWindow.g.cs

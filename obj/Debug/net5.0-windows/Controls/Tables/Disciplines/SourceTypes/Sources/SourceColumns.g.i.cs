@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/sourcetypes/sources/sourcecolumns.x" +
-                    "aml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/sourcetypes/sources/source" +
+                    "columns.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\Controls\Tables\Disciplines\SourceTypes\Sources\SourceColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
