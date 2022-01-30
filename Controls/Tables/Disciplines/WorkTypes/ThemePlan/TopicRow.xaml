@@ -8,11 +8,31 @@
              d:DesignHeight="35" d:DesignWidth="800" MouseEnter="FastSelect">
     <Grid Height="35">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.85*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.65*" />
             <ColumnDefinition Width="0.15*" />
         </Grid.ColumnDefinitions>
 
-        <Button HorizontalContentAlignment="Stretch" Click="Select">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource ImpactButton2}" Click="ViewRow">
+                <Viewbox>
+                    <TextBlock Text="Q_-)" />
+                </Viewbox>
+            </Button>
+
+            <Button Grid.Column="1" Style="{StaticResource ImpactButton2}" Click="AnalyzeRow">
+                <Viewbox>
+                    <TextBlock Text="=M=" />
+                </Viewbox>
+            </Button>
+        </Grid>
+        
+        <Button HorizontalContentAlignment="Stretch" Grid.Column="1" Click="Select">
             <Button.IsEnabled>
                 <Binding Path="IsMarked" />
             </Button.IsEnabled>
@@ -21,10 +41,10 @@
             </Button.Style>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1875*" />
-                    <ColumnDefinition Width="0.1875*" />
-                    <ColumnDefinition Width="0.4375*" />
-                    <ColumnDefinition Width="0.1875*" />
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.45*" />
+                    <ColumnDefinition Width="0.2*" />
                 </Grid.ColumnDefinitions>
 
                 <Viewbox IsHitTestVisible="False">
@@ -47,7 +67,7 @@
             </Grid>
         </Button>
 
-        <Button Grid.Column="1" Style="{StaticResource ImpactButton2}" Click="GoToThemes">
+        <Button Grid.Column="2" Style="{StaticResource ImpactButton2}" Click="GoToThemes">
             <Viewbox>
                 <TextBlock Text="Темы" />
             </Viewbox>

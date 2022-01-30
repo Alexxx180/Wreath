@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using static System.Convert;
+using Wreath.Model;
 using static Wreath.Controls.Tables.EditHelper;
 
 namespace Wreath.Controls.Tables.Disciplines
@@ -222,6 +223,16 @@ namespace Wreath.Controls.Tables.Disciplines
                 return;
             if (Keyboard.IsKeyDown(Key.LeftShift))
                 Select();
+        }
+
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", DisciplineName);
+        }
+
+        private void AnalyzeRow(object sender, RoutedEventArgs e)
+        {
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -214,8 +214,7 @@ namespace Wreath.Controls.Tables.Specialities
 
         private void ViewRow(object sender, RoutedEventArgs e)
         {
-            ViewFields(new Model.Pair<string, string>
-                ("Название", SpecialityName));
+            ViewField("Название", SpecialityName);
         }
 
         private void AnalyzeRow(object sender, RoutedEventArgs e)

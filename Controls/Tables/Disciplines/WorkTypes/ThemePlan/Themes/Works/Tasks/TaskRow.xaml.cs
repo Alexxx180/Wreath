@@ -192,6 +192,10 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Ta
                 Select();
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", TaskName);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

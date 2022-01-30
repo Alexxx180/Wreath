@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
-             d:DesignHeight="35" d:DesignWidth="80">
-    <Button Height="35" Style="{StaticResource ImpactButton}" Click="SetText">
+             d:DesignHeight="60" d:DesignWidth="150">
+    <Button Height="60" Style="{StaticResource ImpactButton}" Click="SetText">
         <Viewbox>
             <TextBlock Text="{Binding Path=HeaderText}" />
         </Viewbox>

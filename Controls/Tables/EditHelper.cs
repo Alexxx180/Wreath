@@ -25,6 +25,12 @@ namespace Wreath.Controls.Tables
             fields.Show();
         }
 
+        public static void ViewField(string name, string value)
+        {
+            RecordFields fields = new RecordFields(name, value);
+            fields.Show();
+        }
+
         private static string GetProposedText(TextBox textBox, string newText)
         {
             var text = textBox.Text;

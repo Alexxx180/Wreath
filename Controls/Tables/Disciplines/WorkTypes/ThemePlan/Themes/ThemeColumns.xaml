@@ -7,34 +7,46 @@
              d:DesignHeight="35" d:DesignWidth="800">
     <Grid Height="35">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.125*" />
-            <ColumnDefinition Width="0.125*" />
-            <ColumnDefinition Width="0.35*" />
-            <ColumnDefinition Width="0.125*" />
-            <ColumnDefinition Width="0.125*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.65*" />
             <ColumnDefinition Width="0.15*" />
         </Grid.ColumnDefinitions>
 
         <Viewbox>
-            <TextBlock Text="№" />
+            <TextBlock Text="Действия" />
         </Viewbox>
         
-        <Viewbox Grid.Column="1">
-            <TextBlock Text="Номер" />
-        </Viewbox>
-        
-        <Viewbox Grid.Column="2">
-            <TextBlock Text="Наименование" />
-        </Viewbox>
-        <Viewbox Grid.Column="3">
-            <TextBlock Text="Часы" />
-        </Viewbox>
-        <Button Grid.Column="4" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*" />
+                <ColumnDefinition Width="0.175*" />
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="0.15*" />
+                <ColumnDefinition Width="0.125*" />
+            </Grid.ColumnDefinitions>
+
             <Viewbox>
-                <TextBlock Text="УК" />
+                <TextBlock Text="№" />
             </Viewbox>
-        </Button>
-        <Viewbox Grid.Column="5">
+
+            <Viewbox Grid.Column="1">
+                <TextBlock Text="Номер" />
+            </Viewbox>
+
+            <Viewbox Grid.Column="2">
+                <TextBlock Text="Наименование" />
+            </Viewbox>
+            <Viewbox Grid.Column="3">
+                <TextBlock Text="Часы" />
+            </Viewbox>
+            <Button Grid.Column="4" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+                <Viewbox>
+                    <TextBlock Text="УК" />
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Viewbox Grid.Column="2">
             <TextBlock Text="Далее" />
         </Viewbox>
     </Grid>

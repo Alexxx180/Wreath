@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using static System.Convert;
+using Wreath.Model;
 using static Wreath.Controls.Tables.EditHelper;
 
 namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
@@ -216,6 +217,15 @@ namespace Wreath.Controls.Tables.Specialities.GeneralCompetetions
                 return;
             if (Keyboard.IsKeyDown(Key.LeftShift))
                 Select();
+        }
+
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewFields(
+                new Pair<string, string>("Название", GeneralName),
+                new Pair<string, string>("Умения", Skills),
+                new Pair<string, string>("Знания", Knowledge)
+                );
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

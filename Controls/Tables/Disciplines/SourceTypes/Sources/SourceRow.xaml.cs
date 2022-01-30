@@ -190,6 +190,11 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes.Sources
                 Select();
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", Source);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

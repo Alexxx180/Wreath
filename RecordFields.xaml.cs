@@ -17,5 +17,10 @@ namespace Wreath
         {
             FieldsView.SeparateTopics(record);
         }
+
+        public RecordFields(string name, string value) : this()
+        {
+            FieldsView.SeparateTopic(name, value);
+        }
     }
 }

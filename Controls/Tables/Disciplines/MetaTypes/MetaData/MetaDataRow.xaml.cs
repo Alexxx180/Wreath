@@ -191,6 +191,11 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData
                 Select();
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", MetaValue);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

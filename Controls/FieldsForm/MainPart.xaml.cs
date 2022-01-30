@@ -14,7 +14,7 @@ namespace Wreath.Controls.FieldsForm
         private string _fullText;
         public string FullText
         {
-            get => _fullText;
+            get => _fullText ?? "";
             set
             {
                 _fullText = value;
@@ -32,15 +32,20 @@ namespace Wreath.Controls.FieldsForm
             for (byte i = 0; i < row.Length; i++)
             {
                 Pair<string, string> field = row[i];
-                TextSection topic = new TextSection(field.Name, field.Value);
-                topic.SetTextLabel(this);
-                _ = Sections.Children.Add(topic);
+                SeparateTopic(field.Name, field.Value);
             }
+        }
+
+        public void SeparateTopic(string name, string value)
+        {
+            TextSection topic = new TextSection(name, value);
+            topic.SetTextLabel(this);
+            _ = Sections.Children.Add(topic);
         }
 
         private void CopyText(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(FullText ?? "");
+            Clipboard.SetText(FullText);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -168,6 +168,11 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes
             _tables.Tools.DropRow.MetaType(Id);
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", MetaType);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

@@ -177,6 +177,11 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes
                 Select();
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", WorkType);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

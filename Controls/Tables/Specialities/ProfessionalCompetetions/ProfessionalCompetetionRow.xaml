@@ -6,59 +6,72 @@
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              d:DesignHeight="35" d:DesignWidth="800" MouseEnter="FastSelect">
-    <Button Height="35" HorizontalContentAlignment="Stretch" Click="Select">
-        <Button.IsEnabled>
-            <Binding Path="IsMarked" />
-        </Button.IsEnabled>
-        <Button.Style>
-            <Binding Path="Selection" />
-        </Button.Style>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.1*" />
-                <ColumnDefinition Width="0.1*" />
-                <ColumnDefinition Width="0.1*" />
-                <ColumnDefinition Width="0.25*" />
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.15*" />
-                <ColumnDefinition Width="0.15*" />
-            </Grid.ColumnDefinitions>
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.8*" />
+        </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False">
-                <TextBlock Text="{Binding Path=No}" />
+        <Button Style="{StaticResource ImpactButton2}" Click="ViewRow">
+            <Viewbox>
+                <TextBlock Text="Q_-) Осмотр" />
             </Viewbox>
+        </Button>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="1">
-                <TextBlock Text="{Binding Path=ProfessionalNo1}" />
-            </Viewbox>
+        <Button HorizontalContentAlignment="Stretch" Click="Select" Grid.Column="1">
+            <Button.IsEnabled>
+                <Binding Path="IsMarked" />
+            </Button.IsEnabled>
+            <Button.Style>
+                <Binding Path="Selection" />
+            </Button.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.15*" />
+                </Grid.ColumnDefinitions>
 
-            <Viewbox IsHitTestVisible="False" Grid.Column="2">
-                <TextBlock Text="{Binding Path=ProfessionalNo2}" />
-            </Viewbox>
+                <Viewbox IsHitTestVisible="False">
+                    <TextBlock Text="{Binding Path=No}" />
+                </Viewbox>
 
-            <TextBlock IsHitTestVisible="False" Grid.Column="3" Style="{StaticResource TextClipper}">
-                <TextBlock.Text>
-                    <Binding Path="ProfessionalName" />
-                </TextBlock.Text>
-            </TextBlock>
+                <Viewbox IsHitTestVisible="False" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=ProfessionalNo1}" />
+                </Viewbox>
 
-            <TextBlock IsHitTestVisible="False" Grid.Column="4" Style="{StaticResource TextClipper}">
-                <TextBlock.Text>
-                    <Binding Path="Experience" />
-                </TextBlock.Text>
-            </TextBlock>
+                <Viewbox IsHitTestVisible="False" Grid.Column="2">
+                    <TextBlock Text="{Binding Path=ProfessionalNo2}" />
+                </Viewbox>
 
-            <TextBlock IsHitTestVisible="False" Grid.Column="5" Style="{StaticResource TextClipper}">
-                <TextBlock.Text>
-                    <Binding Path="Skills" />
-                </TextBlock.Text>
-            </TextBlock>
+                <TextBlock IsHitTestVisible="False" Grid.Column="3" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="ProfessionalName" />
+                    </TextBlock.Text>
+                </TextBlock>
 
-            <TextBlock IsHitTestVisible="False" Grid.Column="6" Style="{StaticResource TextClipper}">
-                <TextBlock.Text>
-                    <Binding Path="Knowledge" />
-                </TextBlock.Text>
-            </TextBlock>
-        </Grid>
-    </Button>
+                <TextBlock IsHitTestVisible="False" Grid.Column="4" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="Experience" />
+                    </TextBlock.Text>
+                </TextBlock>
+
+                <TextBlock IsHitTestVisible="False" Grid.Column="5" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="Skills" />
+                    </TextBlock.Text>
+                </TextBlock>
+
+                <TextBlock IsHitTestVisible="False" Grid.Column="6" Style="{StaticResource TextClipper}">
+                    <TextBlock.Text>
+                        <Binding Path="Knowledge" />
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </Button>
+    </Grid>
 </UserControl>

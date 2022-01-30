@@ -218,6 +218,16 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan
                 Select();
         }
 
+        private void ViewRow(object sender, RoutedEventArgs e)
+        {
+            ViewField("Название", TopicName);
+        }
+
+        private void AnalyzeRow(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

@@ -7,26 +7,38 @@
              d:DesignHeight="35" d:DesignWidth="800">
     <Grid Height="35">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.15*" />
-            <ColumnDefinition Width="0.15*" />
-            <ColumnDefinition Width="0.4*" />
-            <ColumnDefinition Width="0.15*" />
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="0.65*" />
             <ColumnDefinition Width="0.15*" />
         </Grid.ColumnDefinitions>
 
         <Viewbox>
-            <TextBlock Text="№" />
+            <TextBlock Text="Действия" />
         </Viewbox>
-        <Viewbox Grid.Column="1">
-            <TextBlock Text="Номер" />
-        </Viewbox>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*" />
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.45*" />
+                <ColumnDefinition Width="0.2*" />
+            </Grid.ColumnDefinitions>
+
+            <Viewbox>
+                <TextBlock Text="№" />
+            </Viewbox>
+            <Viewbox Grid.Column="1">
+                <TextBlock Text="Номер" />
+            </Viewbox>
+            <Viewbox Grid.Column="2">
+                <TextBlock Text="Наименование" />
+            </Viewbox>
+            <Viewbox Grid.Column="3">
+                <TextBlock Text="Часы" />
+            </Viewbox>
+        </Grid>
+
         <Viewbox Grid.Column="2">
-            <TextBlock Text="Наименование" />
-        </Viewbox>
-        <Viewbox Grid.Column="3">
-            <TextBlock Text="Часы" />
-        </Viewbox>
-        <Viewbox Grid.Column="4">
             <TextBlock Text="Далее" />
         </Viewbox>
     </Grid>

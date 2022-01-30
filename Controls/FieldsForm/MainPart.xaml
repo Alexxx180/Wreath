@@ -12,28 +12,34 @@
             <ColumnDefinition Width="0.6*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="Sections">
+            
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.875*"/>
-                <RowDefinition Height="0.125*"/>
+                <RowDefinition />
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="Sections" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                
-            </StackPanel>
-            
-            <Button Grid.Row="1" Style="{StaticResource ImpactButton2}" Click="CopyText">
-                <Viewbox>
-                    <TextBlock Text="[:]:] Копировать" />
-                </Viewbox>
-            </Button>
-        </Grid>
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="TextView" Text="{Binding Path=FullText}" Padding="15" TextWrapping="Wrap" Style="{StaticResource CaptionImpact2}" FontSize="28" />
+            </ScrollViewer>
 
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <!--Style="{StaticResource CaptionSections}"
-            {Binding Path=FullText}
-            -->
-            <TextBlock Text="{Binding Path=FullText}" Padding="5" TextWrapping="Wrap" Foreground="Wheat" FontSize="28" />
-        </ScrollViewer>
+            <Grid Grid.Row="1" Style="{StaticResource CaptionImpact1}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Style="{StaticResource ImpactButton2}" Click="CopyText">
+                    <Viewbox>
+                        <TextBlock Text="[:]]" />
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

@@ -41,9 +41,9 @@
             </Button.Style>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.235*" />
-                    <ColumnDefinition Width="0.235*" />
-                    <ColumnDefinition Width="0.53*" />
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.6*" />
                 </Grid.ColumnDefinitions>
 
                 <Viewbox IsHitTestVisible="False">

@@ -8,20 +8,31 @@
     <Grid Height="35">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*" />
-            <ColumnDefinition Width="0.2*" />
-            <ColumnDefinition Width="0.6*" />
+            <ColumnDefinition Width="0.8*" />
         </Grid.ColumnDefinitions>
 
         <Viewbox>
-            <TextBlock Text="№" />
+            <TextBlock Text="Действия" />
         </Viewbox>
-        <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.6*" />
+            </Grid.ColumnDefinitions>
+
             <Viewbox>
-                <TextBlock Text="Тип" />
+                <TextBlock Text="№" />
             </Viewbox>
-        </Button>
-        <Viewbox Grid.Column="2">
-            <TextBlock Text="Наименование" />
-        </Viewbox>
+            <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+                <Viewbox>
+                    <TextBlock Text="Тип" />
+                </Viewbox>
+            </Button>
+            <Viewbox Grid.Column="2">
+                <TextBlock Text="Наименование" />
+            </Viewbox>
+        </Grid>
     </Grid>
 </UserControl>
