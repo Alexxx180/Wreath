@@ -27,6 +27,28 @@ namespace Wreath.Model.DataBase
             ConnectionMessage(problem, fullMessage);
         }
 
+        public static bool OperationViolatedMessage(in ulong count)
+        {
+            string noOperation = "Продолжать действие невозможно,";
+            string message = "\nт.к. эта запись используется.\n";
+            string useCount = "Использована раз: " + count;
+
+            string caption = "Отказ исполнения операции";
+            string fullMessage = noOperation + message + useCount;
+            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+            return true;
+        }
+
+        public static bool OperationViolated(in ulong count)
+        {
+            if (count > 0)
+            {
+                OperationViolatedMessage(0);
+                return true;
+            }
+            return false;
+        }
+
         public abstract void PassParameter(in string ParamName, in object newParam);
 
         public void PassParameters(Dictionary<string, object> parameters)
@@ -59,6 +81,11 @@ namespace Wreath.Model.DataBase
             PassParameters(parameters);
             OnlyExecute();
             ClearParameters();
+        }
+
+        public static object GetSingle(List<object> result)
+        {
+            return result[0];
         }
 
         public abstract List<object[]> ReadData();
@@ -399,6 +426,38 @@ namespace Wreath.Model.DataBase
             return GetRecords("analyze_theme", "theme_id", value, 0);
         }
 
+        // Used type-like records count
+
+        private object UsedWorkType(ulong value)
+        {
+            return GetSingle(GetRecords("get_work_type_linked", "type_id", value, 0));
+        }
+
+        private object UsedMetaType(ulong value)
+        {
+            return GetSingle(GetRecords("get_meta_type_linked", "type_id", value, 0));
+        }
+
+        private object UsedSourceType(ulong value)
+        {
+            return GetSingle(GetRecords("get_source_type_linked", "type_id", value, 0));
+        }
+
+        private object UsedLevel(ulong value)
+        {
+            return GetSingle(GetRecords("get_level_linked", "type_id", value, 0));
+        }
+
+        private object UsedDisciplineCode(ulong value)
+        {
+            return GetSingle(GetRecords("get_discipline_linked", "code_id", value, 0));
+        }
+
+        private object UsedSpecialityCode(ulong value)
+        {
+            return GetSingle(GetRecords("get_discipline_linked", "code_id", value, 0));
+        }
+
         // Data editing methods
 
         // Unmark elements
@@ -530,7 +589,8 @@ namespace Wreath.Model.DataBase
 
         public void DropSpecialityCode(ulong value)
         {
-            ExecuteProcedure("drop_speciality_code", "code_id", value);
+            if (!OperationViolated(Convert.ToUInt64(UsedSpecialityCode(value))))
+                ExecuteProcedure("drop_speciality_code", "code_id", value);
         }
 
         public void DropGeneralCompetetion(ulong value)
@@ -551,7 +611,8 @@ namespace Wreath.Model.DataBase
 
         public void DropDisciplineCode(ulong value)
         {
-            ExecuteProcedure("drop_discipline_code", "code_id", value);
+            if (!OperationViolated(Convert.ToUInt64(UsedDisciplineCode(value))))
+                ExecuteProcedure("drop_discipline_code", "code_id", value);
         }
 
         public void DropTotalHour(ulong value)
@@ -576,7 +637,8 @@ namespace Wreath.Model.DataBase
 
         public void DropWorkType(ulong value)
         {
-            ExecuteProcedure("drop_work_type", "type_id", value);
+            if (!OperationViolated(Convert.ToUInt64(UsedWorkType(value))))
+                ExecuteProcedure("drop_work_type", "type_id", value);
         }
 
         public void DropTask(ulong value)
@@ -591,7 +653,8 @@ namespace Wreath.Model.DataBase
 
         public void DropMetaType(ulong value)
         {
-            ExecuteProcedure("drop_meta_type", "type_id", value);
+            if (!OperationViolated(Convert.ToUInt64(UsedMetaType(value))))
+                ExecuteProcedure("drop_meta_type", "type_id", value);
         }
 
         public void DropSource(ulong value)
@@ -601,7 +664,8 @@ namespace Wreath.Model.DataBase
 
         public void DropSourceType(ulong value)
         {
-            ExecuteProcedure("drop_source_type", "type_id", value);
+            if (!OperationViolated(Convert.ToUInt64(UsedSourceType(value))))
+                ExecuteProcedure("drop_source_type", "type_id", value);
         }
 
         public void DropGeneralMastering(ulong value)
@@ -626,7 +690,8 @@ namespace Wreath.Model.DataBase
 
         public void DropLevel(ulong value)
         {
-            ExecuteProcedure("drop_level", "level_id", value);
+            if (!OperationViolated(Convert.ToUInt64(UsedLevel(value))))
+                ExecuteProcedure("drop_level", "level_id", value);
         }
 
         // Unmark all elements in table
@@ -745,6 +810,16 @@ namespace Wreath.Model.DataBase
 
         // Drop all marked elements in table
 
+        public static void DropAllCantBeApplied()
+        {
+            string noOperation = "Быстрое удаление не применимо";
+            string message = "\nк данным типам записей.";
+
+            string caption = "Отказ исполнения операции";
+            string fullMessage = noOperation + message;
+            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
         public void DropAllConformity()
         {
             ExecuteProcedure("drop_all_marked_conformity");
@@ -754,11 +829,6 @@ namespace Wreath.Model.DataBase
         public void DropAllSpecialities()
         {
             ExecuteProcedure("drop_all_marked_specialities");
-        }
-
-        public void DropAllSpecialityCodes()
-        {
-            ExecuteProcedure("drop_all_marked_speciality_codes");
         }
 
         public void DropAllGeneralCompetetions()
@@ -775,11 +845,6 @@ namespace Wreath.Model.DataBase
         public void DropAllDisciplines()
         {
             ExecuteProcedure("drop_all_marked_disciplines");
-        }
-
-        public void DropAllDisciplineCodes()
-        {
-            ExecuteProcedure("drop_all_marked_discipline_codes");
         }
 
         public void DropAllTotalHours()
@@ -802,11 +867,6 @@ namespace Wreath.Model.DataBase
             ExecuteProcedure("drop_all_marked_works");
         }
 
-        public void DropAllWorkTypes()
-        {
-            ExecuteProcedure("drop_all_marked_work_types");
-        }
-
         public void DropAllTasks()
         {
             ExecuteProcedure("drop_all_marked_tasks");
@@ -817,19 +877,9 @@ namespace Wreath.Model.DataBase
             ExecuteProcedure("drop_all_marked_meta_data");
         }
 
-        public void DropAllMetaTypes()
-        {
-            ExecuteProcedure("drop_all_marked_meta_types");
-        }
-
         public void DropAllSources()
         {
             ExecuteProcedure("drop_all_marked_sources");
-        }
-
-        public void DropAllSourceTypes()
-        {
-            ExecuteProcedure("drop_all_marked_source_types");
         }
 
         public void DropAllGeneralMastering()
@@ -850,11 +900,6 @@ namespace Wreath.Model.DataBase
         public void DropAllProfessionalSelection()
         {
             ExecuteProcedure("drop_all_marked_professional_selection");
-        }
-
-        public void DropAllLevels()
-        {
-            ExecuteProcedure("drop_all_marked_level");
         }
     }
 }

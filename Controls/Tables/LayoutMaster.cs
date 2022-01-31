@@ -350,7 +350,7 @@ namespace Wreath.Controls.Tables
             ViewModel.AddTransition(FillSpecialities, Before("Специальность - ID"), id);
             FillSecondaryTables<SpecialityCodeRow>(id, Before("Специальность - ID"), FillSpecialityCodes,
                 new SpecialityCodeColumns(), Data.SpecialityCodes, Data.MSpecialityCodes,
-                Tools.UnMarkRow.AllSpecialityCode, Tools.DropRow.AllSpecialityCode);
+                Tools.UnMarkRow.AllSpecialityCode, RedactorTools.Drop.None);
         }
 
         public void FillDisciplineCodes(uint id)
@@ -358,54 +358,91 @@ namespace Wreath.Controls.Tables
             ViewModel.AddTransition(FillDisciplines, "Ранее смотрели: Дисциплина - ID", id);
             FillSecondaryTables<DisciplineCodeRow>(id, Before("Дисциплина - ID"), FillDisciplineCodes,
                 new DisciplineCodeColumns(), Data.DisciplineCodes, Data.MDisciplineCodes,
-                Tools.UnMarkRow.AllDisciplineCode, Tools.DropRow.AllDisciplineCode);
+                Tools.UnMarkRow.AllDisciplineCode, RedactorTools.Drop.None);
         }
 
         public void FillWorkTypes(uint id)
         {
             FillSecondaryTables<WorkTypesRow>(id, Before("Работа | Час - ID"),
                 FillWorkTypes, new WorkTypesColumns(), Data.WorkTypes, Data.MWorkTypes,
-                Tools.UnMarkRow.AllWorkType, Tools.DropRow.AllWorkType);
+                Tools.UnMarkRow.AllWorkType, RedactorTools.Drop.None);
         }
 
         public void FillMetaTypes(uint id)
         {
             FillSecondaryTables<MetaTypeRow>(id, Before("Метаданные - ID"),
                 FillMetaTypes, new MetaTypeColumns(), Data.MetaTypes, Data.MMetaTypes,
-                Tools.UnMarkRow.AllMetaType, Tools.DropRow.AllMetaType);
+                Tools.UnMarkRow.AllMetaType, RedactorTools.Drop.None);
         }
 
         public void FillSourceTypes(uint id)
         {
             FillSecondaryTables<SourceTypeRow>(id, Before("Источник - ID"), FillSourceTypes,
                 new SourceTypeColumns(), Data.SourceTypes, Data.MSourceTypes,
-                Tools.UnMarkRow.AllSourceType, Tools.DropRow.AllSourceType);
+                Tools.UnMarkRow.AllSourceType, RedactorTools.Drop.None);
         }
 
         public void FillCompetetionLevels(uint id)
         {
             FillSecondaryTables<LevelRow>(id, Before("Тема - ID"), FillCompetetionLevels,
                 new LevelColumns(), Data.Levels, Data.MLevels,
-                Tools.UnMarkRow.AllLevel, Tools.DropRow.AllLevel);
+                Tools.UnMarkRow.AllLevel, RedactorTools.Drop.None);
+        }
+
+        public void AnalyzeSpeciality(uint id)
+        {
+            List<string> rowCounts = Data.SpecialityMarkedRowsAnalyze(id);
+            AnalyzerWindow analyzer = new AnalyzerWindow("Специальность, ID: " + id);
+            analyzer.AddElements(
+                new Pair<string, List<int>>("Общие компетенции: " + rowCounts[0], new List<int> { }),
+                new Pair<string, List<int>>("Профессиональные компетенции: " + rowCounts[1], new List<int> { })
+                );
+            analyzer.Show();
         }
 
         public void AnalyzeDiscipline(uint id)
         {
             List<string> rowCounts = Data.DisciplineMarkedRowsAnalyze(id);
-            AnalyzerWindow analyzer = new AnalyzerWindow();
-            analyzer.AddParent("Дисциплина, ID: " + id);
+            AnalyzerWindow analyzer = new AnalyzerWindow("Дисциплина, ID: " + id);
             analyzer.AddElements(
-                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[0], new List<int> { }),
-                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[1], new List<int> { }),
-                new Pair<string, List<int>>("Источники: " + rowCounts[2], new List<int> { }),
-                new Pair<string, List<int>>("Метаданные: " + rowCounts[3], new List<int> { }),
-                new Pair<string, List<int>>("Общие часы: " + rowCounts[4], new List<int> { }),
-                new Pair<string, List<int>>("Разделы: " + rowCounts[5], new List<int> { }),
-                new Pair<string, List<int>>("Темы: " + rowCounts[6], new List<int> { }),
-                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[7], new List<int> { 5 }),
-                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[8], new List<int> { 5 }),
-                new Pair<string, List<int>>("Работы: " + rowCounts[9], new List<int> { 5 }),
-                new Pair<string, List<int>>("Задачи: " + rowCounts[10], new List<int> { 5, 2 })
+                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[0], new List<int>()),
+                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[1], new List<int>()),
+                new Pair<string, List<int>>("Источники: " + rowCounts[2], new List<int>()),
+                new Pair<string, List<int>>("Метаданные: " + rowCounts[3], new List<int>()),
+                new Pair<string, List<int>>("Общие часы: " + rowCounts[4], new List<int>()),
+                new Pair<string, List<int>>("Разделы: " + rowCounts[5], new List<int>()),
+                new Pair<string, List<int>>("Темы: " + rowCounts[6], new List<int> { 5 }),
+                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[7], new List<int> { 5, 0 }),
+                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[8], new List<int> { 5, 0 }),
+                new Pair<string, List<int>>("Работы: " + rowCounts[9], new List<int> { 5, 0 }),
+                new Pair<string, List<int>>("Задачи: " + rowCounts[10], new List<int> { 5, 0, 2 })
+                );
+            analyzer.Show();
+        }
+
+        public void AnalyzeTopic(uint id)
+        {
+            List<string> rowCounts = Data.TopicMarkedRowsAnalyze(id);
+            AnalyzerWindow analyzer = new AnalyzerWindow("Раздел, ID: " + id);
+            analyzer.AddElements(
+                new Pair<string, List<int>>("Темы: " + rowCounts[0], new List<int>()),
+                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[1], new List<int> { 0 }),
+                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[2], new List<int> { 0 }),
+                new Pair<string, List<int>>("Работы: " + rowCounts[3], new List<int> { 0 }),
+                new Pair<string, List<int>>("Задачи: " + rowCounts[4], new List<int> { 0, 2 })
+                );
+            analyzer.Show();
+        }
+
+        public void AnalyzeTheme(uint id)
+        {
+            List<string> rowCounts = Data.ThemeMarkedRowsAnalyze(id);
+            AnalyzerWindow analyzer = new AnalyzerWindow("Тема, ID: " + id);
+            analyzer.AddElements(
+                new Pair<string, List<int>>("Освоение ОК: " + rowCounts[0], new List<int>()),
+                new Pair<string, List<int>>("Освоение ПК: " + rowCounts[1], new List<int>()),
+                new Pair<string, List<int>>("Работы: " + rowCounts[2], new List<int>()),
+                new Pair<string, List<int>>("Задачи: " + rowCounts[3], new List<int> { 2 })
                 );
             analyzer.Show();
         }

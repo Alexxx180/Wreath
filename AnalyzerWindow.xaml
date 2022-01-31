@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Анализ помеченных рядов" Height="450" Width="800">
+        Title="Анализ помеченных рядов" Height="450" Width="600" WindowStartupLocation="CenterScreen">
     <Grid Style="{StaticResource CaptionImpact2}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.025*"/>
@@ -14,14 +14,14 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.05*"/>
-            <RowDefinition Height="0.9*"/>
-            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.95*"/>
+            <RowDefinition Height="0.025*"/>
         </Grid.RowDefinitions>
 
         <TreeView Grid.Row="1" Grid.Column="1" Style="{StaticResource CaptionImpact1}">
             <TreeView.ItemsSource>
-                <Binding Path="RowsCountItems" />
+                <Binding Path="RowsCountItems"/>
             </TreeView.ItemsSource>
             <TreeView.FontSize>
                 28

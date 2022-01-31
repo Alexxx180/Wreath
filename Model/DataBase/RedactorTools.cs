@@ -368,11 +368,6 @@
                 DataBase.DropAllSpecialities();
             }
 
-            public void AllSpecialityCode()
-            {
-                DataBase.DropAllSpecialityCodes();
-            }
-
             public void AllGeneralCompetetion()
             {
                 DataBase.DropAllGeneralCompetetions();
@@ -386,11 +381,6 @@
             public void AllDiscipline()
             {
                 DataBase.DropAllDisciplines();
-            }
-
-            public void AllDisciplineCode()
-            {
-                DataBase.DropAllDisciplineCodes();
             }
 
             public void AllTotalHour()
@@ -413,11 +403,6 @@
                 DataBase.DropAllWorks();
             }
 
-            public void AllWorkType()
-            {
-                DataBase.DropAllWorkTypes();
-            }
-
             public void AllTask()
             {
                 DataBase.DropAllTasks();
@@ -428,19 +413,9 @@
                 DataBase.DropAllMetaData();
             }
 
-            public void AllMetaType()
-            {
-                DataBase.DropAllMetaTypes();
-            }
-
             public void AllSource()
             {
                 DataBase.DropAllSources();
-            }
-
-            public void AllSourceType()
-            {
-                DataBase.DropAllSourceTypes();
             }
 
             public void AllGeneralMastering()
@@ -463,9 +438,9 @@
                 DataBase.DropAllProfessionalSelection();
             }
 
-            public void AllLevel()
+            public static void None()
             {
-                DataBase.DropAllLevels();
+                Sql.DropAllCantBeApplied();
             }
         }
     }

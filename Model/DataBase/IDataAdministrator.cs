@@ -142,15 +142,11 @@
 
         public void DropAllSpecialities();
 
-        public void DropAllSpecialityCodes();
-
         public void DropAllGeneralCompetetions();
 
         public void DropAllProfessionalCompetetions();
 
         public void DropAllDisciplines();
-
-        public void DropAllDisciplineCodes();
 
         public void DropAllTotalHours();
 
@@ -160,17 +156,11 @@
 
         public void DropAllWorks();
 
-        public void DropAllWorkTypes();
-
         public void DropAllTasks();
 
         public void DropAllMetaData();
 
-        public void DropAllMetaTypes();
-
         public void DropAllSources();
-
-        public void DropAllSourceTypes();
 
         public void DropAllGeneralMastering();
 
@@ -179,7 +169,5 @@
         public void DropAllGeneralSelection();
 
         public void DropAllProfessionalSelection();
-
-        public void DropAllLevels();
     }
 }

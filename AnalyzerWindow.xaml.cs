@@ -24,15 +24,20 @@ namespace Wreath
             }
         }
 
-        public AnalyzerWindow()
+        private AnalyzerWindow()
         {
             InitializeComponent();
             RowsCountItems = new ObservableCollection<TreeViewItem>();
         }
 
+        public AnalyzerWindow(string name) : this()
+        {
+            SetParent(name);
+        }
+
         public void AddElements(params Pair<string, List<int>>[] items)
         {
-            for (byte i = 1; i < items.Length; i++)
+            for (byte i = 0; i < items.Length; i++)
             {
                 Pair<string, List<int>> item = items[i];
                 AddElement(item.Value, item.Name);
@@ -48,18 +53,16 @@ namespace Wreath
             OnPropertyChanged(nameof(RowsCountItems));
         }
 
-        public void AddParent(string name)
+        private void SetParent(string name)
         {
             TreeViewItem rowItem = RowCountItem(name);
             RowsCountItems.Add(rowItem);
             OnPropertyChanged(nameof(RowsCountItems));
         }
 
-        private TreeViewItem PeekItem(TreeViewItem rowItem, int deepLevel)
+        private static TreeViewItem PeekItem(TreeViewItem rowItem, int deepLevel)
         {
-            //ItemCollection itemCollection = ;
-            System.Diagnostics.Trace.WriteLine(rowItem.Header);
-            TreeViewItem deeperItem = (TreeViewItem)rowItem.Items[deepLevel];
+            TreeViewItem deeperItem = rowItem.Items[deepLevel] as TreeViewItem;
             return deeperItem;
         }
 

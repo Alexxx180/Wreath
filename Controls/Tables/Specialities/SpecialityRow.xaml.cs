@@ -219,7 +219,7 @@ namespace Wreath.Controls.Tables.Specialities
 
         private void AnalyzeRow(object sender, RoutedEventArgs e)
         {
-            
+            _tables.AnalyzeSpeciality(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

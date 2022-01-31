@@ -225,7 +225,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan
 
         private void AnalyzeRow(object sender, RoutedEventArgs e)
         {
-
+            _tables.AnalyzeTopic(Id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
