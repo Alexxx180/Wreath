@@ -445,7 +445,7 @@ namespace Wreath.Model.DataBase
 
         private object UsedLevel(ulong value)
         {
-            return GetSingle(GetRecords("get_level_linked", "type_id", value, 0));
+            return GetSingle(GetRecords("get_level_linked", "level_id", value, 0));
         }
 
         private object UsedDisciplineCode(ulong value)
