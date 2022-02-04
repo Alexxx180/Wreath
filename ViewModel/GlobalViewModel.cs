@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using Wreath.Model;
 using Wreath.Controls.Tables;
 using System.Windows.Controls;
+using Wreath.Model.DataBase;
 
 namespace Wreath.ViewModel
 {
@@ -14,6 +15,7 @@ namespace Wreath.ViewModel
         public GlobalViewModel()
         {
             CurrentState = _defaultState;
+            Connector = new MySQL();
             Transitions = new Stack();
             SelectedRowIndexes = new Dictionary<int, ulong>();
             TableView = new LayoutMaster(this);
@@ -193,16 +195,18 @@ namespace Wreath.ViewModel
         internal bool RowsAffectedDialog(string operation) => OptionsDialog("Подтверждение операции",
                 $"Будет {operation} записей: {SelectedRows}", "Продолжить");
 
-        internal bool AllRowsDialog(string operation) => OptionsDialog("Необратимая операция",
+        internal static bool AllRowsDialog(string operation) => OptionsDialog("Необратимая операция",
                 operation, "Вы уверены");
 
-        internal bool OptionsDialog(string operationName, string description, string confirm)
+        internal static bool OptionsDialog(string operationName, string description, string confirm)
         {
             string message = $"{description}\n{confirm}?";
             MessageBoxResult result = MessageBox.Show(message, operationName,
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
             return result == MessageBoxResult.Yes;
         }
+
+        internal readonly Sql Connector;
 
         private LayoutMaster _tableView;
         public LayoutMaster TableView

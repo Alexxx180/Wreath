@@ -137,3 +137,15 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\RecordFields.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\AnalyzerWindow.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\AnalyzerWindow.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\SizeScalingPart.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\SizeScalingPart.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\SizeScaler.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\SizeScaler.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorColumns.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorRow.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\RolesPart.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorColumns.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorRow.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\RolesPart.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorRowAdditor.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorRowAdditor.baml

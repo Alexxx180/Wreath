@@ -1,10 +1,10 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using static System.Convert;
 using static Wreath.Controls.Tables.EditHelper;
-using System.Windows.Input;
 
 namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works
 {

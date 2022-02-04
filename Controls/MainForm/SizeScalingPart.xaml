@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Wreath.Controls.MainForm.SizeScalingPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:viewModel="clr-namespace:Wreath.ViewModel"
+             xmlns:main="clr-namespace:Wreath.Controls.MainForm"
+             x:Name="ScalingPanel"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:GlobalViewModel/>
+    </UserControl.DataContext>
+    <Grid Style="{StaticResource CaptionImpact2}" DataContext="{Binding ElementName=ScalingPanel}" x:Name="MainPanel">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.125715*"/>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="0.125714*"/>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="0.125714*"/>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="0.125714*"/>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="0.125714*"/>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="0.125714*"/>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="0.125715*"/>
+        </Grid.RowDefinitions>
+
+        <main:SizeScaler Grid.Row="0" Grid.Column="0" TableName="Дисциплины" ColumnName="Имя" ScaleMethod="IncreaseDisciplinesName" CheckSizeMethod="CheckDisciplinesName" />
+        <main:SizeScaler Grid.Row="2" Grid.Column="0" TableName="Коды дисциплин" ColumnName="Код" ScaleMethod="IncreaseDisciplineCodesCode" CheckSizeMethod="CheckDisciplineCodesCode" />
+        <main:SizeScaler Grid.Row="4" Grid.Column="0" TableName="ОК" ColumnName="Имя" ScaleMethod="IncreaseGeneralCompetetionsName" CheckSizeMethod="CheckGeneralCompetetionsKnowledge" />
+        <main:SizeScaler Grid.Row="6" Grid.Column="0" TableName="ОК" ColumnName="Знания" ScaleMethod="IncreaseGeneralCompetetionsKnowledge" CheckSizeMethod="CheckGeneralCompetetionsName" />
+        <main:SizeScaler Grid.Row="8" Grid.Column="0" TableName="ОК" ColumnName="Умения" ScaleMethod="IncreaseGeneralCompetetionsSkills" CheckSizeMethod="CheckGeneralCompetetionsSkills" />
+        <main:SizeScaler Grid.Row="10" Grid.Column="0" TableName="УК" ColumnName="Имя" ScaleMethod="IncreaseLevelsDescription" CheckSizeMethod="CheckLevelsDescription" />
+        <main:SizeScaler Grid.Row="12" Grid.Column="0" TableName="УК" ColumnName="Описание" ScaleMethod="IncreaseLevelsName" CheckSizeMethod="CheckLevelsName" />
+        
+        <main:SizeScaler Grid.Row="0" Grid.Column="2" TableName="Метаданные" ColumnName="Имя" ScaleMethod="IncreaseMetaDataName" CheckSizeMethod="CheckMetaDataName" />
+        <main:SizeScaler Grid.Row="2" Grid.Column="2" TableName="Типы метаданных" ColumnName="Имя" ScaleMethod="IncreaseMetaTypesName" CheckSizeMethod="CheckMetaTypesName" />
+        <main:SizeScaler Grid.Row="4" Grid.Column="2" TableName="ПК" ColumnName="Имя" ScaleMethod="IncreaseProfessionalCompetetionsName" CheckSizeMethod="CheckProfessionalCompetetionsName" />
+        <main:SizeScaler Grid.Row="6" Grid.Column="2" TableName="ПК" ColumnName="Знания" ScaleMethod="IncreaseProfessionalCompetetionsKnowledge" CheckSizeMethod="CheckProfessionalCompetetionsKnowledge" />
+        <main:SizeScaler Grid.Row="8" Grid.Column="2" TableName="ПК" ColumnName="Умения" ScaleMethod="IncreaseProfessionalCompetetionsSkills" CheckSizeMethod="CheckProfessionalCompetetionsSkills" />
+        <main:SizeScaler Grid.Row="10" Grid.Column="2" TableName="ПК" ColumnName="Опыт" ScaleMethod="IncreaseProfessionalCompetetionsExperience" CheckSizeMethod="CheckProfessionalCompetetionsExperience" />
+        <main:SizeScaler Grid.Row="12" Grid.Column="2" TableName="Типы работ" ColumnName="Имя" ScaleMethod="IncreaseWorkTypesName" CheckSizeMethod="CheckWorkTypesName" />
+
+        <main:SizeScaler Grid.Row="0" Grid.Column="4" TableName="Специальности" ColumnName="Имя" ScaleMethod="IncreaseSpecialitiesName" CheckSizeMethod="CheckSpecialitiesName" />
+        <main:SizeScaler Grid.Row="2" Grid.Column="4" TableName="Коды спец." ColumnName="Код" ScaleMethod="IncreaseSpecialityCodesCode" CheckSizeMethod="CheckSpecialityCodesCode" />
+        <main:SizeScaler Grid.Row="4" Grid.Column="4" TableName="Источники" ColumnName="Имя" ScaleMethod="IncreaseSourcesName" CheckSizeMethod="CheckSourcesName" />
+        <main:SizeScaler Grid.Row="6" Grid.Column="4" TableName="Типы источников" ColumnName="Имя" ScaleMethod="IncreaseSourceTypesName" CheckSizeMethod="CheckSourceTypesName" />
+        <main:SizeScaler Grid.Row="8" Grid.Column="4" TableName="Разделы" ColumnName="Имя" ScaleMethod="IncreaseThemePlanName" CheckSizeMethod="CheckThemePlanName" />
+        <main:SizeScaler Grid.Row="10" Grid.Column="4" TableName="Темы" ColumnName="Имя" ScaleMethod="IncreaseThemesName" CheckSizeMethod="CheckThemesName" />
+        <main:SizeScaler Grid.Row="12" Grid.Column="4" TableName="Задачи" ColumnName="Имя" ScaleMethod="IncreaseTasksName" CheckSizeMethod="CheckTasksName" />
+    </Grid>
+</UserControl>

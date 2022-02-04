@@ -1,6 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using Wreath.Controls.Tables;
+using Wreath.ViewModel;
+using Wreath.Model;
 
 namespace Wreath.Controls.MainForm
 {
@@ -9,13 +12,15 @@ namespace Wreath.Controls.MainForm
     /// </summary>
     public partial class WreathHeader : UserControl
     {
+        internal GlobalViewModel ViewModel { get; set; }
         internal LayoutMaster Tables { get; set; }
-        private LayoutMaster GetTablePart()
+
+        private MainWindow _layout;
+
+        private MainWindow GetMainPart()
         {
             Grid mainGrid = Parent as Grid;
-            MainWindow window = mainGrid.Parent as MainWindow;
-            MainPart rowView = window.RowView;
-            return rowView.ViewModel.TableView;
+            return mainGrid.Parent as MainWindow;
         }
 
         // Set table view and table by default
@@ -27,12 +32,36 @@ namespace Wreath.Controls.MainForm
 
         public void SetTablePart()
         {
-            Tables = GetTablePart();
+            _layout = GetMainPart();
+            ViewModel = _layout.RowView.ViewModel;
+            Tables = ViewModel.TableView;
+
+            Records.Tag = _layout.RowView;
+            ColumnSizes.Tag = _layout.SizeScaler;
+            Roles.Tag = _layout.Roles;
+            _lastVisited = new Pair<Button, UserControl>(Records, _layout.RowView);
         }
 
         public WreathHeader()
         {
             InitializeComponent();
+        }
+
+        private Pair<Button, UserControl> _lastVisited;
+
+        private void ChangeTab(object sender, RoutedEventArgs e)
+        {
+            _lastVisited.Name.SetActive(true);
+            _lastVisited.Value.SetActive(false);
+
+            Button tab = sender as Button;
+            UserControl panel = tab.Tag as UserControl;
+
+            tab.SetActive(false);
+            panel.SetActive(true);
+
+            _lastVisited.Name = tab;
+            _lastVisited.Value = panel;
         }
 
         private void CheckSelection(ComboBox selector)

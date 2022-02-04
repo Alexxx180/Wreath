@@ -13,12 +13,48 @@
     <Compile Update="Controls\FieldsForm\TextSection.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\MainForm\RolesPart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\MainForm\SizeScaler.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\MainForm\SizeScalingPart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Users\RedactorColumns.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Users\RedactorRow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Users\RedactorRowAdditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AnalyzerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\FieldsForm\TextSection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MainForm\RolesPart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MainForm\SizeScaler.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MainForm\SizeScalingPart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Users\RedactorColumns.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Users\RedactorRow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Users\RedactorRowAdditor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

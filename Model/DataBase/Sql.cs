@@ -7,7 +7,7 @@ namespace Wreath.Model.DataBase
     /// <summary>
     /// Class containing necessary methods to work with database
     /// </summary>
-    public abstract class Sql : IDataViewer, IDataAdministrator
+    public abstract class Sql : IDataViewer, IDataAdministrator, ISizeScaler, IRolesAdministrating
     {
         public static void ConnectionMessage(string loadProblem, string exception)
         {
@@ -101,6 +101,13 @@ namespace Wreath.Model.DataBase
             Procedure(name);
             List<object[]> records = ReadData();
             ClearParameters();
+            return records;
+        }
+
+        public List<object> GetRecords(string name, in int column)
+        {
+            Procedure(name);
+            List<object> records = ReadData(column);
             return records;
         }
 
@@ -900,6 +907,247 @@ namespace Wreath.Model.DataBase
         public void DropAllProfessionalSelection()
         {
             ExecuteProcedure("drop_all_marked_professional_selection");
+        }
+
+        // Increase size in data columns
+
+        public void IncreaseDisciplinesName(ushort value)
+        {
+            ExecuteProcedure("increase_disciplines_name", "column_size", value);
+        }
+
+        public void IncreaseDisciplineCodesCode(ushort value)
+        {
+            ExecuteProcedure("increase_discipline_codes_code", "column_size", value);
+        }
+
+        public void IncreaseGeneralCompetetionsKnowledge(ushort value)
+        {
+            ExecuteProcedure("increase_general_competetions_knowledge", "column_size", value);
+        }
+
+        public void IncreaseGeneralCompetetionsName(ushort value)
+        {
+            ExecuteProcedure("increase_general_competetions_name", "column_size", value);
+        }
+
+        public void IncreaseGeneralCompetetionsSkills(ushort value)
+        {
+            ExecuteProcedure("increase_general_competetions_skills", "column_size", value);
+        }
+
+        public void IncreaseLevelsDescription(ushort value)
+        {
+            ExecuteProcedure("increase_levels_description", "column_size", value);
+        }
+
+        public void IncreaseLevelsName(ushort value)
+        {
+            ExecuteProcedure("increase_levels_name", "column_size", value);
+        }
+
+        public void IncreaseMetaDataName(ushort value)
+        {
+            ExecuteProcedure("increase_meta_data_name", "column_size", value);
+        }
+
+        public void IncreaseMetaTypesName(ushort value)
+        {
+            ExecuteProcedure("increase_meta_types_name", "column_size", value);
+        }
+
+        public void IncreaseProfessionalCompetetionsExperience(ushort value)
+        {
+            ExecuteProcedure("increase_professional_competetions_experience", "column_size", value);
+        }
+
+        public void IncreaseProfessionalCompetetionsKnowledge(ushort value)
+        {
+            ExecuteProcedure("increase_professional_competetions_knowledge", "column_size", value);
+        }
+
+        public void IncreaseProfessionalCompetetionsName(ushort value)
+        {
+            ExecuteProcedure("increase_professional_competetions_name", "column_size", value);
+        }
+
+        public void IncreaseProfessionalCompetetionsSkills(ushort value)
+        {
+            ExecuteProcedure("increase_professional_competetions_skills", "column_size", value);
+        }
+
+        public void IncreaseSourcesName(ushort value)
+        {
+            ExecuteProcedure("increase_sources_name", "column_size", value);
+        }
+
+        public void IncreaseSourceTypesName(ushort value)
+        {
+            ExecuteProcedure("increase_source_types_name", "column_size", value);
+        }
+
+        public void IncreaseSpecialitiesName(ushort value)
+        {
+            ExecuteProcedure("increase_specialities_name", "column_size", value);
+        }
+
+        public void IncreaseSpecialityCodesCode(ushort value)
+        {
+            ExecuteProcedure("increase_speciality_codes_code", "column_size", value);
+        }
+
+        public void IncreaseTasksName(ushort value)
+        {
+            ExecuteProcedure("increase_tasks_name", "column_size", value);
+        }
+
+        public void IncreaseThemesName(ushort value)
+        {
+            ExecuteProcedure("increase_themes_name", "column_size", value);
+        }
+
+        public void IncreaseThemePlanName(ushort value)
+        {
+            ExecuteProcedure("increase_theme_plan_name", "column_size", value);
+        }
+
+        public void IncreaseWorkTypesName(ushort value)
+        {
+            ExecuteProcedure("increase_work_types_name", "column_size", value);
+        }
+
+        // Check column size methods
+
+        public object CheckDisciplinesName()
+        {
+            return GetSingle(GetRecords("check_disciplines_name", 0));
+        }
+
+        public object CheckDisciplineCodesCode()
+        {
+            return GetSingle(GetRecords("check_discipline_codes_code", 0));
+        }
+
+        public object CheckGeneralCompetetionsKnowledge()
+        {
+            return GetSingle(GetRecords("check_general_competetions_knowledge", 0));
+        }
+
+        public object CheckGeneralCompetetionsName()
+        {
+            return GetSingle(GetRecords("check_general_competetions_name", 0));
+        }
+
+        public object CheckGeneralCompetetionsSkills()
+        {
+            return GetSingle(GetRecords("check_general_competetions_skills", 0));
+        }
+
+        public object CheckLevelsDescription()
+        {
+            return GetSingle(GetRecords("check_levels_description", 0));
+        }
+
+        public object CheckLevelsName()
+        {
+            return GetSingle(GetRecords("check_levels_name", 0));
+        }
+
+        public object CheckMetaDataName()
+        {
+            return GetSingle(GetRecords("check_meta_data_name", 0));
+        }
+
+        public object CheckMetaTypesName()
+        {
+            return GetSingle(GetRecords("check_meta_types_name", 0));
+        }
+
+        public object CheckProfessionalCompetetionsExperience()
+        {
+            return GetSingle(GetRecords("check_professional_competetions_experience", 0));
+        }
+
+        public object CheckProfessionalCompetetionsKnowledge()
+        {
+            return GetSingle(GetRecords("check_professional_competetions_knowledge", 0));
+        }
+
+        public object CheckProfessionalCompetetionsName()
+        {
+            return GetSingle(GetRecords("check_professional_competetions_name", 0));
+        }
+
+        public object CheckProfessionalCompetetionsSkills()
+        {
+            return GetSingle(GetRecords("check_professional_competetions_skills", 0));
+        }
+
+        public object CheckSourcesName()
+        {
+            return GetSingle(GetRecords("check_sources_name", 0));
+        }
+
+        public object CheckSourceTypesName()
+        {
+            return GetSingle(GetRecords("check_source_types_name", 0));
+        }
+
+        public object CheckSpecialitiesName()
+        {
+            return GetSingle(GetRecords("check_specialities_name", 0));
+        }
+
+        public object CheckSpecialityCodesCode()
+        {
+            return GetSingle(GetRecords("check_speciality_codes_code", 0));
+        }
+
+        public object CheckTasksName()
+        {
+            return GetSingle(GetRecords("check_tasks_name", 0));
+        }
+
+        public object CheckThemesName()
+        {
+            return GetSingle(GetRecords("check_themes_name", 0));
+        }
+
+        public object CheckThemePlanName()
+        {
+            return GetSingle(GetRecords("check_theme_plan_name", 0));
+        }
+
+        public object CheckWorkTypesName()
+        {
+            return GetSingle(GetRecords("check_work_types_name", 0));
+        }
+
+        // Roles administrating
+
+        public List<object[]> GetRedactors()
+        {
+            return GetRecords("get_redactors");
+        }
+
+        public object CountRedactors(string value)
+        {
+            return GetSingle(GetRecords("check_redactor", "redactor_login", value, 0));
+        }
+
+        public void AddRedactor(Dictionary<string, object> parameters)
+        {
+            ExecuteProcedure("add_redactor", parameters);
+        }
+
+        public void ResetRedactorPass(Dictionary<string, object> parameters)
+        {
+            ExecuteProcedure("reset_redactor_pass", parameters);
+        }
+
+        public void DropRedactor(Dictionary<string, object> parameters)
+        {
+            ExecuteProcedure("drop_redactor", parameters);
         }
     }
 }

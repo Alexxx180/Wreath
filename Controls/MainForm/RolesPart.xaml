@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Wreath.Controls.MainForm.RolesPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:users="clr-namespace:Wreath.Controls.Users"
+             xmlns:viewModel="clr-namespace:Wreath.ViewModel"
+             mc:Ignorable="d" 
+             x:Name="RolesPanel"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:GlobalViewModel/>
+    </UserControl.DataContext>
+    <Grid DataContext="{Binding ElementName=RolesPanel}">
+        <ScrollViewer>
+            <ScrollViewer.VerticalScrollBarVisibility>
+                Auto
+            </ScrollViewer.VerticalScrollBarVisibility>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*" />
+                    <RowDefinition Height="0.9*" />
+                </Grid.RowDefinitions>
+
+                <Border x:Name="CurrentHeaders" Style="{StaticResource CaptionImpact1}">
+                    <users:RedactorColumns/>
+                </Border>
+
+                <Border x:Name="TableViewControl" Grid.Row="1" Style="{StaticResource CaptionImpact2}">
+                    <StackPanel x:Name="Records" Tag="{x:Reference RolesPanel}">
+                        
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
