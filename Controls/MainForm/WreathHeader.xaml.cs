@@ -31,7 +31,7 @@ namespace Wreath.Controls.MainForm
             TableSelector.SelectedIndex = id;
         }
 
-        public void SetTablePart()
+        private void SetTablePart()
         {
             _layout = GetMainPart();
             ViewModel = _layout.RowView.ViewModel;

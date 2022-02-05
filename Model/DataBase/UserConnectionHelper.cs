@@ -7,11 +7,12 @@ namespace Wreath.Model.DataBase
 {
     internal static class UserConnectionHelper
     {
+        private static string _appDirectory => Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+
         internal static bool FileConnection()
         {
             bool connectionSuccessful = false;
-            string name = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName
-                + "/Resources/Login.txt";
+            string name = _appDirectory + "/Resources/Login.txt";
             if (File.Exists(name))
             {
                 Pair<string, string> initials = ReadFromTextFile(name);
@@ -33,6 +34,12 @@ namespace Wreath.Model.DataBase
             if (entry.MemberMe)
                 WriteToTextFile(entry.Login, entry.Pass);
             return connectionSuccessful;
+        }
+
+        internal static void SetConfiguration()
+        {
+            Pair<string, string> config = ReadFromTextFile(_appDirectory + "/Config.txt");
+            MySQL.SetConfig(config.Name, config.Value);
         }
 
         private static Pair<string, string> ReadFromTextFile(string name)
@@ -64,8 +71,8 @@ namespace Wreath.Model.DataBase
         {
             try
             {
-                File.WriteAllLines(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName
-                    + "/Resources/Login.txt", new List<string> { name, pass });
+                File.WriteAllLines(_appDirectory + "/Resources/Login.txt",
+                    new List<string> { name, pass });
             }
             catch (IOException exception)
             {

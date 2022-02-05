@@ -43,7 +43,7 @@ namespace Wreath.Controls.MainForm
                 InitializeComponent();
         }
 
-        public void ResetRecords()
+        internal void ResetRecords()
         {
             Records.Children.Clear();
             RedactorRow.AddElements(Records,

@@ -38,6 +38,10 @@
             </Viewbox>
         </Button>
 
+        <Viewbox Grid.Column="4" Grid.Row="1">
+            <TextBlock Text="Редакторы" />
+        </Viewbox>
+
         <Button x:Name="Roles" Grid.Column="4" Grid.Row="1" Style="{StaticResource ImpactButton2}" Click="ChangeTab">
             <Viewbox>
                 <TextBlock Text="Роли &amp;I" />

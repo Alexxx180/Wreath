@@ -1,7 +1,7 @@
 ﻿namespace Wreath.Model
 {
     /// <summary>
-    /// An universal class to create any necessary objects while debugging
+    /// An universal class to create any necessary objects while working
     /// </summary>
     /// <typeparam name="TName">Type of name</typeparam>
     /// <typeparam name="TValue">Type of value</typeparam>

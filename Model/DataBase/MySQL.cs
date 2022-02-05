@@ -13,9 +13,18 @@ namespace Wreath.Model.DataBase
     {
         private static string ConnectionString;
 
+        private static string _dataBaseName;
+        private static string _hostName;
+
         public MySQL()
         {
             Con = NewConnection(ConnectionString);
+        }
+
+        internal static void SetConfig(string dataBase, string host)
+        {
+            _dataBaseName = dataBase;
+            _hostName = host;
         }
 
         public static bool TestConnection(string login, string password)
@@ -49,17 +58,17 @@ namespace Wreath.Model.DataBase
             return IsConnected;
         }
 
-        public static MySqlConnection NewConnection(string path)
+        private static MySqlConnection NewConnection(string path)
         {
             return new MySqlConnection(path);
         }
 
         // Server connection
-        public static MySqlConnection EnterConnection(
+        private static MySqlConnection EnterConnection(
             string login, string password)
         {
-            string source = "SERVER=127.0.0.1;";
-            string catalog = "DATABASE=prosperity;";
+            string source = "SERVER=" + _hostName + ";";
+            string catalog = "DATABASE=" + _dataBaseName + ";";
             string user = "UID=" + login + ";";
             string pass = "PASSWORD=" + password + ";";
             ConnectionString = source + catalog + user + pass;
@@ -217,8 +226,8 @@ namespace Wreath.Model.DataBase
         {
             Dictionary<string, MySqlDbType> types = new Dictionary<string, MySqlDbType>()
             {
-                { "Boolean", MySqlDbType.Bit }, { "UInt16", MySqlDbType.UInt16 }, //SqlDbType.SmallInt
-                { "Byte", MySqlDbType.UByte }, { "String", MySqlDbType.VarChar }, //MySqlDbType.TinyInt
+                { "Boolean", MySqlDbType.Bit }, { "UInt16", MySqlDbType.UInt16 },
+                { "Byte", MySqlDbType.UByte }, { "String", MySqlDbType.VarChar },
                 { "UInt32", MySqlDbType.UInt32 }, { "UInt64", MySqlDbType.UInt64 }
             };
             Cmd.Parameters.Add(ParamName, types[newParam.GetType().Name]).Value = newParam;
