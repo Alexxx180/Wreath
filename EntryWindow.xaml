@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:Wreath.Controls.Binds.Converters"
         mc:Ignorable="d"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Вход" Height="400" Width="600">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"  Icon="/Wreath.ico"
+        Title="Вход" Height="400" Width="600" WindowStartupLocation="CenterScreen">
     <Grid Style="{StaticResource CaptionImpact2}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.05*"/>

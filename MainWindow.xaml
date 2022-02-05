@@ -6,8 +6,8 @@
         xmlns:main="clr-namespace:Wreath.Controls.MainForm"
         xmlns:viewModel="clr-namespace:Wreath.ViewModel"
         mc:Ignorable="d"
-        x:Name="AdminWindow"
-        Title="Администрирование" Height="1080" Width="1920" WindowStartupLocation="Manual" WindowState="Maximized">
+        x:Name="AdminWindow" Icon="/Wreath.ico" Title="Администрирование"
+        Height="1080" Width="1920" WindowStartupLocation="Manual" WindowState="Maximized">
     <Window.DataContext>
         <viewModel:GlobalViewModel x:Name="ViewModel"/>
     </Window.DataContext>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:Wreath.Controls.FieldsForm"
         mc:Ignorable="d"
-        Title="Просмотр записи" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Просмотр записи" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Wreath.ico">
     <Grid Style="{StaticResource CaptionImpact2}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.025*"/>

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Wreath.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.28" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
@@ -14,6 +18,10 @@
 
   <ItemGroup>
     <Folder Include="Resources\Images\Icons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Wreath.ico" />
   </ItemGroup>
 
 </Project>
