@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using Wreath.ViewModel;
+using Wreath.Model.DataBase;
 
 namespace Wreath.Controls.MainForm
 {
@@ -11,11 +12,21 @@ namespace Wreath.Controls.MainForm
     /// </summary>
     public partial class MainPart : UserControl, INotifyPropertyChanged
     {
-        public GlobalViewModel ViewModel { get; }
+        private GlobalViewModel _viewModel;
+        public GlobalViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MainPart()
         {
-            InitializeComponent();
+            if (Sql.IsConnected)
+                InitializeComponent();
             ViewModel = DataContext as GlobalViewModel;
         }
 

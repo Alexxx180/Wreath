@@ -1,0 +1,85 @@
+﻿<Window x:Class="Wreath.EntryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:Wreath.Controls.Binds.Converters"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Вход" Height="400" Width="600">
+    <Grid Style="{StaticResource CaptionImpact2}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.9*"/>
+            <ColumnDefinition Width="0.05*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.125*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="1" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="Login" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
+            </TextBox.Text>
+            <TextBox.FontSize>
+                <Binding RelativeSource="{RelativeSource Self}">
+                    <Binding.Path>
+                        ActualHeight
+                    </Binding.Path>
+                    <Binding.Converter>
+                        <converters:ProcentualHeightConverter/>
+                    </Binding.Converter>
+                    <Binding.ConverterParameter>
+                        1,6
+                    </Binding.ConverterParameter>
+                </Binding>
+            </TextBox.FontSize>
+        </TextBox>
+
+        <PasswordBox x:Name="PassBox" Grid.Row="3" Grid.Column="1">
+            <PasswordBox.FontSize>
+                <Binding RelativeSource="{RelativeSource Self}">
+                    <Binding.Path>
+                        ActualHeight
+                    </Binding.Path>
+                    <Binding.Converter>
+                        <converters:ProcentualHeightConverter/>
+                    </Binding.Converter>
+                    <Binding.ConverterParameter>
+                        1,6
+                    </Binding.ConverterParameter>
+                </Binding>
+            </PasswordBox.FontSize>
+        </PasswordBox>
+
+        <Viewbox Grid.Row="4" Grid.Column="1">
+            <CheckBox Style="{StaticResource CaptionImpact2}">
+                <CheckBox.IsChecked>
+                    <Binding Path="MemberMe" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
+                </CheckBox.IsChecked>
+                Запомнить меня
+            </CheckBox>
+        </Viewbox>
+
+        <Grid Grid.Row="6" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Click="LogInClick">
+                <Viewbox>
+                    <TextBlock Text="Войти"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d24SylHzLLQ704iqFxym1oonDV88UdnuPxR2+3OXRnrod6UngclbyQnmeLgGdzATXwWmaYVo/VLpbDd6N/ws0Q==",
+  "dgSpecHash": "+mfmkh8CpzFo+oxvw12cIs/V1uolpGgEBniu0F060KsXq23D7ColnD94xxcxhscVJ3SAaH5G/ReJRTg4dASOQA==",
   "success": true,
   "projectFilePath": "D:\\Aleksandr\\Windows-7\\misc\\Надгробные плиты\\PL-Projects\\C#\\Wreath\\Wreath.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,8 @@
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\mysql.data\\8.0.28\\mysql.data.8.0.28.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",

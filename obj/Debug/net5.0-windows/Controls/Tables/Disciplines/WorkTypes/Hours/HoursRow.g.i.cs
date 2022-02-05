@@ -52,8 +52,7 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.Hours {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/worktypes/hours/hoursrow.x" +
-                    "aml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/worktypes/hours/hoursrow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\Controls\Tables\Disciplines\WorkTypes\Hours\HoursRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

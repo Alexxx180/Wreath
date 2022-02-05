@@ -9,6 +9,8 @@ namespace Wreath.Model.DataBase
     /// </summary>
     public abstract class Sql : IDataViewer, IDataAdministrator, ISizeScaler, IRolesAdministrating
     {
+        public static bool IsConnected = false;
+
         public static void ConnectionMessage(string loadProblem, string exception)
         {
             string noLoad = "Не удалось обработать: ";
@@ -54,7 +56,7 @@ namespace Wreath.Model.DataBase
         public void PassParameters(Dictionary<string, object> parameters)
         {
             foreach (KeyValuePair<string, object> entry in parameters)
-                PassParameter(entry.Key, entry.Value);                
+                PassParameter(entry.Key, entry.Value);
         }
 
         public abstract void OnlyExecute();

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using static Wreath.Model.DataBase.UserConnectionHelper;
 
 namespace Wreath
 {
@@ -8,6 +9,14 @@ namespace Wreath
     public partial class MainWindow : Window
     {
         public MainWindow()
+        {
+            if (FileConnection() || Connect())
+            {
+                ActivateAdmin();
+            }
+        }
+
+        private void ActivateAdmin()
         {
             InitializeComponent();
             Header.SetTables(0);

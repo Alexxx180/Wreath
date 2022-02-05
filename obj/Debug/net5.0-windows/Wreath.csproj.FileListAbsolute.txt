@@ -149,3 +149,7 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\RolesPart.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorRowAdditor.g.cs
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\Users\RedactorRowAdditor.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\EntryWindow.g.cs
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\EntryWindow.baml
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Serilog.dll
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Serilog.Sinks.File.dll

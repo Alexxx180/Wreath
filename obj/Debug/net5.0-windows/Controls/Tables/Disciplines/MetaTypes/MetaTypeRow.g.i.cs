@@ -52,8 +52,7 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/metatypes/metatyperow.xaml" +
-                    "", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/metatypes/metatyperow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Disciplines\MetaTypes\MetaTypeRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

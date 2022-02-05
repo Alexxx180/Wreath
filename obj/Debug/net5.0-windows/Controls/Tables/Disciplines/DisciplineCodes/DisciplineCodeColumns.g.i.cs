@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.DisciplineCodes {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/disciplinecodes/discipline" +
-                    "codecolumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/disciplinecodes/disciplinecodecolum" +
+                    "ns.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Disciplines\DisciplineCodes\DisciplineCodeColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

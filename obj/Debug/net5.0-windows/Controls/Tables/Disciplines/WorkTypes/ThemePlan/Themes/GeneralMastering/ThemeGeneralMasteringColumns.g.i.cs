@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.GeneralM
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/worktypes/themeplan/themes" +
-                    "/generalmastering/themegeneralmasteringcolumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/worktypes/themeplan/themes/generalm" +
+                    "astering/themegeneralmasteringcolumns.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\..\..\Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\GeneralMastering\ThemeGeneralMasteringColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

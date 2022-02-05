@@ -52,7 +52,7 @@ namespace Wreath.Controls.Tables.Specialities {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/specialities/specialitycolumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/specialities/specialitycolumns.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\Controls\Tables\Specialities\SpecialityColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

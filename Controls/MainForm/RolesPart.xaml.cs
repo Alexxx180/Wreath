@@ -19,6 +19,9 @@ namespace Wreath.Controls.MainForm
             set
             {
                 _viewModel = value;
+                Redactors = ViewModel.Connector;
+                if (Sql.IsConnected)
+                    ResetRecords();
                 OnPropertyChanged();
             }
         }
@@ -36,10 +39,8 @@ namespace Wreath.Controls.MainForm
 
         public RolesPart()
         {
-            InitializeComponent();
-            ViewModel = DataContext as GlobalViewModel;
-            Redactors = ViewModel.Connector;
-            ResetRecords();
+            if (Sql.IsConnected)
+                InitializeComponent();
         }
 
         public void ResetRecords()

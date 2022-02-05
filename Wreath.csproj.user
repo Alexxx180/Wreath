@@ -31,6 +31,9 @@
     <Compile Update="Controls\Users\RedactorRowAdditor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EntryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AnalyzerWindow.xaml">
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\Users\RedactorRowAdditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EntryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

@@ -52,7 +52,7 @@ namespace Wreath.Controls.Users {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/users/redactorcolumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/users/redactorcolumns.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\Users\RedactorColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

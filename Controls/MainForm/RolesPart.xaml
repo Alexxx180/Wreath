@@ -4,13 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:users="clr-namespace:Wreath.Controls.Users"
-             xmlns:viewModel="clr-namespace:Wreath.ViewModel"
              mc:Ignorable="d" 
              x:Name="RolesPanel"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <viewModel:GlobalViewModel/>
-    </UserControl.DataContext>
     <Grid DataContext="{Binding ElementName=RolesPanel}">
         <ScrollViewer>
             <ScrollViewer.VerticalScrollBarVisibility>

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using Wreath.Controls.Tables;
 using Wreath.ViewModel;
 using Wreath.Model;
+using Wreath.Model.DataBase;
 
 namespace Wreath.Controls.MainForm
 {
@@ -44,7 +45,8 @@ namespace Wreath.Controls.MainForm
 
         public WreathHeader()
         {
-            InitializeComponent();
+            if (Sql.IsConnected)
+                InitializeComponent();
         }
 
         private Pair<Button, UserControl> _lastVisited;

@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/metatypes/metadata/metadat" +
-                    "acolumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/metatypes/metadata/metadatacolumns." +
+                    "xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\Controls\Tables\Disciplines\MetaTypes\MetaData\MetaDataColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

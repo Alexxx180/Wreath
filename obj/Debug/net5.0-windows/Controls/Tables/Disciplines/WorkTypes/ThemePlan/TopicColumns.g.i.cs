@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/worktypes/themeplan/topicc" +
-                    "olumns.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/worktypes/themeplan/topiccolumns.xa" +
+                    "ml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\Controls\Tables\Disciplines\WorkTypes\ThemePlan\TopicColumns.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

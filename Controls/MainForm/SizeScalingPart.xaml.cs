@@ -18,16 +18,17 @@ namespace Wreath.Controls.MainForm
             set
             {
                 _viewModel = value;
+                Scaler = ViewModel.Connector;
+                if (Sql.IsConnected)
+                    SetDefaults();
                 OnPropertyChanged();
             }
         }
 
         public SizeScalingPart()
         {
-            InitializeComponent();
-            ViewModel = DataContext as GlobalViewModel;
-            Scaler = ViewModel.Connector;
-            SetDefaults();
+            if (Sql.IsConnected)
+                InitializeComponent();
         }
 
         private void SetDefaults()

@@ -52,8 +52,8 @@ namespace Wreath.Controls.Tables.Disciplines.GeneralMastering {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/generalmastering/disciplin" +
-                    "egeneralmasteringrow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/generalmastering/disciplinegeneralm" +
+                    "asteringrow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Disciplines\GeneralMastering\DisciplineGeneralMasteringRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

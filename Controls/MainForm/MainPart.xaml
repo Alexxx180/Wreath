@@ -3,13 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:viewModel="clr-namespace:Wreath.ViewModel"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
              mc:Ignorable="d" x:Name="MainRedactor"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <viewModel:GlobalViewModel/>
-    </UserControl.DataContext>
-    <Grid Style="{StaticResource ViewImpact}">
+    <Grid Style="{StaticResource ViewImpact}" DataContext="{Binding Path=ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.075*" />
             <RowDefinition Height="0.85*" />
@@ -95,7 +92,7 @@
                 <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                     <TextBlock x:Name="CountRecords" Padding="2" Style="{StaticResource Impact}" >
                         <TextBlock.DataContext>
-                            <Binding ElementName="TableViewControl" Path="DataContext"/>
+                            <Binding Path="TableView"/>
                         </TextBlock.DataContext>
                         <TextBlock.Text>
                             <Binding Path="Count" />
@@ -110,9 +107,6 @@
                 </Viewbox>
                 <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                     <TextBlock Padding="2" Style="{StaticResource Impact}" >
-                        <TextBlock.DataContext>
-                            <Binding ElementName="MainRedactor" Path="DataContext"/>
-                        </TextBlock.DataContext>
                         <TextBlock.Text>
                             <Binding Path="SelectedRows" />
                         </TextBlock.Text>

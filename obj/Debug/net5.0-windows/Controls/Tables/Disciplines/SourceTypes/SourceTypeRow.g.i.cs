@@ -52,8 +52,7 @@ namespace Wreath.Controls.Tables.Disciplines.SourceTypes {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/disciplines/sourcetypes/sourcetyperow." +
-                    "xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/disciplines/sourcetypes/sourcetyperow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\Controls\Tables\Disciplines\SourceTypes\SourceTypeRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

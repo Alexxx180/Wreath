@@ -52,7 +52,7 @@ namespace Wreath.Controls.Tables.Conformity {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/controls/tables/conformity/conformityrow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;component/controls/tables/conformity/conformityrow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\Controls\Tables\Conformity\ConformityRow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

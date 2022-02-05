@@ -14,11 +14,11 @@ namespace Wreath.ViewModel
     {
         public GlobalViewModel()
         {
-            CurrentState = _defaultState;
             Connector = new MySQL();
+            TableView = new LayoutMaster(this);
+            CurrentState = _defaultState;
             Transitions = new Stack();
             SelectedRowIndexes = new Dictionary<int, ulong>();
-            TableView = new LayoutMaster(this);
             FastActions = new Pair<FastAction, FastAction>();
         }
 
@@ -206,7 +206,7 @@ namespace Wreath.ViewModel
             return result == MessageBoxResult.Yes;
         }
 
-        internal readonly Sql Connector;
+        internal Sql Connector;
 
         private LayoutMaster _tableView;
         public LayoutMaster TableView

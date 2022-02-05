@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:Wreath.Controls.MainForm"
+        xmlns:viewModel="clr-namespace:Wreath.ViewModel"
         mc:Ignorable="d"
+        x:Name="AdminWindow"
         Title="Администрирование" Height="1080" Width="1920" WindowStartupLocation="Manual" WindowState="Maximized">
+    <Window.DataContext>
+        <viewModel:GlobalViewModel x:Name="ViewModel"/>
+    </Window.DataContext>
     <Grid Style="{StaticResource ViewImpact}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.05*"/>
@@ -21,8 +26,8 @@
         </Grid.RowDefinitions>
 
         <main:WreathHeader x:Name="Header" Grid.ColumnSpan="3" />
-        <main:SizeScalingPart x:Name="SizeScaler" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
-        <main:RolesPart x:Name="Roles" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
-        <main:MainPart x:Name="RowView" Grid.Row="2" Grid.Column="1" />
+        <main:SizeScalingPart x:Name="SizeScaler" ViewModel="{x:Reference ViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
+        <main:RolesPart x:Name="Roles" ViewModel="{x:Reference ViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
+        <main:MainPart x:Name="RowView" ViewModel="{x:Reference ViewModel}" Grid.Row="2" Grid.Column="1" />
     </Grid>
 </Window>
