@@ -14,6 +14,10 @@ namespace Wreath
             {
                 ActivateAdmin();
             }
+            else
+            {
+                Close();
+            }
         }
 
         private void ActivateAdmin()
