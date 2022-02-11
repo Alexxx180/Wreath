@@ -13,7 +13,8 @@
             Value = default;
         }
 
-        public Pair(TName name, TValue value) {
+        public Pair(TName name, TValue value)
+        {
             Name = name;
             Value = value;
         }

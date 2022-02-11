@@ -156,47 +156,110 @@ namespace Wreath.Controls.MainForm
             Scaler.IncreaseWorkTypesName(value);
         }
 
-        public object CheckDisciplinesName() => Scaler.CheckDisciplinesName();
+        public object CheckDisciplinesName()
+        {
+            return Scaler.CheckDisciplinesName();
+        }
 
-        public object CheckDisciplineCodesCode() => Scaler.CheckDisciplineCodesCode();
+        public object CheckDisciplineCodesCode()
+        {
+            return Scaler.CheckDisciplineCodesCode();
+        }
 
-        public object CheckGeneralCompetetionsKnowledge() => Scaler.CheckGeneralCompetetionsKnowledge();
+        public object CheckGeneralCompetetionsKnowledge()
+        {
+            return Scaler.CheckGeneralCompetetionsKnowledge();
+        }
 
-        public object CheckGeneralCompetetionsName() => Scaler.CheckGeneralCompetetionsName();
+        public object CheckGeneralCompetetionsName()
+        {
+            return Scaler.CheckGeneralCompetetionsName();
+        }
 
-        public object CheckGeneralCompetetionsSkills() => Scaler.CheckGeneralCompetetionsSkills();
+        public object CheckGeneralCompetetionsSkills()
+        {
+            return Scaler.CheckGeneralCompetetionsSkills();
+        }
 
-        public object CheckLevelsDescription() => Scaler.CheckLevelsDescription();
+        public object CheckLevelsDescription()
+        {
+            return Scaler.CheckLevelsDescription();
+        }
 
-        public object CheckLevelsName() => Scaler.CheckLevelsName();
+        public object CheckLevelsName()
+        {
+            return Scaler.CheckLevelsName();
+        }
 
-        public object CheckMetaDataName() => Scaler.CheckMetaDataName();
+        public object CheckMetaDataName()
+        {
+            return Scaler.CheckMetaDataName();
+        }
 
-        public object CheckMetaTypesName() => Scaler.CheckMetaTypesName();
+        public object CheckMetaTypesName()
+        {
+            return Scaler.CheckMetaTypesName();
+        }
 
-        public object CheckProfessionalCompetetionsExperience() => Scaler.CheckProfessionalCompetetionsExperience();
+        public object CheckProfessionalCompetetionsExperience()
+        {
+            return Scaler.CheckProfessionalCompetetionsExperience();
+        }
 
-        public object CheckProfessionalCompetetionsKnowledge() => Scaler.CheckProfessionalCompetetionsKnowledge();
+        public object CheckProfessionalCompetetionsKnowledge()
+        {
+            return Scaler.CheckProfessionalCompetetionsKnowledge();
+        }
 
-        public object CheckProfessionalCompetetionsName() => Scaler.CheckProfessionalCompetetionsName();
+        public object CheckProfessionalCompetetionsName()
+        {
+            return Scaler.CheckProfessionalCompetetionsName();
+        }
 
-        public object CheckProfessionalCompetetionsSkills() => Scaler.CheckProfessionalCompetetionsSkills();
+        public object CheckProfessionalCompetetionsSkills()
+        {
+            return Scaler.CheckProfessionalCompetetionsSkills();
+        }
 
-        public object CheckSourcesName() => Scaler.CheckSourcesName();
+        public object CheckSourcesName()
+        {
+            return Scaler.CheckSourcesName();
+        }
 
-        public object CheckSourceTypesName() => Scaler.CheckSourceTypesName();
+        public object CheckSourceTypesName()
+        {
+            return Scaler.CheckSourceTypesName();
+        }
 
-        public object CheckSpecialitiesName() => Scaler.CheckSpecialitiesName();
+        public object CheckSpecialitiesName()
+        {
+            return Scaler.CheckSpecialitiesName();
+        }
 
-        public object CheckSpecialityCodesCode() => Scaler.CheckSpecialityCodesCode();
+        public object CheckSpecialityCodesCode()
+        {
+            return Scaler.CheckSpecialityCodesCode();
+        }
 
-        public object CheckTasksName() => Scaler.CheckTasksName();
+        public object CheckTasksName()
+        {
+            return Scaler.CheckTasksName();
+        }
 
-        public object CheckThemesName() => Scaler.CheckThemesName();
+        public object CheckThemesName()
+        {
+            return Scaler.CheckThemesName();
+        }
 
-        public object CheckThemePlanName() => Scaler.CheckThemePlanName();
+        public object CheckThemePlanName()
+        {
+            return Scaler.CheckThemePlanName();
+        }
 
-        public object CheckWorkTypesName() => Scaler.CheckWorkTypesName();
+        public object CheckWorkTypesName()
+        {
+            return Scaler.CheckWorkTypesName();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

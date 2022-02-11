@@ -15,14 +15,7 @@ namespace Wreath.Controls.MainForm
     {
         internal GlobalViewModel ViewModel { get; set; }
         internal LayoutMaster Tables { get; set; }
-
-        private MainWindow _layout;
-
-        private MainWindow GetMainPart()
-        {
-            Grid mainGrid = Parent as Grid;
-            return mainGrid.Parent as MainWindow;
-        }
+        internal MainWindow Layout { get; set; }
 
         // Set table view and table by default
         public void SetTables(in int id)
@@ -33,14 +26,12 @@ namespace Wreath.Controls.MainForm
 
         private void SetTablePart()
         {
-            _layout = GetMainPart();
-            ViewModel = _layout.RowView.ViewModel;
             Tables = ViewModel.TableView;
 
-            Records.Tag = _layout.RowView;
-            ColumnSizes.Tag = _layout.SizeScaler;
-            Roles.Tag = _layout.Roles;
-            _lastVisited = new Pair<Button, UserControl>(Records, _layout.RowView);
+            Records.Tag = Layout.RowView;
+            ColumnSizes.Tag = Layout.SizeScaler;
+            Roles.Tag = Layout.Roles;
+            _lastVisited = new Pair<Button, UserControl>(Records, Layout.RowView);
         }
 
         public WreathHeader()

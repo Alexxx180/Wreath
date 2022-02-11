@@ -40,9 +40,9 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
-            "MySql.Data": {
+            "MySqlConnector": {
               "target": "Package",
-              "version": "[8.0.28, )"
+              "version": "[2.1.6, )"
             },
             "Serilog": {
               "target": "Package",

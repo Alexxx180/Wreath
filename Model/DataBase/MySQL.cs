@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using Serilog;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace Wreath.Model.DataBase
 {
@@ -27,10 +27,15 @@ namespace Wreath.Model.DataBase
             _hostName = host;
         }
 
+        private static void ConnectionFault(string message)
+        {
+            Log.Warning("Tried to connect to DB, no sucess: " + message);
+            IsConnected = false;
+        }
+
         public static bool TestConnection(string login, string password)
         {
             IsConnected = true;
-            Log.Debug("Connecting to DB...");
             MySqlConnection test = EnterConnection(login, password);
             try
             {
@@ -38,18 +43,15 @@ namespace Wreath.Model.DataBase
             }
             catch (MySqlException dbException)
             {
-                Log.Warning("Tried to connect to DB, no sucess: " + dbException.Message);
-                IsConnected = false;
+                ConnectionFault(dbException.Message);
             }
             catch (InvalidOperationException operationException)
             {
-                Log.Warning("Tried to connect to DB, no sucess: " + operationException.Message);
-                IsConnected = false;
+                ConnectionFault(operationException.Message);
             }
             catch (Exception exception)
             {
-                Log.Warning("Tried to connect to DB, no sucess: " + exception.Message);
-                IsConnected = false;
+                ConnectionFault(exception.Message);
             }
             finally
             {
@@ -67,6 +69,7 @@ namespace Wreath.Model.DataBase
         private static MySqlConnection EnterConnection(
             string login, string password)
         {
+            Log.Debug("Connecting to DB...");
             string source = "SERVER=" + _hostName + ";";
             string catalog = "DATABASE=" + _dataBaseName + ";";
             string user = "UID=" + login + ";";
@@ -109,28 +112,18 @@ namespace Wreath.Model.DataBase
             }
         }
 
-        public override List<object[]> ReadData()
+        public override object ReadScalar()
         {
-            Log.Debug("Reading recordset from DB table...");
-            List<object[]> table = new List<object[]>();
+            Log.Debug("Reading aggregate value from DB table...");
+            object field = null;
             try
             {
                 Cmd.Connection.Open();
-                using (DataReader = Cmd.ExecuteReader())
-                {
-                    if (DataReader.HasRows)
-                        while (DataReader.Read())
-                        {
-                            object[] row = new object[DataReader.FieldCount];
-                            for (int i = 0; i < DataReader.FieldCount; i++)
-                                row[i] = DataReader.GetValue(i);
-                            table.Add(row);
-                        }
-                }
+                field = Cmd.ExecuteScalar();
             }
             catch (MySqlException dbException)
             {
-                MySqlMessage(dbException, "полные данные из источника");
+                MySqlMessage(dbException, "агрегатное значение из источника");
             }
             catch (InvalidOperationException operationException)
             {
@@ -144,7 +137,7 @@ namespace Wreath.Model.DataBase
             {
                 Cmd.Connection.Close();
             }
-            return table;
+            return field;
         }
 
         public override List<object> ReadData(in int column)
@@ -167,6 +160,44 @@ namespace Wreath.Model.DataBase
             catch (MySqlException dbException)
             {
                 MySqlMessage(dbException, "выборочные данные из источника");
+            }
+            catch (InvalidOperationException operationException)
+            {
+                NetMessage(operationException, "неподдерживаемая операция");
+            }
+            catch (Exception exception)
+            {
+                NetMessage(exception, "программный сбой");
+            }
+            finally
+            {
+                Cmd.Connection.Close();
+            }
+            return table;
+        }
+
+        public override List<object[]> ReadData()
+        {
+            Log.Debug("Reading recordset from DB table...");
+            List<object[]> table = new List<object[]>();
+            try
+            {
+                Cmd.Connection.Open();
+                using (DataReader = Cmd.ExecuteReader())
+                {
+                    if (DataReader.HasRows)
+                        while (DataReader.Read())
+                        {
+                            object[] row = new object[DataReader.FieldCount];
+                            for (int i = 0; i < DataReader.FieldCount; i++)
+                                row[i] = DataReader.GetValue(i);
+                            table.Add(row);
+                        }
+                }
+            }
+            catch (MySqlException dbException)
+            {
+                MySqlMessage(dbException, "полные данные из источника");
             }
             catch (InvalidOperationException operationException)
             {

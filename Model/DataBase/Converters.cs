@@ -12,7 +12,9 @@ namespace Wreath.Model.DataBase
         {
             TOutput[] result = new TOutput[array.Length];
             for (int i = 0; i < array.Length; i++)
+            {
                 result[i] = converter(array[i]);
+            }
             return result;
         }
 
@@ -21,7 +23,9 @@ namespace Wreath.Model.DataBase
         {
             List<TOutput> result = new List<TOutput>();
             for (int i = 0; i < list.Count; i++)
+            {
                 result.Add(converter(list[i]));
+            }
             return result;
         }
 

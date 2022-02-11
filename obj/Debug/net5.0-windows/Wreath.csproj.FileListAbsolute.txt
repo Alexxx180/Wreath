@@ -104,14 +104,6 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Wreath.dll
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\ref\Wreath.dll
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Wreath.pdb
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Google.Protobuf.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\K4os.Compression.LZ4.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\K4os.Compression.LZ4.Streams.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\K4os.Hash.xxHash.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\MySql.Data.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Ubiety.Dns.Core.dll
-D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\ZstdNet.dll
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\App.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Controls\MainForm\MainPart.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\MainWindow.baml
@@ -153,3 +145,4 @@ D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreat
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\EntryWindow.baml
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Serilog.dll
 D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Serilog.Sinks.File.dll
+D:\Aleksandr\Windows-7\misc\Надгробные плиты\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\MySqlConnector.dll

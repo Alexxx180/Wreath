@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Collections.Generic;
+using Serilog;
 
 namespace Wreath.Model.DataBase
 {
@@ -9,7 +10,7 @@ namespace Wreath.Model.DataBase
     /// </summary>
     public abstract class Sql : IDataViewer, IDataAdministrator, ISizeScaler, IRolesAdministrating
     {
-        public static bool IsConnected = false;
+        internal static bool IsConnected { get; private protected set; }
 
         public static void ConnectionMessage(string loadProblem, string exception)
         {
@@ -26,6 +27,7 @@ namespace Wreath.Model.DataBase
         public static void NetMessage(Exception exception, string problem)
         {
             string fullMessage = $"{exception.HelpLink}\n{exception.Message}";
+            Log.Error("Operation is invalid or unstated: " + exception.Message);
             ConnectionMessage(problem, fullMessage);
         }
 
@@ -90,6 +92,8 @@ namespace Wreath.Model.DataBase
             return result[0];
         }
 
+        public abstract object ReadScalar();
+
         public abstract List<object[]> ReadData();
 
         public abstract List<object> ReadData(in int column);
@@ -98,12 +102,20 @@ namespace Wreath.Model.DataBase
 
         public abstract void ClearParameters();
 
-        public List<object[]> GetRecords(string name)
+        public object GetRecord(string name)
         {
             Procedure(name);
-            List<object[]> records = ReadData();
+            return ReadScalar();
+        }
+
+        public object GetRecord(string name,
+            string paramName, object value)
+        {
+            Procedure(name);
+            PassParameter(paramName, value);
+            object field = ReadScalar();
             ClearParameters();
-            return records;
+            return field;
         }
 
         public List<object> GetRecords(string name, in int column)
@@ -119,6 +131,14 @@ namespace Wreath.Model.DataBase
             Procedure(name);
             PassParameter(paramName, value);
             List<object> records = ReadData(column);
+            ClearParameters();
+            return records;
+        }
+
+        public List<object[]> GetRecords(string name)
+        {
+            Procedure(name);
+            List<object[]> records = ReadData();
             ClearParameters();
             return records;
         }
@@ -142,7 +162,6 @@ namespace Wreath.Model.DataBase
         }
 
         // Data view methods
-
         // Unmarked records
 
         public List<object[]> ConformityList()
@@ -439,32 +458,32 @@ namespace Wreath.Model.DataBase
 
         private object UsedWorkType(ulong value)
         {
-            return GetSingle(GetRecords("get_work_type_linked", "type_id", value, 0));
+            return GetRecord("get_work_type_linked", "type_id", value);
         }
 
         private object UsedMetaType(ulong value)
         {
-            return GetSingle(GetRecords("get_meta_type_linked", "type_id", value, 0));
+            return GetRecord("get_meta_type_linked", "type_id", value);
         }
 
         private object UsedSourceType(ulong value)
         {
-            return GetSingle(GetRecords("get_source_type_linked", "type_id", value, 0));
+            return GetRecord("get_source_type_linked", "type_id", value);
         }
 
         private object UsedLevel(ulong value)
         {
-            return GetSingle(GetRecords("get_level_linked", "level_id", value, 0));
+            return GetRecord("get_level_linked", "level_id", value);
         }
 
         private object UsedDisciplineCode(ulong value)
         {
-            return GetSingle(GetRecords("get_discipline_linked", "code_id", value, 0));
+            return GetRecord("get_discipline_linked", "code_id", value);
         }
 
         private object UsedSpecialityCode(ulong value)
         {
-            return GetSingle(GetRecords("get_discipline_linked", "code_id", value, 0));
+            return GetRecord("get_discipline_linked", "code_id", value);
         }
 
         // Data editing methods
@@ -1022,107 +1041,107 @@ namespace Wreath.Model.DataBase
 
         public object CheckDisciplinesName()
         {
-            return GetSingle(GetRecords("check_disciplines_name", 0));
+            return GetRecord("check_disciplines_name");
         }
 
         public object CheckDisciplineCodesCode()
         {
-            return GetSingle(GetRecords("check_discipline_codes_code", 0));
+            return GetRecord("check_discipline_codes_code");
         }
 
         public object CheckGeneralCompetetionsKnowledge()
         {
-            return GetSingle(GetRecords("check_general_competetions_knowledge", 0));
+            return GetRecord("check_general_competetions_knowledge");
         }
 
         public object CheckGeneralCompetetionsName()
         {
-            return GetSingle(GetRecords("check_general_competetions_name", 0));
+            return GetRecord("check_general_competetions_name");
         }
 
         public object CheckGeneralCompetetionsSkills()
         {
-            return GetSingle(GetRecords("check_general_competetions_skills", 0));
+            return GetRecord("check_general_competetions_skills");
         }
 
         public object CheckLevelsDescription()
         {
-            return GetSingle(GetRecords("check_levels_description", 0));
+            return GetRecord("check_levels_description");
         }
 
         public object CheckLevelsName()
         {
-            return GetSingle(GetRecords("check_levels_name", 0));
+            return GetRecord("check_levels_name");
         }
 
         public object CheckMetaDataName()
         {
-            return GetSingle(GetRecords("check_meta_data_name", 0));
+            return GetRecord("check_meta_data_name");
         }
 
         public object CheckMetaTypesName()
         {
-            return GetSingle(GetRecords("check_meta_types_name", 0));
+            return GetRecord("check_meta_types_name");
         }
 
         public object CheckProfessionalCompetetionsExperience()
         {
-            return GetSingle(GetRecords("check_professional_competetions_experience", 0));
+            return GetRecord("check_professional_competetions_experience");
         }
 
         public object CheckProfessionalCompetetionsKnowledge()
         {
-            return GetSingle(GetRecords("check_professional_competetions_knowledge", 0));
+            return GetRecord("check_professional_competetions_knowledge");
         }
 
         public object CheckProfessionalCompetetionsName()
         {
-            return GetSingle(GetRecords("check_professional_competetions_name", 0));
+            return GetRecord("check_professional_competetions_name");
         }
 
         public object CheckProfessionalCompetetionsSkills()
         {
-            return GetSingle(GetRecords("check_professional_competetions_skills", 0));
+            return GetRecord("check_professional_competetions_skills");
         }
 
         public object CheckSourcesName()
         {
-            return GetSingle(GetRecords("check_sources_name", 0));
+            return GetRecord("check_sources_name");
         }
 
         public object CheckSourceTypesName()
         {
-            return GetSingle(GetRecords("check_source_types_name", 0));
+            return GetRecord("check_source_types_name");
         }
 
         public object CheckSpecialitiesName()
         {
-            return GetSingle(GetRecords("check_specialities_name", 0));
+            return GetRecord("check_specialities_name");
         }
 
         public object CheckSpecialityCodesCode()
         {
-            return GetSingle(GetRecords("check_speciality_codes_code", 0));
+            return GetRecord("check_speciality_codes_code");
         }
 
         public object CheckTasksName()
         {
-            return GetSingle(GetRecords("check_tasks_name", 0));
+            return GetRecord("check_tasks_name");
         }
 
         public object CheckThemesName()
         {
-            return GetSingle(GetRecords("check_themes_name", 0));
+            return GetRecord("check_themes_name");
         }
 
         public object CheckThemePlanName()
         {
-            return GetSingle(GetRecords("check_theme_plan_name", 0));
+            return GetRecord("check_theme_plan_name");
         }
 
         public object CheckWorkTypesName()
         {
-            return GetSingle(GetRecords("check_work_types_name", 0));
+            return GetRecord("check_work_types_name");
         }
 
         // Roles administrating
@@ -1134,7 +1153,7 @@ namespace Wreath.Model.DataBase
 
         public object CountRedactors(string value)
         {
-            return GetSingle(GetRecords("check_redactor", "redactor_login", value, 0));
+            return GetRecord("check_redactor", "redactor_login", value);
         }
 
         public void AddRedactor(Dictionary<string, object> parameters)

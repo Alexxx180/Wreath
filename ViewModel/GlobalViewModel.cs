@@ -36,7 +36,11 @@ namespace Wreath.ViewModel
         }
 
         public bool IsTopTransition => IsTop(Transitions.Count, 1);
-        public static bool IsTop(int original, int toCompare) => original <= toCompare;
+        public static bool IsTop(int original, int toCompare)
+        {
+            return original <= toCompare;
+        }
+
         public Visibility BackOperations => IsTopTransition ? Visibility.Hidden : Visibility.Visible;
 
         private Stack _transitions;
@@ -192,11 +196,16 @@ namespace Wreath.ViewModel
                 ConfirmDrop(view);
         }
 
-        internal bool RowsAffectedDialog(string operation) => OptionsDialog("Подтверждение операции",
+        internal bool RowsAffectedDialog(string operation)
+        {
+            return OptionsDialog("Подтверждение операции",
                 $"Будет {operation} записей: {SelectedRows}", "Продолжить");
+        }
 
-        internal static bool AllRowsDialog(string operation) => OptionsDialog("Необратимая операция",
-                operation, "Вы уверены");
+        internal static bool AllRowsDialog(string operation)
+        {
+            return OptionsDialog("Необратимая операция", operation, "Вы уверены");
+        }
 
         internal static bool OptionsDialog(string operationName, string description, string confirm)
         {
