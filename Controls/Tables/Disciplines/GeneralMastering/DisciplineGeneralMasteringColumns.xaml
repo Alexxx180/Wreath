@@ -15,10 +15,14 @@
             <TextBlock Text="№" />
         </Viewbox>
 
-        <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
+        <Viewbox Grid.Column="1">
+            <TextBlock Text="Освоение" />
+        </Viewbox>
+        
+        <!--<Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Click="SelectCode">
             <Viewbox>
                 <TextBlock Text="Освоение" />
             </Viewbox>
-        </Button>
+        </Button>-->
     </Grid>
 </UserControl>

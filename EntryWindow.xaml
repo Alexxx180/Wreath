@@ -75,7 +75,7 @@
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1" Click="LogInClick">
+            <Button Grid.Column="1" Click="LogInClick" IsDefault="True">
                 <Viewbox>
                     <TextBlock Text="Войти"/>
                 </Viewbox>

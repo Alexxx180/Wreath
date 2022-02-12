@@ -13,15 +13,15 @@ namespace Wreath.Controls.Tables.Disciplines.ProfessionalMastering
             InitializeComponent();
         }
 
-        private LayoutMaster _tables;
-        public DisciplineProfessionalMasteringColumns(LayoutMaster view) : this()
-        {
-            _tables = view;
-        }
+        //private LayoutMaster _tables;
+        //public DisciplineProfessionalMasteringColumns(LayoutMaster view) : this()
+        //{
+        //    _tables = view;
+        //}
 
-        private void SelectCode(object sender, RoutedEventArgs e)
-        {
-            _tables.FillProfessionalFromMastering(_tables.ViewModel.CurrentState.Id);
-        }
+        //private void SelectCode(object sender, RoutedEventArgs e)
+        //{
+        //    _tables.FillProfessionalFromMastering(_tables.ViewModel.CurrentState.Id);
+        //}
     }
 }

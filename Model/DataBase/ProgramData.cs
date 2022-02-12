@@ -106,14 +106,20 @@ namespace Wreath.Model.DataBase
             return ConvertAll(_dataBase.ConformityProfessionalCompetetions(disciplineId), ElementsToString);
         }
 
-        public List<string[]> DisciplineGeneralMasteringByTheme(uint themeId)
-        {
-            return ConvertAll(_dataBase.DisciplineGeneralMasteringByTheme(themeId), ElementsToString);
-        }
+        // Deprecated
+        //public List<string[]> DisciplineGeneralMasteringByTheme(uint themeId)
+        //{
+        //    return ConvertAll(_dataBase.DisciplineGeneralMasteringByTheme(themeId), ElementsToString);
+        //}
 
-        public List<string[]> DisciplineProfessionalMasteringByTheme(uint themeId)
+        //public List<string[]> DisciplineProfessionalMasteringByTheme(uint themeId)
+        //{
+        //    return ConvertAll(_dataBase.DisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
+        //}
+
+        public string DisciplineByTheme(uint themeId)
         {
-            return ConvertAll(_dataBase.DisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
+            return _dataBase.DisciplineByTheme(themeId).ToString();
         }
 
         public List<string[]> MConformity => ConvertAll(_dataBase.MConformityList(), ElementsToString);

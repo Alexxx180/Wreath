@@ -234,7 +234,7 @@ namespace Wreath.Controls.Tables
             uint id, string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineGeneralMasteringRow>(id, name, transition,
-                new DisciplineGeneralMasteringColumns(this), records, markedRecords,
+                new DisciplineGeneralMasteringColumns(), records, markedRecords,
                 Tools.UnMarkRow.AllGeneralMastering, Tools.DropRow.AllGeneralMastering);
         }
 
@@ -242,22 +242,22 @@ namespace Wreath.Controls.Tables
         {
             FillDisciplineGeneral(Data.DisciplineGeneralMastering(id),
                 Data.MDisciplineGeneralMastering(id), id,
-                "Освоение ПК. Дисциплина: ", FillDisciplineGeneralCompetetions);
+                "Освоение ОК. Дисциплина: ", FillDisciplineGeneralCompetetions);
         }
 
-        public void FillDisciplineGeneralFromMastering(uint id)
-        {
-            FillDisciplineGeneral(Data.DisciplineGeneralMasteringByTheme(id),
-                Data.MDisciplineGeneralMasteringByTheme(id), id,
-                "Освоение ПК. Тема: ", FillDisciplineGeneralFromMastering);
-        }
+        //public void FillDisciplineGeneralFromMastering(uint id)
+        //{
+        //    FillDisciplineGeneral(Data.DisciplineGeneralMasteringByTheme(id),
+        //        Data.MDisciplineGeneralMasteringByTheme(id), id,
+        //        "Освоение ОК. Тема: ", FillDisciplineGeneralFromMastering);
+        //}
 
 
         public void FillDisciplineProfessional(List<string[]> records, List<string[]> markedRecords,
             uint id, string name, TransitionBase.Transition transition)
         {
             FillSecondaryTables<DisciplineProfessionalMasteringRow>(id, name,
-                transition, new DisciplineProfessionalMasteringColumns(this), records, markedRecords,
+                transition, new DisciplineProfessionalMasteringColumns(), records, markedRecords,
                 Tools.UnMarkRow.AllProfessionalMastering, Tools.DropRow.AllProfessionalMastering);
         }
 
@@ -268,12 +268,12 @@ namespace Wreath.Controls.Tables
                 "Освоение ПК. Дисциплина: ", FillDisciplineProfessionalCompetetions);
         }
 
-        public void FillDisciplineProfessionalFromMastering(uint id)
-        {
-            FillDisciplineProfessional(Data.DisciplineProfessionalMasteringByTheme(id),
-                Data.MDisciplineProfessionalMasteringByTheme(id), id,
-                "Освоение ПК. Тема: ", FillDisciplineProfessionalFromMastering);
-        }
+        //public void FillDisciplineProfessionalFromMastering(uint id)
+        //{
+        //    FillDisciplineProfessional(Data.DisciplineProfessionalMasteringByTheme(id),
+        //        Data.MDisciplineProfessionalMasteringByTheme(id), id,
+        //        "Освоение ПК. Тема: ", FillDisciplineProfessionalFromMastering);
+        //}
 
 
         public void FillSources(uint id)
@@ -313,7 +313,7 @@ namespace Wreath.Controls.Tables
 
         public void FillThemeGeneralCompetetions(uint id)
         {
-            FillSecondaryTables<ThemeGeneralMasteringRow>(id, "Общие компетенции. Тема: ",
+            FillSecondaryTables<ThemeGeneralMasteringRow>(id, "Освоение ОК. Тема: ",
                 FillThemeGeneralCompetetions, new ThemeGeneralMasteringColumns(this),
                 Data.ThemeGeneralMastering(id), Data.MThemeGeneralMastering(id),
                 Tools.UnMarkRow.AllGeneralSelection, Tools.DropRow.AllGeneralSelection);
@@ -321,7 +321,7 @@ namespace Wreath.Controls.Tables
 
         public void FillThemeProfessionalCompetetions(uint id)
         {
-            FillSecondaryTables<ThemeProfessionalMasteringRow>(id, "Профессиональные компетенции. Тема: ",
+            FillSecondaryTables<ThemeProfessionalMasteringRow>(id, "Освоение ПК. Тема: ",
                 FillThemeProfessionalCompetetions, new ThemeProfessionalMasteringColumns(this),
                 Data.ThemeProfessionalMastering(id), Data.MThemeProfessionalMastering(id),
                 Tools.UnMarkRow.AllProfessionalSelection, Tools.DropRow.AllProfessionalSelection);
@@ -345,7 +345,7 @@ namespace Wreath.Controls.Tables
         public void FillSpecialityCodes(uint id)
         {
             ViewModel.AddTransition(FillSpecialities, "Специальности. Ранее смотрели: ", id);
-            FillSecondaryTables<SpecialityCodeRow>(id, "Коды специальностей. Переход со специальности: ", FillSpecialityCodes,
+            FillSecondaryTables<SpecialityCodeRow>(id, "Коды специальностей. Переход от: ", FillSpecialityCodes,
                 new SpecialityCodeColumns(), Data.SpecialityCodes, Data.MSpecialityCodes,
                 Tools.UnMarkRow.AllSpecialityCode, RedactorTools.Drop.None);
         }
@@ -353,35 +353,35 @@ namespace Wreath.Controls.Tables
         public void FillDisciplineCodes(uint id)
         {
             ViewModel.AddTransition(FillDisciplines, "Дисциплины. Ранее смотрели: ", id);
-            FillSecondaryTables<DisciplineCodeRow>(id, "Коды дисциплин. Переход с дисциплины: ", FillDisciplineCodes,
+            FillSecondaryTables<DisciplineCodeRow>(id, "Коды дисциплин. Переход от: ", FillDisciplineCodes,
                 new DisciplineCodeColumns(), Data.DisciplineCodes, Data.MDisciplineCodes,
                 Tools.UnMarkRow.AllDisciplineCode, RedactorTools.Drop.None);
         }
 
         public void FillWorkTypes(uint id)
         {
-            FillSecondaryTables<WorkTypesRow>(id, "Типы работ. Переход с Работа | Час: ",
+            FillSecondaryTables<WorkTypesRow>(id, "Типы работ. Переход от: ",
                 FillWorkTypes, new WorkTypesColumns(), Data.WorkTypes, Data.MWorkTypes,
                 Tools.UnMarkRow.AllWorkType, RedactorTools.Drop.None);
         }
 
         public void FillMetaTypes(uint id)
         {
-            FillSecondaryTables<MetaTypeRow>(id, "Типы метаданных. Переход с метаданных: ",
+            FillSecondaryTables<MetaTypeRow>(id, "Типы метаданных. Переход от: ",
                 FillMetaTypes, new MetaTypeColumns(), Data.MetaTypes, Data.MMetaTypes,
                 Tools.UnMarkRow.AllMetaType, RedactorTools.Drop.None);
         }
 
         public void FillSourceTypes(uint id)
         {
-            FillSecondaryTables<SourceTypeRow>(id, "Типы источников. Переход с источника: ", FillSourceTypes,
+            FillSecondaryTables<SourceTypeRow>(id, "Типы источников. Переход от: ", FillSourceTypes,
                 new SourceTypeColumns(), Data.SourceTypes, Data.MSourceTypes,
                 Tools.UnMarkRow.AllSourceType, RedactorTools.Drop.None);
         }
 
         public void FillCompetetionLevels(uint id)
         {
-            FillSecondaryTables<LevelRow>(id, "Уровни компетенций. Переход с темы: ", FillCompetetionLevels,
+            FillSecondaryTables<LevelRow>(id, "Уровни компетенций. Переход от: ", FillCompetetionLevels,
                 new LevelColumns(), Data.Levels, Data.MLevels,
                 Tools.UnMarkRow.AllLevel, RedactorTools.Drop.None);
         }

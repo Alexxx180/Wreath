@@ -52,9 +52,12 @@ namespace Wreath.Model.DataBase
 
         public List<object[]> ConformityProfessionalCompetetions(uint value);
 
-        public List<object[]> DisciplineGeneralMasteringByTheme(uint value);
+        // Deprecated
+        //public List<object[]> DisciplineGeneralMasteringByTheme(uint value);
 
-        public List<object[]> DisciplineProfessionalMasteringByTheme(uint value);
+        //public List<object[]> DisciplineProfessionalMasteringByTheme(uint value);
+
+        public object DisciplineByTheme(uint value);
 
 
         public List<object[]> MConformityList();

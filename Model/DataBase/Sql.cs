@@ -287,14 +287,19 @@ namespace Wreath.Model.DataBase
             return GetRecords("get_conformity_professional_competetions_unmarked", "discipline_id", value);
         }
 
-        public List<object[]> DisciplineGeneralMasteringByTheme(uint value)
-        {
-            return GetRecords("get_discipline_general_by_theme_unmarked", "theme_id", value);
-        }
+        //public List<object[]> DisciplineGeneralMasteringByTheme(uint value)
+        //{
+        //    return GetRecords("get_discipline_general_by_theme_unmarked", "theme_id", value);
+        //}
 
-        public List<object[]> DisciplineProfessionalMasteringByTheme(uint value)
+        //public List<object[]> DisciplineProfessionalMasteringByTheme(uint value)
+        //{
+        //    return GetRecords("get_discipline_professional_by_theme_unmarked", "theme_id", value);
+        //}
+
+        public object DisciplineByTheme(uint value)
         {
-            return GetRecords("get_discipline_professional_by_theme_unmarked", "theme_id", value);
+            return GetRecord("get_discipline_by_theme", "theme_id", value);
         }
 
         // Marked records

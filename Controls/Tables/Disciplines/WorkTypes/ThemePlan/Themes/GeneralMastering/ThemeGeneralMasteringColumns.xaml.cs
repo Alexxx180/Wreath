@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.GeneralMastering
@@ -21,7 +22,9 @@ namespace Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.GeneralM
 
         private void SelectCode(object sender, RoutedEventArgs e)
         {
-            _tables.FillDisciplineGeneralFromMastering(_tables.ViewModel.CurrentState.Id);
+            uint themeId = _tables.ViewModel.CurrentState.Id;
+            uint disciplineId = Convert.ToUInt32(_tables.Data.DisciplineByTheme(themeId));
+            _tables.FillDisciplineGeneralCompetetions(disciplineId);
         }
     }
 }
