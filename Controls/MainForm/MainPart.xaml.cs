@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using Wreath.ViewModel;
-using Wreath.Model.DataBase;
+using Wreath.Model.Tools.DataBase;
 
 namespace Wreath.Controls.MainForm
 {

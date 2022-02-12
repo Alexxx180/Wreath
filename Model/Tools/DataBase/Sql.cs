@@ -3,7 +3,7 @@ using System.Windows;
 using System.Collections.Generic;
 using Serilog;
 
-namespace Wreath.Model.DataBase
+namespace Wreath.Model.Tools.DataBase
 {
     /// <summary>
     /// Class containing necessary methods to work with database

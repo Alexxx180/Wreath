@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using Serilog;
-using static Wreath.Model.DataBase.UserConnectionHelper;
+using static Wreath.Model.Tools.DataBase.UserConnectionHelper;
 
 namespace Wreath
 {

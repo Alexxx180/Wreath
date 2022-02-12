@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Wreath.Model.DataBase
+namespace Wreath.Model.Tools
 {
     public interface IDataViewer
     {

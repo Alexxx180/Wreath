@@ -108,6 +108,7 @@ namespace Wreath.Controls.Users
             Login = row[0];
             Pass = new string('*', ToInt32(row[1]));
             Host = row[2];
+            Comment = row[3];
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

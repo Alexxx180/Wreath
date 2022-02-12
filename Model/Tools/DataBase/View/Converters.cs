@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Wreath.Model.DataBase
+namespace Wreath.Model.Tools.DataBase.View
 {
     /// <summary>
     /// Converters used for converting database objects to string fields

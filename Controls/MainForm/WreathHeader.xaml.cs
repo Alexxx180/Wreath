@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using Wreath.Controls.Tables;
 using Wreath.ViewModel;
 using Wreath.Model;
-using Wreath.Model.DataBase;
+using Wreath.Model.Tools.DataBase;
 
 namespace Wreath.Controls.MainForm
 {

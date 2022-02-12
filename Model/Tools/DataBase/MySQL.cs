@@ -4,7 +4,7 @@ using System.Data;
 using Serilog;
 using MySqlConnector;
 
-namespace Wreath.Model.DataBase
+namespace Wreath.Model.Tools.DataBase
 {
     /// <summary>
     /// Connection to database via MySQL

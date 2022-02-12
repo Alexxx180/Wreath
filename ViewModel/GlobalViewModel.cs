@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using Wreath.Model;
 using Wreath.Controls.Tables;
 using System.Windows.Controls;
-using Wreath.Model.DataBase;
+using Wreath.Model.Tools.DataBase;
 
 namespace Wreath.ViewModel
 {

@@ -1,4 +1,4 @@
-﻿namespace Wreath.Model.DataBase
+﻿namespace Wreath.Model.Tools
 {
     public interface IDataAdministrator
     {

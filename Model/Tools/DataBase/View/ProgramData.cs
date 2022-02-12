@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using static Wreath.Model.DataBase.Converters;
+using static Wreath.Model.Tools.DataBase.View.Converters;
 
-namespace Wreath.Model.DataBase
+namespace Wreath.Model.Tools.DataBase.View
 {
     /// <summary>
     /// Educational programs data from database
@@ -105,17 +105,6 @@ namespace Wreath.Model.DataBase
         {
             return ConvertAll(_dataBase.ConformityProfessionalCompetetions(disciplineId), ElementsToString);
         }
-
-        // Deprecated
-        //public List<string[]> DisciplineGeneralMasteringByTheme(uint themeId)
-        //{
-        //    return ConvertAll(_dataBase.DisciplineGeneralMasteringByTheme(themeId), ElementsToString);
-        //}
-
-        //public List<string[]> DisciplineProfessionalMasteringByTheme(uint themeId)
-        //{
-        //    return ConvertAll(_dataBase.DisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
-        //}
 
         public string DisciplineByTheme(uint themeId)
         {

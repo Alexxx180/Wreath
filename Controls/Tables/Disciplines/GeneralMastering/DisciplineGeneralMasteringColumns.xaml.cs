@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Wreath.Controls.Tables.Disciplines.GeneralMastering
 {
@@ -12,16 +11,5 @@ namespace Wreath.Controls.Tables.Disciplines.GeneralMastering
         {
             InitializeComponent();
         }
-
-        //private LayoutMaster _tables;
-        //public DisciplineGeneralMasteringColumns(LayoutMaster view) : this()
-        //{
-        //    _tables = view;
-        //}
-
-        //private void SelectCode(object sender, RoutedEventArgs e)
-        //{
-        //    _tables.FillGeneralFromMastering(_tables.ViewModel.CurrentState.Id);
-        //}
     }
 }

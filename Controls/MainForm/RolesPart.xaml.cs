@@ -2,7 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using Wreath.Controls.Users;
-using Wreath.Model.DataBase;
+using Wreath.Model.Tools;
+using Wreath.Model.Tools.DataBase;
+using Wreath.Model.Tools.DataBase.View;
 using Wreath.ViewModel;
 
 namespace Wreath.Controls.MainForm

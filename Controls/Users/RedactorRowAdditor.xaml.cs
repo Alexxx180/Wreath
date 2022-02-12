@@ -1,18 +1,15 @@
 ﻿using System.Windows;
-using System.Windows.Input;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using static System.Convert;
-using static Wreath.Controls.Tables.EditHelper;
 using System.Collections.Generic;
-using Wreath.Model.DataBase;
 using Wreath.Controls.MainForm;
 
 namespace Wreath.Controls.Users
 {
     /// <summary>
-    /// Логика взаимодействия для RedactorRowAdditor.xaml
+    /// Redactors table special row to add new rows
     /// </summary>
     public partial class RedactorRowAdditor : UserControl, INotifyPropertyChanged
     {
