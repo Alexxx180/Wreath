@@ -427,16 +427,6 @@ namespace Wreath.Model.Tools.DataBase
             return GetRecords("get_conformity_professional_competetions_marked", "discipline_id", value);
         }
 
-        public List<object[]> MDisciplineGeneralMasteringByTheme(uint value)
-        {
-            return GetRecords("get_discipline_general_by_theme_marked", "theme_id", value);
-        }
-
-        public List<object[]> MDisciplineProfessionalMasteringByTheme(uint value)
-        {
-            return GetRecords("get_discipline_professional_by_theme_marked", "theme_id", value);
-        }
-
         // Data analyze methods - analyzer feature
 
         public List<object> SpecialityMarkedRowsAnalyze(uint value)

@@ -61,7 +61,7 @@ namespace Wreath {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wreath;component/entrywindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wreath;V1.0.0.0;component/entrywindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\EntryWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

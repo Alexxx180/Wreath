@@ -52,11 +52,6 @@ namespace Wreath.Model.Tools
 
         public List<object[]> ConformityProfessionalCompetetions(uint value);
 
-        // Deprecated
-        //public List<object[]> DisciplineGeneralMasteringByTheme(uint value);
-
-        //public List<object[]> DisciplineProfessionalMasteringByTheme(uint value);
-
         public object DisciplineByTheme(uint value);
 
 
@@ -107,10 +102,6 @@ namespace Wreath.Model.Tools
         public List<object[]> MConformityGeneralCompetetions(uint value);
 
         public List<object[]> MConformityProfessionalCompetetions(uint value);
-
-        public List<object[]> MDisciplineGeneralMasteringByTheme(uint value);
-
-        public List<object[]> MDisciplineProfessionalMasteringByTheme(uint value);
 
 
         public List<object> SpecialityMarkedRowsAnalyze(uint value);
