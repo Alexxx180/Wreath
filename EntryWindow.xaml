@@ -28,40 +28,13 @@
             <RowDefinition Height="0.125*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="1" Grid.Column="1">
+        <TextBox Grid.Row="1" Grid.Column="1" FontSize="24">
             <TextBox.Text>
                 <Binding Path="Login" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
             </TextBox.Text>
-            <TextBox.FontSize>
-                <Binding RelativeSource="{RelativeSource Self}">
-                    <Binding.Path>
-                        ActualHeight
-                    </Binding.Path>
-                    <Binding.Converter>
-                        <converters:ProcentualHeightConverter/>
-                    </Binding.Converter>
-                    <Binding.ConverterParameter>
-                        1,6
-                    </Binding.ConverterParameter>
-                </Binding>
-            </TextBox.FontSize>
         </TextBox>
 
-        <PasswordBox x:Name="PassBox" Grid.Row="3" Grid.Column="1">
-            <PasswordBox.FontSize>
-                <Binding RelativeSource="{RelativeSource Self}">
-                    <Binding.Path>
-                        ActualHeight
-                    </Binding.Path>
-                    <Binding.Converter>
-                        <converters:ProcentualHeightConverter/>
-                    </Binding.Converter>
-                    <Binding.ConverterParameter>
-                        1,6
-                    </Binding.ConverterParameter>
-                </Binding>
-            </PasswordBox.FontSize>
-        </PasswordBox>
+        <PasswordBox x:Name="PassBox" Grid.Row="3" Grid.Column="1"  FontSize="24"/>
 
         <Viewbox Grid.Row="4" Grid.Column="1">
             <CheckBox Style="{StaticResource CaptionImpact2}">

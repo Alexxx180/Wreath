@@ -19,6 +19,16 @@ namespace Wreath.Controls.MainForm
                 typeof(GlobalViewModel), typeof(WreathHeader),
                 new PropertyMetadata(OnConnectionChangedCallBack));
 
+        public static readonly DependencyProperty
+            LayoutProperty = DependencyProperty.Register(
+                nameof(Layout), typeof(MainWindow), typeof(WreathHeader));
+
+        internal MainWindow Layout
+        {
+            get => GetValue(LayoutProperty) as MainWindow;
+            set => SetValue(LayoutProperty, value);
+        }
+
         internal GlobalViewModel ViewModel
         {
             get => GetValue(ViewModelProperty) as GlobalViewModel;
@@ -43,7 +53,6 @@ namespace Wreath.Controls.MainForm
         #endregion
 
         internal LayoutMaster Tables { get; set; }
-        internal MainWindow Layout { get; set; }
 
         // Set tools and table by default
         public void SetTablePart(in int id)

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:Wreath.Controls.MainForm"
-        xmlns:viewModel="clr-namespace:Wreath.ViewModel"
         mc:Ignorable="d"
         x:Name="AdminWindow"
         Icon="/Wreath.ico"
@@ -26,8 +25,8 @@
             <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.05*"/>
         </Grid.RowDefinitions>
-
-        <main:WreathHeader x:Name="Header" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Layout="{x:Reference AdminWindow}" Grid.ColumnSpan="3" />
+        
+        <main:WreathHeader x:Name="Header" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Layout="{Binding ElementName=AdminWindow}" Grid.ColumnSpan="3" />
         <main:SizeScalingPart x:Name="SizeScaler" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
         <main:RolesPart x:Name="Roles" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
         <main:MainPart x:Name="RowView" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Grid.Row="2" Grid.Column="1" />
