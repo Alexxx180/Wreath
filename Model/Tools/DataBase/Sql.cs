@@ -10,49 +10,17 @@ namespace Wreath.Model.Tools.DataBase
     /// </summary>
     public abstract class Sql : IDataViewer, IDataAdministrator, ISizeScaler, IRolesAdministrating
     {
-        internal static bool IsConnected { get; private protected set; }
+        #region Configuration Members
+        public bool IndependentMode { get; set; }
 
-        public static void ConnectionMessage(string loadProblem, string exception)
-        {
-            string noLoad = "Не удалось обработать: ";
-            string message = "\nОшибка подключения. Вы не можете продолжать работу.\n";
-            string advice = "Проверьте конфигурации подключения и текущее состояние сервера.\nПолное сообщение:\n";
+        internal abstract void SetConfiguration(in string dbName, in string host);
 
-            string caption = "Ошибка";
-            string fullMessage = noLoad + loadProblem + message + advice + exception;
-            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
-            Application.Current.Shutdown();
-        }
+        public abstract bool TestConnection(in string login, in string pass);
 
-        public static void NetMessage(Exception exception, string problem)
-        {
-            string fullMessage = $"{exception.HelpLink}\n{exception.Message}";
-            Log.Error("Operation is invalid or unstated: " + exception.Message);
-            ConnectionMessage(problem, fullMessage);
-        }
+        internal abstract bool Connect();
+        #endregion
 
-        public static bool OperationViolatedMessage(in ulong count)
-        {
-            string noOperation = "Продолжать действие невозможно,";
-            string message = "\nт.к. эта запись используется.\n";
-            string useCount = "Использована раз: " + count;
-
-            string caption = "Отказ исполнения операции";
-            string fullMessage = noOperation + message + useCount;
-            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
-            return true;
-        }
-
-        public static bool OperationViolated(in ulong count)
-        {
-            if (count > 0)
-            {
-                OperationViolatedMessage(0);
-                return true;
-            }
-            return false;
-        }
-
+        #region WorkWithParameters Members
         public abstract void PassParameter(in string ParamName, in object newParam);
 
         public void PassParameters(Dictionary<string, object> parameters)
@@ -61,6 +29,10 @@ namespace Wreath.Model.Tools.DataBase
                 PassParameter(entry.Key, entry.Value);
         }
 
+        public abstract void ClearParameters();
+        #endregion
+
+        #region ProcedureExecuteOnly Members
         public abstract void OnlyExecute();
 
         public abstract void Procedure(in string name);
@@ -71,7 +43,8 @@ namespace Wreath.Model.Tools.DataBase
             OnlyExecute();
         }
 
-        public void ExecuteProcedure(string name, string paramName, object value)
+        public void ExecuteProcedure
+            (string name, string paramName, object value)
         {
             Procedure(name);
             PassParameter(paramName, value);
@@ -79,19 +52,17 @@ namespace Wreath.Model.Tools.DataBase
             ClearParameters();
         }
 
-        public void ExecuteProcedure(string name, Dictionary<string, object> parameters)
+        public void ExecuteProcedure
+            (string name, Dictionary<string, object> parameters)
         {
             Procedure(name);
             PassParameters(parameters);
             OnlyExecute();
             ClearParameters();
         }
+        #endregion
 
-        public static object GetSingle(List<object> result)
-        {
-            return result[0];
-        }
-
+        #region ReadRecords Members
         public abstract object ReadScalar();
 
         public abstract List<object[]> ReadData();
@@ -99,8 +70,6 @@ namespace Wreath.Model.Tools.DataBase
         public abstract List<object> ReadData(in int column);
 
         public abstract List<object[]> ReadData(in byte StartValue, in byte EndValue);
-
-        public abstract void ClearParameters();
 
         public object GetRecord(string name)
         {
@@ -118,15 +87,17 @@ namespace Wreath.Model.Tools.DataBase
             return field;
         }
 
-        public List<object> GetRecords(string name, in int column)
+        public List<object> GetRecords
+            (string name, in int column)
         {
             Procedure(name);
             List<object> records = ReadData(column);
             return records;
         }
 
-        public List<object> GetRecords(string name,
-            string paramName, object value, in int column)
+        public List<object> GetRecords(
+            string name, string paramName,
+            object value, in int column)
         {
             Procedure(name);
             PassParameter(paramName, value);
@@ -143,7 +114,8 @@ namespace Wreath.Model.Tools.DataBase
             return records;
         }
 
-        public List<object[]> GetRecords(string name, string paramName, object value)
+        public List<object[]> GetRecords
+            (string name, string paramName, object value)
         {
             Procedure(name);
             PassParameter(paramName, value);
@@ -152,7 +124,8 @@ namespace Wreath.Model.Tools.DataBase
             return records;
         }
 
-        public List<object[]> GetRecords(string name, Dictionary<string, object> parameters)
+        public List<object[]> GetRecords(string name,
+            Dictionary<string, object> parameters)
         {
             Procedure(name);
             PassParameters(parameters);
@@ -160,10 +133,11 @@ namespace Wreath.Model.Tools.DataBase
             ClearParameters();
             return records;
         }
+        #endregion
 
-        // Data view methods
-        // Unmarked records
 
+
+        #region GetUnmarkedRecords Members
         public List<object[]> ConformityList()
         {
             return GetRecords("get_conformity_full_unmarked");
@@ -287,23 +261,13 @@ namespace Wreath.Model.Tools.DataBase
             return GetRecords("get_conformity_professional_competetions_unmarked", "discipline_id", value);
         }
 
-        //public List<object[]> DisciplineGeneralMasteringByTheme(uint value)
-        //{
-        //    return GetRecords("get_discipline_general_by_theme_unmarked", "theme_id", value);
-        //}
-
-        //public List<object[]> DisciplineProfessionalMasteringByTheme(uint value)
-        //{
-        //    return GetRecords("get_discipline_professional_by_theme_unmarked", "theme_id", value);
-        //}
-
         public object DisciplineByTheme(uint value)
         {
             return GetRecord("get_discipline_by_theme", "theme_id", value);
         }
+        #endregion
 
-        // Marked records
-
+        #region GetMarkedRows Members
         public List<object[]> MConformityList()
         {
             return GetRecords("get_conformity_full_marked");
@@ -448,9 +412,9 @@ namespace Wreath.Model.Tools.DataBase
         {
             return GetRecords("analyze_theme", "theme_id", value, 0);
         }
+        #endregion
 
-        // Used type-like records count
-
+        #region UsedTypeLikeRecordsCount Members
         private object UsedWorkType(ulong value)
         {
             return GetRecord("get_work_type_linked", "type_id", value);
@@ -480,11 +444,10 @@ namespace Wreath.Model.Tools.DataBase
         {
             return GetRecord("get_discipline_linked", "code_id", value);
         }
+        #endregion
 
-        // Data editing methods
 
-        // Unmark elements
-
+        #region UnmarkRow Members
         public void UnMarkConformity(ulong value)
         {
             ExecuteProcedure("unmark_conformity", "conformity_id", value);
@@ -596,9 +559,9 @@ namespace Wreath.Model.Tools.DataBase
         {
             ExecuteProcedure("unmark_level", "level_id", value);
         }
+        #endregion
 
-        // Drop elements
-
+        #region DropRow Members
         public void DropConformity(ulong value)
         {
             ExecuteProcedure("drop_conformity", "conformity_id", value);
@@ -716,9 +679,10 @@ namespace Wreath.Model.Tools.DataBase
             if (!OperationViolated(Convert.ToUInt64(UsedLevel(value))))
                 ExecuteProcedure("drop_level", "level_id", value);
         }
+        #endregion
 
-        // Unmark all elements in table
 
+        #region UnmarkAllRows Members
         public void UnMarkAllConformity()
         {
             ExecuteProcedure("unmark_all_conformity");
@@ -830,19 +794,9 @@ namespace Wreath.Model.Tools.DataBase
         {
             ExecuteProcedure("unmark_all_level");
         }
+        #endregion
 
-        // Drop all marked elements in table
-
-        public static void DropAllCantBeApplied()
-        {
-            string noOperation = "Быстрое удаление не применимо";
-            string message = "\nк данным типам записей.";
-
-            string caption = "Отказ исполнения операции";
-            string fullMessage = noOperation + message;
-            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
+        #region DropAllMarkedRows Members
         public void DropAllConformity()
         {
             ExecuteProcedure("drop_all_marked_conformity");
@@ -924,9 +878,10 @@ namespace Wreath.Model.Tools.DataBase
         {
             ExecuteProcedure("drop_all_marked_professional_selection");
         }
+        #endregion
+        
 
-        // Increase size in data columns
-
+        #region IncreaseColumnSize Members
         public void IncreaseDisciplinesName(ushort value)
         {
             ExecuteProcedure("increase_disciplines_name", "column_size", value);
@@ -1031,9 +986,9 @@ namespace Wreath.Model.Tools.DataBase
         {
             ExecuteProcedure("increase_work_types_name", "column_size", value);
         }
+        #endregion
 
-        // Check column size methods
-
+        #region CheckColumnSize Members
         public object CheckDisciplinesName()
         {
             return GetRecord("check_disciplines_name");
@@ -1138,9 +1093,9 @@ namespace Wreath.Model.Tools.DataBase
         {
             return GetRecord("check_work_types_name");
         }
+        #endregion
 
-        // Roles administrating
-
+        #region RolesAdministrating Members
         public List<object[]> GetRedactors()
         {
             return GetRecords("get_redactors");
@@ -1165,5 +1120,60 @@ namespace Wreath.Model.Tools.DataBase
         {
             ExecuteProcedure("drop_redactor", parameters);
         }
+        #endregion
+
+
+        #region BaseMessage Members
+        public static void ConnectionMessage(string loadProblem, string exception)
+        {
+            string noLoad = "Не удалось обработать: ";
+            string message = "\nОшибка подключения. Вы не можете продолжать работу.\n";
+            string advice = "Проверьте конфигурации подключения и текущее состояние сервера.\nПолное сообщение:\n";
+
+            string caption = "Ошибка";
+            string fullMessage = noLoad + loadProblem + message + advice + exception;
+            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+            Application.Current.Shutdown();
+        }
+
+        public static void NetMessage(Exception exception, string problem)
+        {
+            string fullMessage = $"{exception.HelpLink}\n{exception.Message}";
+            Log.Error("Operation is invalid or unstated: " + exception.Message);
+            ConnectionMessage(problem, fullMessage);
+        }
+
+        public static void DropAllCantBeApplied()
+        {
+            string noOperation = "Быстрое удаление не применимо";
+            string message = "\nк данным типам записей.";
+
+            string caption = "Отказ исполнения операции";
+            string fullMessage = noOperation + message;
+            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public static bool OperationViolatedMessage(in ulong count)
+        {
+            string noOperation = "Продолжать действие невозможно,";
+            string message = "\nт.к. эта запись используется.\n";
+            string useCount = "Использована раз: " + count;
+
+            string caption = "Отказ исполнения операции";
+            string fullMessage = noOperation + message + useCount;
+            _ = MessageBox.Show(fullMessage, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+            return true;
+        }
+
+        public static bool OperationViolated(in ulong count)
+        {
+            if (count > 0)
+            {
+                OperationViolatedMessage(0);
+                return true;
+            }
+            return false;
+        }
+        #endregion
     }
 }

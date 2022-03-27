@@ -4,40 +4,62 @@ using System.Windows.Controls;
 using Wreath.Controls.Tables;
 using Wreath.ViewModel;
 using Wreath.Model;
-using Wreath.Model.Tools.DataBase;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Wreath.Controls.MainForm
 {
     /// <summary>
     /// Part responsible for functionality switching
     /// </summary>
-    public partial class WreathHeader : UserControl
+    public partial class WreathHeader : UserControl, INotifyPropertyChanged
     {
-        internal GlobalViewModel ViewModel { get; set; }
+        public static readonly DependencyProperty
+            ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
+                typeof(GlobalViewModel), typeof(WreathHeader),
+                new PropertyMetadata(OnConnectionChangedCallBack));
+
+        internal GlobalViewModel ViewModel
+        {
+            get => GetValue(ViewModelProperty) as GlobalViewModel;
+            set => SetValue(ViewModelProperty, value);
+        }
+
+        #region ConnectionCallBack Members
+        private static void
+            OnConnectionChangedCallBack(DependencyObject sender,
+            DependencyPropertyChangedEventArgs e)
+        {
+            if (sender is WreathHeader header)
+            {
+                header?.OnConnectionChanged();
+            }
+        }
+
+        protected virtual void OnConnectionChanged()
+        {
+            Tables = ViewModel.TableView;
+        }
+        #endregion
+
         internal LayoutMaster Tables { get; set; }
         internal MainWindow Layout { get; set; }
 
-        // Set table view and table by default
-        public void SetTables(in int id)
+        // Set tools and table by default
+        public void SetTablePart(in int id)
         {
-            SetTablePart();
-            TableSelector.SelectedIndex = id;
-        }
-
-        private void SetTablePart()
-        {
-            Tables = ViewModel.TableView;
-
             Records.Tag = Layout.RowView;
             ColumnSizes.Tag = Layout.SizeScaler;
             Roles.Tag = Layout.Roles;
-            _lastVisited = new Pair<Button, UserControl>(Records, Layout.RowView);
+            _lastVisited = new Pair<Button, UserControl>
+                (Records, Layout.RowView);
+
+            TableSelector.SelectedIndex = id;
         }
 
         public WreathHeader()
         {
-            if (Sql.IsConnected)
-                InitializeComponent();
+            InitializeComponent();
         }
 
         private Pair<Button, UserControl> _lastVisited;
@@ -86,5 +108,23 @@ namespace Wreath.Controls.MainForm
             ComboBox selector = sender as ComboBox;
             CheckSelection(selector);
         }
+
+        #region INotifyPropertyChanged Members
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises this object's PropertyChanged event.
+        /// </summary>
+        /// <param name="propertyName">The property that has a new value.</param>
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                PropertyChangedEventArgs e = new PropertyChangedEventArgs(propertyName);
+                handler(this, e);
+            }
+        }
+        #endregion
     }
 }

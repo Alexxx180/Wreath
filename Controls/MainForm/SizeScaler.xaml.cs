@@ -86,7 +86,9 @@ namespace Wreath.Controls.MainForm
                     _defaultSize = result;
                 }
                 else
+                {
                     ColumnSize.Text = _defaultSize.ToString();
+                }
             }
             else
             {

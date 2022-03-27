@@ -12,6 +12,11 @@ namespace Wreath.ViewModel
 {
     public class GlobalViewModel : INotifyPropertyChanged
     {
+        static GlobalViewModel()
+        {
+            _defaultState = new TransitionBase(null, "Пополнений стека:", 0);
+        }
+
         public GlobalViewModel()
         {
             Connector = new MySQL();
@@ -22,7 +27,12 @@ namespace Wreath.ViewModel
             FastActions = new Pair<FastAction, FastAction>();
         }
 
-        private static readonly TransitionBase _defaultState = new TransitionBase(null, "Пополнений стека:", 0);
+        public bool Connect()
+        {
+            return TableView.Connect();
+        }
+
+        private static readonly TransitionBase _defaultState;
 
         private TransitionBase _currentState;
         public TransitionBase CurrentState
@@ -41,7 +51,8 @@ namespace Wreath.ViewModel
             return original <= toCompare;
         }
 
-        public Visibility BackOperations => IsTopTransition ? Visibility.Hidden : Visibility.Visible;
+        public Visibility BackOperations => IsTopTransition ?
+            Visibility.Hidden : Visibility.Visible;
 
         private Stack _transitions;
         public Stack Transitions

@@ -63,6 +63,11 @@ namespace Wreath.Controls.Tables
             Data = new ProgramData(_connector);
         }
 
+        public bool Connect()
+        {
+            return _connector.Connect();
+        }
+
         private UserControl _header;
         public UserControl Header
         {

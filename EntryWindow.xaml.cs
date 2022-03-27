@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using static Wreath.Model.Tools.DataBase.UserConnectionHelper;
 
 namespace Wreath
 {
@@ -10,6 +9,7 @@ namespace Wreath
     /// </summary>
     public partial class EntryWindow : Window, INotifyPropertyChanged
     {
+        #region EntryWindow Members
         private string _login;
         public string Login
         {
@@ -21,16 +21,7 @@ namespace Wreath
             }
         }
 
-        private string _pass;
-        public string Pass
-        {
-            get => _pass;
-            set
-            {
-                _pass = value;
-                OnPropertyChanged();
-            }
-        }
+        public string Pass => PassBox.Password;
 
         private bool _memberMe;
         public bool MemberMe
@@ -43,17 +34,28 @@ namespace Wreath
             }
         }
 
+        private bool _newConfig;
+        public bool NewConfig
+        {
+            get => _newConfig;
+            set
+            {
+                _newConfig = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
         public EntryWindow()
         {
             InitializeComponent();
             MemberMe = false;
             Login = "";
-            Pass = "";
         }
 
         private void LogInClick(object sender, RoutedEventArgs e)
         {
-            Pass = PassBox.Password;
+            OnPropertyChanged(nameof(Pass));
             if (Login.Length <= 0)
                 return;
             DialogResult = true;
@@ -61,7 +63,8 @@ namespace Wreath
 
         private void ConfigSet(object sender, RoutedEventArgs e)
         {
-            ResetConfiguration();
+            NewConfig = true;
+            DialogResult = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

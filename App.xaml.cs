@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using Serilog;
-using static Wreath.Model.Tools.DataBase.UserConnectionHelper;
 
 namespace Wreath
 {
@@ -17,7 +16,6 @@ namespace Wreath
 
             Log.Information("Application started");
             Log.Debug("Collecting configuration info...");
-            SetConfiguration();
         }
     }
 }

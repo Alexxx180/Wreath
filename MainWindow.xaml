@@ -6,12 +6,14 @@
         xmlns:main="clr-namespace:Wreath.Controls.MainForm"
         xmlns:viewModel="clr-namespace:Wreath.ViewModel"
         mc:Ignorable="d"
-        x:Name="AdminWindow" Icon="/Wreath.ico" Title="Администрирование"
-        Height="1080" Width="1920" WindowStartupLocation="Manual" WindowState="Maximized">
-    <Window.DataContext>
-        <viewModel:GlobalViewModel x:Name="ViewModel"/>
-    </Window.DataContext>
-    <Grid Style="{StaticResource ViewImpact}">
+        x:Name="AdminWindow"
+        Icon="/Wreath.ico"
+        Title="Администрирование"
+        WindowState="Maximized"
+        Height="1080" Width="1920"
+        WindowStartupLocation="Manual" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid Style="{StaticResource ViewImpact}" DataContext="TotalViewModel">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.05*"/>
             <ColumnDefinition Width="0.9*"/>
@@ -25,9 +27,9 @@
             <RowDefinition Height="0.05*"/>
         </Grid.RowDefinitions>
 
-        <main:WreathHeader x:Name="Header" ViewModel="{x:Reference ViewModel}" Layout="{x:Reference AdminWindow}" Grid.ColumnSpan="3" />
-        <main:SizeScalingPart x:Name="SizeScaler" ViewModel="{x:Reference ViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
-        <main:RolesPart x:Name="Roles" ViewModel="{x:Reference ViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
-        <main:MainPart x:Name="RowView" ViewModel="{x:Reference ViewModel}" Grid.Row="2" Grid.Column="1" />
+        <main:WreathHeader x:Name="Header" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Layout="{x:Reference AdminWindow}" Grid.ColumnSpan="3" />
+        <main:SizeScalingPart x:Name="SizeScaler" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
+        <main:RolesPart x:Name="Roles" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Visibility="Hidden" Grid.Row="2" Grid.Column="1" />
+        <main:MainPart x:Name="RowView" ViewModel="{Binding ElementName=AdminWindow, Path=DataContext.TotalViewModel}" Grid.Row="2" Grid.Column="1" />
     </Grid>
 </Window>

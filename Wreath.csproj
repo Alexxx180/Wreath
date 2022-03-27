@@ -18,11 +18,19 @@
 
   <ItemGroup>
     <Folder Include="Resources\Images\Icons\" />
-    <Folder Include="Resources\Data\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Wreath.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Configuration\Runtime\Config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Configuration\Runtime\Data.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

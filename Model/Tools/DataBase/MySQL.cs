@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using Serilog;
 using MySqlConnector;
+using static Wreath.Writers.Processors;
+using static Wreath.Model.Tools.Security.Encryption;
 
 namespace Wreath.Model.Tools.DataBase
 {
@@ -11,53 +13,107 @@ namespace Wreath.Model.Tools.DataBase
     /// </summary>
     public class MySQL : Sql
     {
-        private static string ConnectionString;
-
-        private static string _dataBaseName;
-        private static string _hostName;
+        private string _dataBaseName;
+        private string _hostName;
 
         public MySQL()
         {
-            Con = NewConnection(ConnectionString);
+            ResetConfiguration();
         }
 
-        internal static void SetConfig(string dataBase, string host)
+        #region Configuration Members
+        internal override void SetConfiguration
+            (in string dataBase, in string host)
         {
             _dataBaseName = dataBase;
             _hostName = host;
         }
 
+        private void ResetConfiguration()
+        {
+            Pair<string, string> config = LoadRuntime<string>("Config.json");
+            SetConfiguration(config.Name, config.Value);
+        }
+
+        internal void NewConfiguration(string host, string dbName)
+        {
+            SaveRuntime("Config.json",
+                new Pair<string, string>
+                (host, dbName));
+            ResetConfiguration();
+        }
+
+        private void LoginMemory(string login, string pass)
+        {
+            SaveRuntime("Data.json",
+                new Pair<string, byte[]>
+                (login, ProtectData(pass)));
+        }
+        #endregion
+
+        #region Connection Members
+        private bool FileConnection()
+        {
+            Pair<string, byte[]>
+                initials = LoadRuntime<byte[]>("Data.json");
+
+            bool connectionSuccessful =
+                !(initials is null ||
+                (initials.Name is null) ||
+                (initials.Value is null))
+                && TestConnection(
+                    initials.Name,
+                    UnprotectData(initials.Value)
+                );
+
+            return connectionSuccessful;
+        }
+
+        internal override bool Connect()
+        {
+            if (FileConnection())
+                return true;
+
+            bool userAgreement, connectionSuccessful = false;
+            EntryWindow entry;
+
+            do
+            {
+                entry = new EntryWindow();
+                userAgreement = entry.ShowDialog().Value;
+
+                if (entry.NewConfig)
+                {
+                    NewConfiguration(entry.Login, entry.Pass);
+                    entry = new EntryWindow();
+                    continue;
+                }
+
+                if (!userAgreement)
+                {
+                    IndependentMode = true;
+                    break;
+                }
+
+                connectionSuccessful =
+                    TestConnection
+                    (entry.Login, entry.Pass);
+            }
+            while (!connectionSuccessful);
+
+            if (entry.MemberMe)
+            {
+                LoginMemory(entry.Login, entry.Pass);
+            }
+
+            return connectionSuccessful;
+        }
+        #endregion
+
+        #region Connecting Members
         private static void ConnectionFault(string message)
         {
             Log.Warning("Tried to connect to DB, no sucess: " + message);
-            IsConnected = false;
-        }
-
-        public static bool TestConnection(string login, string password)
-        {
-            IsConnected = true;
-            MySqlConnection test = EnterConnection(login, password);
-            try
-            {
-                test.Open();
-            }
-            catch (MySqlException dbException)
-            {
-                ConnectionFault(dbException.Message);
-            }
-            catch (InvalidOperationException operationException)
-            {
-                ConnectionFault(operationException.Message);
-            }
-            catch (Exception exception)
-            {
-                ConnectionFault(exception.Message);
-            }
-            finally
-            {
-                test.Close();
-            }
-            return IsConnected;
         }
 
         private static MySqlConnection NewConnection(string path)
@@ -66,33 +122,62 @@ namespace Wreath.Model.Tools.DataBase
         }
 
         // Server connection
-        private static MySqlConnection EnterConnection(
-            string login, string password)
+        private MySqlConnection EnterConnection
+            (string login, string password)
         {
             Log.Debug("Connecting to DB...");
             string source = "SERVER=" + _hostName + ";";
             string catalog = "DATABASE=" + _dataBaseName + ";";
             string user = "UID=" + login + ";";
             string pass = "PASSWORD=" + password + ";";
-            ConnectionString = source + catalog + user + pass;
-            return NewConnection(ConnectionString);
+            return NewConnection(source + catalog + user + pass);
         }
+
+        public override bool TestConnection
+            (in string login, in string password)
+        {
+            MySqlConnection test = EnterConnection(login, password);
+            try
+            {
+                test.Open();
+                _connection = test;
+            }
+            catch (MySqlException dbException)
+            {
+                ConnectionFault(dbException.HelpLink);
+            }
+            catch (InvalidOperationException operationException)
+            {
+                ConnectionFault(operationException.HelpLink);
+            }
+            catch (Exception exception)
+            {
+                ConnectionFault(exception.HelpLink);
+            }
+            finally
+            {
+                test.Close();
+            }
+            return _connection != null;
+        }
+        #endregion
 
         public override void Procedure(in string name)
         {
-            Cmd = new MySqlCommand(name, Con)
+            Command = new MySqlCommand(name, _connection)
             {
                 CommandType = CommandType.StoredProcedure
             };
         }
 
+        #region ProcedureExecuteOnly Members
         public override void OnlyExecute()
         {
             Log.Debug("Executing...");
             try
             {
-                Cmd.Connection.Open();
-                _ = Cmd.ExecuteNonQuery();
+                Command.Connection.Open();
+                _ = Command.ExecuteNonQuery();
             }
             catch (MySqlException dbException)
             {
@@ -108,18 +193,20 @@ namespace Wreath.Model.Tools.DataBase
             }
             finally
             {
-                Cmd.Connection.Close();
+                Command.Connection.Close();
             }
         }
+        #endregion
 
+        #region ReadRecords Members
         public override object ReadScalar()
         {
             Log.Debug("Reading aggregate value from DB table...");
             object field = null;
             try
             {
-                Cmd.Connection.Open();
-                field = Cmd.ExecuteScalar();
+                Command.Connection.Open();
+                field = Command.ExecuteScalar();
             }
             catch (MySqlException dbException)
             {
@@ -135,7 +222,7 @@ namespace Wreath.Model.Tools.DataBase
             }
             finally
             {
-                Cmd.Connection.Close();
+                Command.Connection.Close();
             }
             return field;
         }
@@ -146,8 +233,8 @@ namespace Wreath.Model.Tools.DataBase
             List<object> table = new List<object>();
             try
             {
-                Cmd.Connection.Open();
-                using (DataReader = Cmd.ExecuteReader())
+                Command.Connection.Open();
+                using (DataReader = Command.ExecuteReader())
                 {
                     if (DataReader.HasRows)
                         while (DataReader.Read())
@@ -171,7 +258,7 @@ namespace Wreath.Model.Tools.DataBase
             }
             finally
             {
-                Cmd.Connection.Close();
+                Command.Connection.Close();
             }
             return table;
         }
@@ -182,8 +269,8 @@ namespace Wreath.Model.Tools.DataBase
             List<object[]> table = new List<object[]>();
             try
             {
-                Cmd.Connection.Open();
-                using (DataReader = Cmd.ExecuteReader())
+                Command.Connection.Open();
+                using (DataReader = Command.ExecuteReader())
                 {
                     if (DataReader.HasRows)
                         while (DataReader.Read())
@@ -209,7 +296,7 @@ namespace Wreath.Model.Tools.DataBase
             }
             finally
             {
-                Cmd.Connection.Close();
+                Command.Connection.Close();
             }
             return table;
         }
@@ -220,8 +307,8 @@ namespace Wreath.Model.Tools.DataBase
             List<object[]> table = new List<object[]>();
             try
             {
-                Cmd.Connection.Open();
-                using (DataReader = Cmd.ExecuteReader())
+                Command.Connection.Open();
+                using (DataReader = Command.ExecuteReader())
                 {
                     int count = EndValue - StartValue;
                     if (DataReader.HasRows)
@@ -248,11 +335,13 @@ namespace Wreath.Model.Tools.DataBase
             }
             finally
             {
-                Cmd.Connection.Close();
+                Command.Connection.Close();
             }
             return table;
         }
+        #endregion
 
+        #region WorkWithParameters Members
         public override void PassParameter(in string ParamName, in object newParam)
         {
             Dictionary<string, MySqlDbType> types = new Dictionary<string, MySqlDbType>()
@@ -261,23 +350,26 @@ namespace Wreath.Model.Tools.DataBase
                 { "Byte", MySqlDbType.UByte }, { "String", MySqlDbType.VarChar },
                 { "UInt32", MySqlDbType.UInt32 }, { "UInt64", MySqlDbType.UInt64 }
             };
-            Cmd.Parameters.Add(ParamName, types[newParam.GetType().Name]).Value = newParam;
+            Command.Parameters.Add(ParamName, types[newParam.GetType().Name]).Value = newParam;
         }
 
         public override void ClearParameters()
         {
-            Cmd.Parameters.Clear();
+            Command.Parameters.Clear();
         }
+        #endregion
 
+        public MySqlCommand Command { get; set; }
+        public MySqlDataReader DataReader { get; set; }
+        private MySqlConnection _connection { get; set; }
+
+        #region Message Members
         private static void MySqlMessage(MySqlException exception, string problem)
         {
             string fullMessage = $"Error: {exception.ErrorCode}\n{exception.HelpLink}\n{exception.Message}";
             Log.Error("Operation was interrupted: " + exception.Message);
             ConnectionMessage(problem, fullMessage);
         }
-
-        public MySqlCommand Cmd { get; set; }
-        public MySqlDataReader DataReader { get; set; }
-        public MySqlConnection Con { get; set; }
+        #endregion
     }
 }

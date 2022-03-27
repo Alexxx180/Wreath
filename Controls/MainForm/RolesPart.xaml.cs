@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 using Wreath.Controls.Users;
 using Wreath.Model.Tools;
@@ -14,19 +15,34 @@ namespace Wreath.Controls.MainForm
     /// </summary>
     public partial class RolesPart : UserControl
     {
-        private GlobalViewModel _viewModel;
-        public GlobalViewModel ViewModel
+        public static readonly DependencyProperty
+            ViewModelProperty = DependencyProperty.Register(
+                nameof(ViewModel), typeof(GlobalViewModel), typeof(RolesPart),
+                new PropertyMetadata(OnConnectionChangedCallBack));
+
+        internal GlobalViewModel ViewModel
         {
-            get => _viewModel;
-            set
+            get => GetValue(ViewModelProperty) as GlobalViewModel;
+            set => SetValue(ViewModelProperty, value);
+        }
+
+        #region ConnectionCallBack Members
+        private static void
+            OnConnectionChangedCallBack(DependencyObject sender,
+            DependencyPropertyChangedEventArgs e)
+        {
+            if (sender is RolesPart connector)
             {
-                _viewModel = value;
-                Redactors = ViewModel.Connector;
-                if (Sql.IsConnected)
-                    ResetRecords();
-                OnPropertyChanged();
+                connector?.OnConnectionChanged();
             }
         }
+
+        protected virtual void OnConnectionChanged()
+        {
+            Redactors = ViewModel.Connector;
+            ResetRecords();
+        }
+        #endregion
 
         private UserControl _header;
         public UserControl Header
@@ -41,8 +57,7 @@ namespace Wreath.Controls.MainForm
 
         public RolesPart()
         {
-            if (Sql.IsConnected)
-                InitializeComponent();
+            InitializeComponent();
         }
 
         internal void ResetRecords()

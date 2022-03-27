@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using Wreath.ViewModel;
-using Wreath.Model.Tools.DataBase;
 
 namespace Wreath.Controls.MainForm
 {
@@ -12,22 +11,19 @@ namespace Wreath.Controls.MainForm
     /// </summary>
     public partial class MainPart : UserControl, INotifyPropertyChanged
     {
-        private GlobalViewModel _viewModel;
-        public GlobalViewModel ViewModel
+        public static readonly DependencyProperty
+            ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
+                typeof(GlobalViewModel), typeof(MainPart));
+
+        internal GlobalViewModel ViewModel
         {
-            get => _viewModel;
-            set
-            {
-                _viewModel = value;
-                OnPropertyChanged();
-            }
+            get => GetValue(ViewModelProperty) as GlobalViewModel;
+            set => SetValue(ViewModelProperty, value);
         }
 
         public MainPart()
         {
-            if (Sql.IsConnected)
-                InitializeComponent();
-            ViewModel = DataContext as GlobalViewModel;
+            InitializeComponent();
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -45,32 +41,31 @@ namespace Wreath.Controls.MainForm
             ViewModel.DropRows(ViewModel.TableView.Records);
         }
 
-        // Danger zone
-
-        private void OpenDangerZone(in bool closed)
+        #region DangerZone Members
+        private void OpenDangerZone(in bool opened)
         {
-            FastAction.SetActive(closed);
-            bool operations = !closed;
-            DropAll.SetActive(operations);
-            UnmarkAll.SetActive(operations);
+            FastAction.SetActive(!opened);
+            DropAll.SetActive(opened);
+            UnmarkAll.SetActive(opened);
         }
 
         private void FastActions(object sender, RoutedEventArgs e)
         {
-            OpenDangerZone(false);
+            OpenDangerZone(true);
         }
 
         private void UnMarkAllRows(object sender, RoutedEventArgs e)
         {
             ViewModel.UnMarkAll();
-            OpenDangerZone(true);
+            OpenDangerZone(false);
         }
 
         private void DropAllRows(object sender, RoutedEventArgs e)
         {
             ViewModel.DropAll();
-            OpenDangerZone(true);
+            OpenDangerZone(false);
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

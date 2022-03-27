@@ -7,7 +7,9 @@
              xmlns:main="clr-namespace:Wreath.Controls.MainForm"
              x:Name="ScalingPanel"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Style="{StaticResource CaptionImpact2}" DataContext="{Binding ElementName=ScalingPanel}" x:Name="MainPanel">
+    <Grid Style="{StaticResource CaptionImpact2}"
+          DataContext="{Binding ElementName=ScalingPanel}"
+          x:Name="MainPanel">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="0.05*"/>

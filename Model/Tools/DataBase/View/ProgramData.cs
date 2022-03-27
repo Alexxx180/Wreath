@@ -204,15 +204,15 @@ namespace Wreath.Model.Tools.DataBase.View
             return ConvertAll(_dataBase.MConformityProfessionalCompetetions(disciplineId), ElementsToString);
         }
 
-        public List<string[]> MDisciplineGeneralMasteringByTheme(uint themeId)
-        {
-            return ConvertAll(_dataBase.MDisciplineGeneralMasteringByTheme(themeId), ElementsToString);
-        }
+        //public List<string[]> MDisciplineGeneralMasteringByTheme(uint themeId)
+        //{
+        //    return ConvertAll(_dataBase.MDisciplineGeneralMasteringByTheme(themeId), ElementsToString);
+        //}
 
-        public List<string[]> MDisciplineProfessionalMasteringByTheme(uint themeId)
-        {
-            return ConvertAll(_dataBase.MDisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
-        }
+        //public List<string[]> MDisciplineProfessionalMasteringByTheme(uint themeId)
+        //{
+        //    return ConvertAll(_dataBase.MDisciplineProfessionalMasteringByTheme(themeId), ElementsToString);
+        //}
 
         public List<string> SpecialityMarkedRowsAnalyze(uint disciplineId)
         {

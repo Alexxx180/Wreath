@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 using Wreath.Model.Tools;
-using Wreath.Model.Tools.DataBase;
 using Wreath.ViewModel;
 
 namespace Wreath.Controls.MainForm
@@ -12,24 +12,38 @@ namespace Wreath.Controls.MainForm
     /// </summary>
     public partial class SizeScalingPart : UserControl, INotifyPropertyChanged
     {
-        private GlobalViewModel _viewModel;
-        public GlobalViewModel ViewModel
+        public static readonly DependencyProperty
+            ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
+                typeof(GlobalViewModel), typeof(SizeScalingPart),
+                new PropertyMetadata(OnConnectionChangedCallBack));
+
+        internal GlobalViewModel ViewModel
         {
-            get => _viewModel;
-            set
+            get => GetValue(ViewModelProperty) as GlobalViewModel;
+            set => SetValue(ViewModelProperty, value);
+        }
+
+        #region ConnectionCallBack Members
+        private static void
+            OnConnectionChangedCallBack(DependencyObject sender,
+            DependencyPropertyChangedEventArgs e)
+        {
+            if (sender is SizeScalingPart connector)
             {
-                _viewModel = value;
-                Scaler = ViewModel.Connector;
-                if (Sql.IsConnected)
-                    SetDefaults();
-                OnPropertyChanged();
+                connector?.OnConnectionChanged();
             }
         }
 
+        protected virtual void OnConnectionChanged()
+        {
+            Scaler = ViewModel.Connector;
+            SetDefaults();
+        }
+        #endregion
+
         public SizeScalingPart()
         {
-            if (Sql.IsConnected)
-                InitializeComponent();
+            InitializeComponent();
         }
 
         private void SetDefaults()
@@ -52,6 +66,7 @@ namespace Wreath.Controls.MainForm
             }
         }
 
+        #region IncreaseColumnSize Members
         public void IncreaseDisciplinesName(ushort value)
         {
             Scaler.IncreaseDisciplinesName(value);
@@ -156,7 +171,9 @@ namespace Wreath.Controls.MainForm
         {
             Scaler.IncreaseWorkTypesName(value);
         }
+        #endregion
 
+        #region CheckColumnSize Members
         public object CheckDisciplinesName()
         {
             return Scaler.CheckDisciplinesName();
@@ -261,12 +278,25 @@ namespace Wreath.Controls.MainForm
         {
             return Scaler.CheckWorkTypesName();
         }
+        #endregion
 
+
+        #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+
+        /// <summary>
+        /// Raises this object's PropertyChanged event.
+        /// </summary>
+        /// <param name="propertyName">The property that has a new value.</param>
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                PropertyChangedEventArgs e = new PropertyChangedEventArgs(propertyName);
+                handler(this, e);
+            }
         }
+        #endregion
     }
 }
