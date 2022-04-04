@@ -295,3 +295,4 @@ D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wrea
 D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.csproj.CoreCompileInputs.cache
 D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.csproj.CopyComplete
 D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.genruntimeconfig.cache
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\obj\Debug\net5.0-windows\Wreath.csproj.AssemblyReference.cache

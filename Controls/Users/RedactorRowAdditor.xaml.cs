@@ -38,7 +38,7 @@ namespace Wreath.Controls.Users
         public RedactorRowAdditor()
         {
             InitializeComponent();
-            Host = "localhost";
+            Host = "%";
         }
 
         public RedactorRowAdditor(RolesPart administrating) : this()

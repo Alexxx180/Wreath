@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Wreath.Controls.Binds.Converters.ProcentualHeightConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Binds\Converters\ProcentualHeightConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.FieldsForm.MainPart" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAQAAAACIAAAAABAgAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\FieldsForm\MainPart.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.FieldsForm.TextSection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAACIIAAAAAAgQAAAAAAACCAAAAAAEA=</HashCode>
+      <FileName>Controls\FieldsForm\TextSection.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.MainForm.MainPart" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACAAAAAAIAAABAABmAAAAAAAAAAAQAAAECA=</HashCode>
+      <FileName>Controls\MainForm\MainPart.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.MainForm.RolesPart" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAAAAAAAAAAEQAIAAABAAAkAAAAAAAEAAAAAIAAEA=</HashCode>
+      <FileName>Controls\MainForm\RolesPart.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.MainForm.SizeScaler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAgABAMACAIEBCAgAAoAAgAAAAAAAAAQIAAIA=</HashCode>
+      <FileName>Controls\MainForm\SizeScaler.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.MainForm.SizeScalingPart" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgMAKICAQQARAFAB4BoDBAABkEiI4AFEAKEkAGLAAsA=</HashCode>
+      <FileName>Controls\MainForm\SizeScalingPart.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.MainForm.WreathHeader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgMAAARAAAmAAIiAAIAAAAAAIAAEA=</HashCode>
+      <FileName>Controls\MainForm\WreathHeader.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Conformity.ConformityColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Conformity\ConformityColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Conformity.ConformityRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQANAEoQAoABAADiBgCAAQEEAAAGAQACSQAA=</HashCode>
+      <FileName>Controls\Tables\Conformity\ConformityRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.DisciplineCodes.DisciplineCodeColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\DisciplineCodes\DisciplineCodeColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.DisciplineCodes.DisciplineCodeRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFIEoQAoABAADiBgCAAAAEAAgGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\DisciplineCodes\DisciplineCodeRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.GeneralMastering.DisciplineGeneralMasteringColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\GeneralMastering\DisciplineGeneralMasteringColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.GeneralMastering.DisciplineGeneralMasteringRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEIQAoABgADiBgCAAAAEAAAGAQACwQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\GeneralMastering\DisciplineGeneralMasteringRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData.MetaDataColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\MetaTypes\MetaData\MetaDataColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.MetaTypes.MetaData.MetaDataRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoFBAADiRgCAAAAEgAAGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\MetaTypes\MetaData\MetaDataRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.MetaTypes.MetaTypeColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\MetaTypes\MetaTypeColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.MetaTypes.MetaTypeRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEIQAoEBAADiRgCAAAAEAAAGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\MetaTypes\MetaTypeRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.ProfessionalMastering.DisciplineProfessionalMasteringColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\ProfessionalMastering\DisciplineProfessionalMasteringColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.ProfessionalMastering.DisciplineProfessionalMasteringRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABgADiBgCAAAAEAAAGAQACwQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\ProfessionalMastering\DisciplineProfessionalMasteringRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.SourceTypes.Sources.SourceColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\SourceTypes\Sources\SourceColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.SourceTypes.Sources.SourceRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQkFAEoQAoABAIDiBgCAAAAEAAAGASACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\SourceTypes\Sources\SourceRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.SourceTypes.SourceTypeColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\SourceTypes\SourceTypeColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.SourceTypes.SourceTypeRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABAIDiBgCAAAAEAAAGASACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\SourceTypes\SourceTypeRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.Hours.HoursColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\Hours\HoursColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.Hours.HoursRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAUAQAFQEoQAsABAADiFiCAAAAEAAAGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\Hours\HoursRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.CompetetionLevels.LevelColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\CompetetionLevels\LevelColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.CompetetionLevels.LevelRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACMAQAQAFgEoQEoABAADiBgCAAAAEAAEGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\CompetetionLevels\LevelRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.GeneralMastering.ThemeGeneralMasteringColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\GeneralMastering\ThemeGeneralMasteringColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.GeneralMastering.ThemeGeneralMasteringRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABgADiBgCAAAAEAAAGAQACwQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\GeneralMastering\ThemeGeneralMasteringRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.ProfessionalMastering.ThemeProfessionalMasteringColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\ProfessionalMastering\ThemeProfessionalMasteringColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.ProfessionalMastering.ThemeProfessionalMasteringRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABgADiBgCAAAAEAAAGAQACwQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\ProfessionalMastering\ThemeProfessionalMasteringRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Tasks.TaskColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\Works\Tasks\TaskColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.Tasks.TaskRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAUAQAFAEoQApABAADiFgCAAAAEAIAGAQACQQAg=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\Works\Tasks\TaskRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.WorkColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\Works\WorkColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.Works.WorkRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABAADiBgSAAAAEAgAGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\Works\WorkRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.ThemeColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\ThemeColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.Themes.ThemeRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAWAQAVgMoQAsABgADiFgCACAAGAAAGBQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\Themes\ThemeRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.TopicColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\TopicColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.ThemePlan.TopicRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAUAQAVAEoRAoABAADiFgCBAAAMAAAOAQACQSQA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\ThemePlan\TopicRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.WorkTypesColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\WorkTypesColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.WorkTypes.WorkTypesRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABAADiBgSAAAAEAAAGAQASQQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\WorkTypes\WorkTypesRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.DisciplineColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\DisciplineColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Disciplines.DisciplineRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACMAQAQAVAMoQAsABgADiBgCAAAAEAAAGAQACwQAA=</HashCode>
+      <FileName>Controls\Tables\Disciplines\DisciplineRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.GeneralCompetetions.GeneralCompetetionColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\GeneralCompetetions\GeneralCompetetionColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.GeneralCompetetions.GeneralCompetetionRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQACMAwAQgFAEoQApABAEDiDgCAAAAEAAAGAQACQQAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\GeneralCompetetions\GeneralCompetetionRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.ProfessionalCompetetions.ProfessionalCompetetionColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\ProfessionalCompetetions\ProfessionalCompetetionColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.ProfessionalCompetetions.ProfessionalCompetetionRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQACMAwAQAFAEoQCpABAALiBgCAAAEEAAAGQQACQwAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\ProfessionalCompetetions\ProfessionalCompetetionRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.SpecialityCodes.SpecialityCodeColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\SpecialityCodes\SpecialityCodeColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.SpecialityCodes.SpecialityCodeRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACEAQAQAFAEoQAoABAADiBgCCAAAEAAAGAQACQQCA=</HashCode>
+      <FileName>Controls\Tables\Specialities\SpecialityCodes\SpecialityCodeRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.SpecialityColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\SpecialityColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.Specialities.SpecialityRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACMAQAQAVAMoQAsABgADiBgCAAAAEgAAGAQACwQAA=</HashCode>
+      <FileName>Controls\Tables\Specialities\SpecialityRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.EditEvents" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\EditEvents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Tables.EditHelper" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAIAAABAgAEAAAAAACIAAAAAAQAAAA=</HashCode>
+      <FileName>Controls\Tables\EditHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Controls.Tables.LayoutMaster" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAgAAAgCAIQRMGgQJAoCEcYSkQIIABBAZCUACAJERAA=</HashCode>
+      <FileName>Controls\Tables\LayoutMaster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Users.RedactorColumns" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Users\RedactorColumns.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Users.RedactorRow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEEAQAAIAAIIAAAAAAgACACAAAAgARJAIAAAA=</HashCode>
+      <FileName>Controls\Users\RedactorRow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.Users.RedactorRowAdditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIIAAAAAAgAAACAAAAAARJAAAAIA=</HashCode>
+      <FileName>Controls\Users\RedactorRowAdditor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Controls.UIhelper" Collapsed="true">
+    <Position X="19.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Controls\UIhelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.Edit.Drop" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAqAAAQAAwIEmAAQAEAgAAACAYCABGAhAkBBSCFCBGA=</HashCode>
+      <FileName>Model\Tools\DataBase\Edit\Drop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.Edit.RedactorTools" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Model\Tools\DataBase\Edit\RedactorTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.Edit.Tool" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Tools\DataBase\Edit\Tool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.Edit.UnMark" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAqAAAQwAwoFmAAQAEIgAAACAYCABGAhA0BBSCBCBGA=</HashCode>
+      <FileName>Model\Tools\DataBase\Edit\UnMark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.View.Converters" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Tools\DataBase\View\Converters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.View.ProgramData" Collapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DQGBQAAAwQAICCaYQGIAkQgAAQIQAMQxEgAIWCwkMCA=</HashCode>
+      <FileName>Model\Tools\DataBase\View\ProgramData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.MySQL" Collapsed="true">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAwBAKAABAAAwAAhIDIBAAiAAAAAAAAAYBAAABEA=</HashCode>
+      <FileName>Model\Tools\DataBase\MySQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Tools.DataBase.Sql" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>z3eH7bD6y/QbCH670nrnma2nIcua5cVvE7MuXW3mNuI=</HashCode>
+      <FileName>Model\Tools\DataBase\Sql.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Wreath.Model.Tools.Security.Encryption" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCAAAAAAAAAABACAABABAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Tools\Security\Encryption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.Pair&lt;TName, TValue&gt;" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\Pair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.Model.TransitionBase" Collapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Model\TransitionBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wreath.ViewModel.GlobalViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAoAAAAAFAJCQAhLAFgAASBQIgggQA6AAAMDQ=</HashCode>
+      <FileName>ViewModel\GlobalViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Wreath.Writers.Processors" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIAgAUAAAAAACQASgACQAAAACAAAAAAEAAAACAA=</HashCode>
+      <FileName>Writers\Processors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Wreath.Controls.Tables.IAutoIndexing" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAgAAAAAAAACAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controls\Tables\IAutoIndexing.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wreath.Controls.Tables.IMarkable" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAIAAAAAAAAABAAAAAAAAAACAAAAQAAA=</HashCode>
+      <FileName>Controls\Tables\IMarkable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wreath.Model.Tools.IDataAdministrator" Collapsed="true">
+    <Position X="7" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>A3YHhDDoArQCACo6QgihCSGmAMKAhUQOExICCQRiBkI=</HashCode>
+      <FileName>Model\Tools\IDataAdministrator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wreath.Model.Tools.IDataViewer" Collapsed="true">
+    <Position X="8.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAGBQAAQwAAICCaQAGIAkQgAIQIQAMApEgAIWC0kMCA=</HashCode>
+      <FileName>Model\Tools\IDataViewer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wreath.Model.Tools.IRolesAdministrating" Collapsed="true">
+    <Position X="10.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAACEAAAAAAIA=</HashCode>
+      <FileName>Model\Tools\IRolesAdministrating.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Wreath.Model.Tools.ISizeScaler" Collapsed="true">
+    <Position X="12.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgMAKICAAQARAFABwBADAAABAEiI4AFEAKEkAGDAAoA=</HashCode>
+      <FileName>Model\Tools\ISizeScaler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI Semibold" Size="8.25" />
+</ClassDiagram>
