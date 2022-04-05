@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              d:DesignHeight="35" d:DesignWidth="800" Style="{StaticResource FontIdle}">
-    <Grid Height="35">
+    <Grid Height="35" Style="{StaticResource StretchLayout}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="0.8*"/>

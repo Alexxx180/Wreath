@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\Wreath.csproj": {}
+    "C:\\Users\\student\\Desktop\\Wreath\\Wreath.csproj": {}
   },
   "projects": {
-    "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\Wreath.csproj": {
+    "C:\\Users\\student\\Desktop\\Wreath\\Wreath.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\Wreath.csproj",
+        "projectUniqueName": "C:\\Users\\student\\Desktop\\Wreath\\Wreath.csproj",
         "projectName": "Wreath",
-        "projectPath": "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\Wreath.csproj",
-        "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\obj\\",
+        "projectPath": "C:\\Users\\student\\Desktop\\Wreath\\Wreath.csproj",
+        "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\student\\Desktop\\Wreath\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

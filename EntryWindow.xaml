@@ -3,14 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:converters="clr-namespace:Wreath.Controls.Binds.Converters"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}" 
         Icon="/Wreath.ico"
         Title="Вход"
         Height="300" Width="450"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Style="{StaticResource FontAdditor}">
     <Grid Style="{StaticResource CaptionImpact2}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.05*"/>
@@ -28,16 +27,16 @@
             <RowDefinition Height="0.125*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="1" Grid.Column="1" FontSize="24">
+        <TextBox Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="Login" Mode="TwoWay" UpdateSourceTrigger="LostFocus" />
             </TextBox.Text>
         </TextBox>
 
-        <PasswordBox x:Name="PassBox" Grid.Row="3" Grid.Column="1"  FontSize="24"/>
+        <PasswordBox x:Name="PassBox" Grid.Row="3" Grid.Column="1"/>
 
-        <Viewbox Grid.Row="4" Grid.Column="1">
-            <CheckBox Style="{StaticResource CaptionImpact2}">
+        <Viewbox Grid.Row="4" Grid.Column="1" >
+            <CheckBox Style="{StaticResource CaptionImpact2}" VerticalContentAlignment="Center">
                 <CheckBox.IsChecked>
                     <Binding Path="MemberMe" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
                 </CheckBox.IsChecked>

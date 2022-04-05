@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
-             d:DesignHeight="35" d:DesignWidth="800" MouseEnter="FastSelect">
+             d:DesignHeight="35" d:DesignWidth="800" MouseEnter="FastSelect" Style="{StaticResource FontIdle}">
     <Grid Height="35">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*" />

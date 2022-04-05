@@ -159,7 +159,7 @@ namespace Wreath.Model.Tools.DataBase
             {
                 test.Close();
             }
-            return _connection != null;
+            return _connection is not null;
         }
         #endregion
 
