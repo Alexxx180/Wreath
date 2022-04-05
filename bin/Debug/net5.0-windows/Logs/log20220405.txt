@@ -74,3 +74,26 @@
 2022-04-05 10:54:02.625 +03:00 [DBG] Loading runtime: C:\Users\student\Desktop\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
 2022-04-05 10:54:02.625 +03:00 [INF] Reading user data from: C:\Users\student\Desktop\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
 2022-04-05 10:54:08.552 +03:00 [DBG] Reading aggregate value from DB table...
+2022-04-05 21:17:39.801 +03:00 [INF] Application started
+2022-04-05 21:17:39.847 +03:00 [DBG] Collecting configuration info...
+2022-04-05 21:17:39.862 +03:00 [DBG] Configuration directory set as: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\
+2022-04-05 21:17:39.862 +03:00 [DBG] Loading runtime: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Config.json
+2022-04-05 21:17:39.868 +03:00 [INF] Reading user data from: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Config.json
+2022-04-05 21:17:39.911 +03:00 [DBG] Loading runtime: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
+2022-04-05 21:17:39.912 +03:00 [INF] Reading user data from: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
+2022-04-05 21:17:43.078 +03:00 [DBG] Reading aggregate value from DB table...
+2022-04-05 22:06:38.909 +03:00 [INF] Application started
+2022-04-05 22:06:38.941 +03:00 [DBG] Collecting configuration info...
+2022-04-05 22:06:38.956 +03:00 [DBG] Configuration directory set as: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\
+2022-04-05 22:06:38.957 +03:00 [DBG] Loading runtime: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Config.json
+2022-04-05 22:06:38.962 +03:00 [INF] Reading user data from: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Config.json
+2022-04-05 22:06:38.995 +03:00 [DBG] Loading runtime: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
+2022-04-05 22:06:38.995 +03:00 [INF] Reading user data from: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
+2022-04-05 22:06:42.073 +03:00 [DBG] Reading aggregate value from DB table...
+2022-04-05 22:07:49.075 +03:00 [INF] Application started
+2022-04-05 22:07:49.105 +03:00 [DBG] Collecting configuration info...
+2022-04-05 22:07:49.119 +03:00 [DBG] Configuration directory set as: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\
+2022-04-05 22:07:49.119 +03:00 [DBG] Loading runtime: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Config.json
+2022-04-05 22:07:49.124 +03:00 [INF] Reading user data from: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Config.json
+2022-04-05 22:07:49.157 +03:00 [DBG] Loading runtime: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json
+2022-04-05 22:07:49.157 +03:00 [INF] Reading user data from: D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Wreath\bin\Debug\net5.0-windows\Resources\Configuration\Runtime\Data.json

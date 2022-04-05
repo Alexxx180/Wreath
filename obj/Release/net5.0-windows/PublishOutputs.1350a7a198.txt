@@ -1,0 +1,10 @@
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Resources\Configuration\Runtime\Data.json
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Wreath.exe
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Resources\Configuration\Runtime\Config.json
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Wreath.dll
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Wreath.deps.json
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Wreath.runtimeconfig.json
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Wreath.pdb
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\MySqlConnector.dll
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Serilog.dll
+D:\Aleksandr\misc\Tombstones\PL-Projects\C#\Publush\Wreath\Serilog.Sinks.File.dll

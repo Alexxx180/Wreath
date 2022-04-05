@@ -124,19 +124,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\student\\.nuget\\packages\\": {}
+    "C:\\Users\\Администратор\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\student\\Desktop\\Wreath\\Wreath.csproj",
+      "projectUniqueName": "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\Wreath.csproj",
       "projectName": "Wreath",
-      "projectPath": "C:\\Users\\student\\Desktop\\Wreath\\Wreath.csproj",
-      "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\student\\Desktop\\Wreath\\obj\\",
+      "projectPath": "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\Wreath.csproj",
+      "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
+      "outputPath": "D:\\Aleksandr\\misc\\Tombstones\\PL-Projects\\C#\\Wreath\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -193,7 +193,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }
