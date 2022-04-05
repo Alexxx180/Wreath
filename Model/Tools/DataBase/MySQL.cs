@@ -144,15 +144,16 @@ namespace Wreath.Model.Tools.DataBase
             }
             catch (MySqlException dbException)
             {
-                ConnectionFault(dbException.HelpLink);
+                ConnectionFault("configuration is not correct" +
+                    dbException.HelpLink);
             }
             catch (InvalidOperationException operationException)
             {
-                ConnectionFault(operationException.HelpLink);
+                ConnectionFault(operationException.Message);
             }
             catch (Exception exception)
             {
-                ConnectionFault(exception.HelpLink);
+                ConnectionFault(exception.Message);
             }
             finally
             {
